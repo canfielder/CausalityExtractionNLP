@@ -36,5 +36,5 @@ vignettes/*.pdf
 *.knit.md
 
 # Large Data Files
-/data/**/*.pdf
-/data/**/*.txt
+# /data/**/*.pdf
+# /data/**/*.txt
