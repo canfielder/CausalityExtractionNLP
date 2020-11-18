@@ -1,0 +1,182 @@
+---
+title: "Modeling"
+author: "Evan Canfield"
+date: "11/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Purpose
+
+The purpose of this notebook is to recreate the python script *Causality_Classification.py* as a R notebook. 
+
+Several steps in the python script *Causality_Classification.py*, and earlier PDF processing, are executed with R packages available in CRAN. These packages contain similar functions to the Python packages used in the original process, but they may not be exactly equivalent. Successfully recreating the results of *Causality_Classification.py* will help in verifying the R workflow sufficiently recreates the Python workflow.
+
+### A Note on Modifications:
+
+**Errors**
+
+This notebook uses the file *training_data.xlsx* as input. This file was partially manually generated to list of all identified hypotheses sentences in the training set of academic papers. This input also identifies key attributes of each extracted hypothesis. 
+
+**Hypothesis Statement 26** of file **dd96amj.txt** was generating an error when running the python script. The error was caused by a **period** punctuation in the Node 1 entity associated with this hypothesis. During entity extraction, the period was causing the code to not identify a Node 1 entity within hypothesis, and therefore not replace this entity with the term **Node 1**.
+
+Prior to loading the data into this notebook, this period was manually removed from the copy of this input. 
+
+
+**Scikit Learn Models**
+In order to have consistent results, a random seed was set and added to each applicable step.
+
+All other modifications to the *Causality_Classification.py* script were purely formatting driven and have no effect on the execution of the code.
+
+
+# Import
+## Libraries
+```{r import_libraries}
+p_load(
+  dplyr,
+  pdftools,
+  quanteda,
+  readxl,
+  rJava,
+  stringr,
+  tabulizer,
+  textstem,
+  tidyr,
+  tidytext,
+  tokenizers
+)
+
+# Import All Scripts
+script_path <- "../R/"
+file_paths <- list.files(path = script_path, pattern = ".R", full.names = TRUE)
+
+for (file in file_paths){
+  source(file)
+}
+```
+
+
+## Python Modules
+I sometimes receive an error when importing a module. Usually rerunning the import line fixes the issue.
+```{r}
+# Load Reticulate ()
+library(reticulate)
+# Set Conda Environment In Case System Environment Fails
+use_condaenv(condaenv = "./../r-CausalityExtraction_37")
+```
+
+
+```{r}
+# Pandas
+pd <- import("pandas")
+
+# Sci-Kit Learn Model Selection
+skl_ms <- import("sklearn.model_selection")
+```
+
+## Data
+```{r import_data}
+train_raw <- read_excel(path = "../data/training_data_node_punct_removed.xlsx", sheet = "training_data")
+```
+
+
+## Set Seed / Random state
+```{r}
+random_state = integer(5590)
+set.seed(random_state)
+```
+
+# Pre-Process
+
+Pre-process data before creating Document Term Matrix
+```{r}
+train_processed <- process_data(train_raw)
+```
+
+# Vectorization
+The following steps generates the data features through different emthods of vectorization:
+
+* Bag-of-Words
+* Doc2Vec
+
+## Bag-of-Words
+The features Document Term Matrix does not include our target variable. Therefore, in additino to generating our features, we also mustrejoin our target variable to the newly created DTM. We can also drop our unique row identifie
+```{r}
+train_dtm <- gen_dtm_bow(train_processed) %>% 
+    left_join(train_processed %>% select(causal_relationship, hyp_id),
+            by = c("doc_id" = "hyp_id")) %>% 
+  select(causal_relationship, everything()) %>% 
+  select(-doc_id)
+
+rownames(train_dtm) <- c()
+
+# Inspect
+train_dtm %>% head()
+```
+
+# Modeling
+## Bag-of-Words
+### Train / Test Split
+First, we split the data our target and feature sets.
+```{r}
+# target <- train_dtm %>% select(causal_relationship)
+# features <- train_dtm %>% select(-causal_relationship)
+# 
+# target_py <- r_to_py(target)
+# features_py <- r_to_py(features)
+```
+
+```{r}
+train_dtm_pd <- r_to_py(train_dtm)
+
+target_pd <- train_dtm_pd$'causal_relationship'
+skl_ms$
+```
+ 
+
+#### IRIS Example
+```{r}
+sk <- reticulate::import('sklearn')
+data <- sk$datasets$load_iris
+iris <- data()
+X = iris$data
+y = iris$target
+```
+
+```{r}
+typeof(features_py)
+```
+
+
+
+We Need to do this with the Sci-Kit Learn Train/Test split tool in order to try to match the results previously generated in Python.
+```{r}
+test_split <- 0.25
+
+data_split <- skl_ms$train_test_split(features_py, target, test_size=test_split, random_state=random_state)
+```
+
+```{r}
+# model_input <- train_test_split(train_dtm_w_id)
+```
+
+
+### Logistic Regression
+In order to try and match the Scit-Kit Learn Model, we'll try the Liblearner package. Sklearn defaults to a **liblearner** solver.
+
+```{r}
+train <- model_input$train
+
+train_label <- train %>% select(causal_relationship)
+train_features <- train %>% select(-causal_relationship)
+as.sparse(train_features)
+```
+
+
+```{r}
+train_processed
+```
+
