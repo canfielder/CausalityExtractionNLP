@@ -38,3 +38,8 @@ vignettes/*.pdf
 # Large Data Files
 # /data/**/*.pdf
 # /data/**/*.txt
+
+# Virtual Environments
+
+/.causalityextractionnlp/*
+
