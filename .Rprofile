@@ -1,5 +1,5 @@
 #### -- Packrat Autoloader (version 0.5.0) -- ####
-source("packrat/init.R")
+# source("packrat/init.R")
 #### -- End Packrat Autoloader -- ####
 
 # Set Python Path to Local Conda Environment
@@ -8,5 +8,5 @@ source("packrat/init.R")
 # Sys.setenv(RETICULATE_PYTHON = CONDA_PATH)
 
 # Install Packages - If Required
-source("./R/install.R")
-project_install_packages()
+# source("./R/install.R")
+# project_install_packages()
