@@ -34,47 +34,57 @@ All other modifications to the *Causality_Classification.py* script were purely 
 
 # Import
 ## Libraries
+Direct Library import has been moved to the script R/install.R in order to maintain consistent library management across multiple project actions.
 ```{r import_libraries}
-p_load(
-  dplyr,
-  pdftools,
-  quanteda,
-  readxl,
-  rJava,
-  stringr,
-  tabulizer,
-  textstem,
-  tidyr,
-  tidytext,
-  tokenizers
-)
-
 # Import All Scripts
 script_path <- "../R/"
 file_paths <- list.files(path = script_path, pattern = ".R", full.names = TRUE)
 
+# Execute All Scripts
 for (file in file_paths){
   source(file)
 }
+
+# Load Libraries
+project_install_packages()
+```
+
+## Set Seed and Random States
+```{r}
+rs <- as.integer(5590)
+set.seed(rs)
 ```
 
 
 ## Python Modules
-I sometimes receive an error when importing a module. Usually rerunning the import line fixes the issue.
-```{r}
-# Load Reticulate ()
-library(reticulate)
-# Set Conda Environment In Case System Environment Fails
-use_condaenv(condaenv = "./../r-CausalityExtraction_37")
+### Define Python Binary
+We first need to point to the python binary we are using. I have had difficultly in the best method to do this. One possible way is to define a Variable Path in the .RProfile for this project. This method has been inconsistent in it's success. Currently, using the **use_python** function from the **Reticulate** package has been successful.
+```{r assign_python}
+use_python(python = "./../.causalityextractionnlp/bin/python")
 ```
 
+### Import Python Moducles
+```{r import_python_modules}
+# General
+## Numpy
+np <- import("numpy")
 
-```{r}
-# Pandas
-pd <- import("pandas")
-
-# Sci-Kit Learn Model Selection
+# Modeling
+## Sci-Kit Learn Model Selection
 skl_ms <- import("sklearn.model_selection")
+
+## Sci-Kit Learn Linear Models
+skl_lm <- import("sklearn.linear_model")
+
+## Sci-Kit Learn Support Vector Machines 
+skl_svm <- import("sklearn.svm")
+
+## Sci-Kit Learn Naive Bayes 
+skl_nb <- import("sklearn.naive_bayes")
+
+# NLP
+## Gensim
+gensim <- import("gensim")
 ```
 
 ## Data
@@ -84,17 +94,28 @@ train_raw <- read_excel(path = "../data/training_data_node_punct_removed.xlsx", 
 
 
 ## Set Seed / Random state
-```{r}
+```{r set_random}
 random_state = integer(5590)
 set.seed(random_state)
 ```
 
 # Pre-Process
-
 Pre-process data before creating Document Term Matrix
-```{r}
+```{r pre-processing}
 train_processed <- process_data(train_raw)
+
+train_processed
 ```
+
+## Length Check
+```{r}
+len_pre <- length(train_raw$file_name)
+print(len_pre)
+
+len_post <- length(train_processed$file_name)
+print(len_post)
+```
+
 
 # Vectorization
 The following steps generates the data features through different emthods of vectorization:
@@ -103,8 +124,8 @@ The following steps generates the data features through different emthods of vec
 * Doc2Vec
 
 ## Bag-of-Words
-The features Document Term Matrix does not include our target variable. Therefore, in additino to generating our features, we also mustrejoin our target variable to the newly created DTM. We can also drop our unique row identifie
-```{r}
+The features Document Term Matrix does not include our target variable. Therefore, in addition to generating our features, we also must rejoin our target variable to the newly created DTM. We can also drop our unique row identifier.
+```{r dtm_bow}
 train_dtm <- gen_dtm_bow(train_processed) %>% 
     left_join(train_processed %>% select(causal_relationship, hyp_id),
             by = c("doc_id" = "hyp_id")) %>% 
@@ -117,66 +138,252 @@ rownames(train_dtm) <- c()
 train_dtm %>% head()
 ```
 
+## Doc2Vec
+### Generate Corpus
+We need to generate a Tagged Document object.
+```{r}
+# Define Tagged Document
+
+TaggedDocument <- gensim$models$doc2vec$TaggedDocument
+
+# Extract Text as List
+text <- as.character(train_processed$sentence)
+
+# Initialize
+train_corpus <- list()
+i = 1
+
+for (hypothesis in text) {
+  tokens <- gensim$utils$simple_preprocess(hypothesis)
+  train_corpus[[i]] <- TaggedDocument(tokens, as.character(i))
+  i = i +1
+}
+```
+
+### Train Model on Corpus
+```{r}
+train_corpus <- r_to_py(train_corpus)
+
+model = gensim$models$doc2vec$Doc2Vec(vector_size=50, min_count=2, epochs=40)
+model$build_vocab(train_corpus)
+
+model$corpus_count
+# Train Model
+model$train(train_corpus, total_examples=model$corpus_count, epochs=as.integer(model$epochs))
+```
+
+### Transform Text
+```{r}
+# Extract Test
+text <- as.character(train_processed$sentence)
+
+# Initialize
+embeddings_d2v <- list()
+i = 1
+
+# Generate Embeddings Per Row
+for (hypothesis in text) {
+  hypothsis_tokens <- str_split(hypothesis, pattern = " ") %>% unlist()
+  vector <- model$infer_vector(hypothsis_tokens)
+  embeddings_d2v[[i]] <- vector
+  i = i +1
+}
+
+# Convert List to Dataframe
+embeddings_d2v_df <- as.data.frame(embeddings_d2v)
+
+# Transpose Dataframe
+embeddings_d2v_df_t <- as.data.frame(t(as.matrix(embeddings_d2v_df)))
+
+# Drop Row Names
+rownames(embeddings_d2v_df_t) <- c()
+
+embeddings_d2v_df_t %>% head()
+
+```
+
+
 # Modeling
-## Bag-of-Words
+## Initialize Models
+We will be evaluating the same model types for two different methods of vectorization, Bag-of-Words and Doc2Vec. Before we get to fitting these models to these datasets, we will initialize.
+```{r}
+# Logistic Regression
+lgreg <- skl_lm$LogisticRegression
+lgreg_m <- lgreg(C = 1e5, random_state = rs)
+
+# Naive Bayes
+nb_m <- skl_nb$MultinomialNB()
+
+# SVM
+svc <- skl_svm$SVC
+svc_m <- svc(kernel = 'linear', 
+             random_state = rs)
+```
+
+## Doc2Vec
 ### Train / Test Split
-First, we split the data our target and feature sets.
+Convert Doc2Vec features to Python object..
 ```{r}
-# target <- train_dtm %>% select(causal_relationship)
-# features <- train_dtm %>% select(-causal_relationship)
-# 
-# target_py <- r_to_py(target)
-# features_py <- r_to_py(features)
+features_d2v_py <- r_to_py(embeddings_d2v_df_t)
 ```
 
-```{r}
-train_dtm_pd <- r_to_py(train_dtm)
+In order to duplicate modeling results in Python, we will use the Python train/test split function, with the same random state, to ensure the training and test sets are consistent. 
+```{r }
+# Initialize Train/Test Split
+train_test_split <- skl_ms$train_test_split
 
-target_pd <- train_dtm_pd$'causal_relationship'
-skl_ms$
+# Split Data
+data_split = train_test_split(features_d2v_py, 
+                              target_py, 
+                              test_size=0.25, 
+                              random_state=rs)
+
+# Extract Datasets
+X_tr <- data_split[[1]]
+X_te <- data_split[[2]]
+y_tr <- data_split[[3]]
+y_te <- data_split[[4]]
+
+# Unravel Targets
+y_tr <- np$ravel(y_tr)
+y_te <- np$ravel(y_te)
 ```
- 
-
-#### IRIS Example
-```{r}
-sk <- reticulate::import('sklearn')
-data <- sk$datasets$load_iris
-iris <- data()
-X = iris$data
-y = iris$target
-```
-
-```{r}
-typeof(features_py)
-```
-
-
-
-We Need to do this with the Sci-Kit Learn Train/Test split tool in order to try to match the results previously generated in Python.
-```{r}
-test_split <- 0.25
-
-data_split <- skl_ms$train_test_split(features_py, target, test_size=test_split, random_state=random_state)
-```
-
-```{r}
-# model_input <- train_test_split(train_dtm_w_id)
-```
-
 
 ### Logistic Regression
-In order to try and match the Scit-Kit Learn Model, we'll try the Liblearner package. Sklearn defaults to a **liblearner** solver.
-
+#### Train and Predict
 ```{r}
-train <- model_input$train
+# Train 
+lgreg_m_d2v <- lgreg_m$fit(X = X_tr, y = y_tr)
 
-train_label <- train %>% select(causal_relationship)
-train_features <- train %>% select(-causal_relationship)
-as.sparse(train_features)
+# Predict
+y_pred_lgreg <- lgreg_m_d2v$predict(X_te)
 ```
 
-
+#### Evaluate
 ```{r}
-train_processed
+# Convert to Factors for Caret Package
+y_pred_lgreg <- as.factor(y_pred_lgreg)
+y_te <- as.factor(y_te)
+
+confusionMatrix(data = y_pred_lgreg, 
+                reference = y_te, 
+                mode = "prec_recall")
 ```
 
+### Support Vector Machines
+#### Train and Predict
+```{r}
+# Train 
+svc_m_d2v <- svc_m$fit(X = X_tr, y = y_tr)
+
+# Predict
+y_pred_svc <- svc_m_d2v$predict(X_te)
+```
+
+#### Evaluate
+```{r}
+# Convert to Factors for Caret Package
+y_pred_svc <- as.factor(y_pred_svc)
+y_te <- as.factor(y_te)
+
+confusionMatrix(data = y_pred_svc, 
+                reference = y_te, 
+                mode = "prec_recall")
+```
+
+## Bag-of-Words
+### Train / Test Split
+First, we split the data our target and feature sets. As we will be using Python modules for processing this data, we also need to convert our R dataframes to Python objects.
+```{r}
+target <- train_dtm %>% select(causal_relationship)
+features_bow <- train_dtm %>% select(-causal_relationship)
+
+target_py <- r_to_py(target)
+features_bow_py <- r_to_py(features_bow)
+```
+
+In order to duplicate modeling results in Python, we will use the Python train/test split function, with the same random state, to ensure the training and test sets are consistent. 
+```{r }
+# Initialize Train/Test Split
+train_test_split <- skl_ms$train_test_split
+
+# Split Data
+data_split = train_test_split(features_bow_py, 
+                              target_py, 
+                              test_size=0.25, 
+                              random_state=rs)
+
+# Extract Datasets
+X_tr <- data_split[[1]]
+X_te <- data_split[[2]]
+y_tr <- data_split[[3]]
+y_te <- data_split[[4]]
+
+# Unravel Targets
+y_tr <- np$ravel(y_tr)
+y_te <- np$ravel(y_te)
+length(y_te)
+```
+
+### Logistic Regression
+#### Train and Predict
+```{r}
+# Train 
+lgreg_m_bow <- lgreg_m$fit(X = X_tr, y = y_tr)
+
+# Predict
+y_pred_lgreg <- lgreg_m_bow$predict(X_te)
+```
+
+#### Evaluate
+```{r}
+# Convert to Factors for Caret Package
+y_pred_lgreg <- as.factor(y_pred_lgreg)
+y_te <- as.factor(y_te)
+
+confusionMatrix(data = y_pred_lgreg, 
+                reference = y_te, 
+                mode = "prec_recall")
+```
+
+### Support Vector Machines
+#### Train and Predict
+```{r}
+# Train 
+svc_m_bow <- svc_m$fit(X = X_tr, y = y_tr)
+
+# Predict
+y_pred_svc <- svc_m_bow$predict(X_te)
+```
+
+#### Evaluate
+```{r}
+# Convert to Factors for Caret Package
+y_pred_svc <- as.factor(y_pred_svc)
+y_te <- as.factor(y_te)
+
+confusionMatrix(data = y_pred_svc, 
+                reference = y_te, 
+                mode = "prec_recall")
+```
+
+### Naive Bayes
+#### Train and Predict
+```{r}
+# Train 
+nb_m_bow <- nb_m$fit(X = X_tr, y = y_tr)
+
+# Predict
+y_pred_nb <- nb_m_bow$predict(X_te)
+```
+
+#### Evaluate
+```{r}
+# Convert to Factors for Caret Package
+y_pred_nb <- as.factor(y_pred_nb)
+y_te <- as.factor(y_te)
+
+confusionMatrix(data = y_pred_nb, 
+                reference = y_te, 
+                mode = "prec_recall")
+```

@@ -7,8 +7,10 @@
 project_install_packages <- function(){
   if (!require(pacman)) {install.packages('pacman')}
   p_load(
+    caret,
     caTools,
     dplyr,
+    e1071,
     pdftools,
     quanteda,
     readxl,
