@@ -1,0 +1,1771 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f812be7ef6b (sent by kill), pid=15086, tid=15086
+#
+# JRE version: OpenJDK Runtime Environment (11.0.9.1+1) (build 11.0.9.1+1-Ubuntu-0ubuntu1.18.04)
+# Java VM: OpenJDK 64-Bit Server VM (11.0.9.1+1-Ubuntu-0ubuntu1.18.04, mixed mode, sharing, tiered, compressed oops, serial gc, linux-amd64)
+# Problematic frame:
+# J 987 c2 java.lang.Integer.hashCode()I java.base@11.0.9.1 (8 bytes) @ 0x00007f812be7ef6b [0x00007f812be7ef20+0x000000000000004b]
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P %E" (or dumping to /home/rstudio/CausalityExtractionNLP/notebooks/core.15086)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugs.launchpad.net/ubuntu/+source/openjdk-lts
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Xmx512m -Xrs vfprintf exit -XX:+UnlockExperimentalVMOptions -XX:+DisablePrimordialThreadGuardPages -Xss2m 
+
+Host: Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz, 1 cores, 978M, Ubuntu 18.04.5 LTS
+Time: Sun Dec  6 17:10:41 2020 UTC elapsed time: 222.802879 seconds (0d 0h 3m 42s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000055f97e48d800):  JavaThread "main" [_thread_in_Java, id=15086, stack(0x00007ffe8a01f000,0x00007ffe8a21f000)]
+
+Stack: [0x00007ffe8a01f000,0x00007ffe8a21f000],  sp=0x00007ffe8a2128e8,  free space=1998k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+J 987 c2 java.lang.Integer.hashCode()I java.base@11.0.9.1 (8 bytes) @ 0x00007f812be7ef6b [0x00007f812be7ef20+0x000000000000004b]
+
+[error occurred during error reporting (printing native stack), id 0xb, SIGSEGV (0xb) at pc=0x00007f813ca5d664]
+
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: -6 (SI_TKILL), si_pid: 15086 (current process), si_uid: 1001
+
+Register to memory mapping:
+
+RAX=0x000000000000000d is an unknown value
+RBX={method} {0x000000080030a940} 'hashCode' '()I' in 'java/lang/Integer'
+RCX=0x00000000eac1da00 points into unknown readable memory: 09 00 00 00 00 00 00 00
+RDX=0x00000000eac91200 points into unknown readable memory: 09 00 00 00 00 00 00 00
+RSP=0x00007ffe8a2128e8 is pointing into the stack for thread: 0x000055f97e48d800
+RBP=0x00000000eac91200 points into unknown readable memory: 09 00 00 00 00 00 00 00
+RSI=0x00000000eac91200 points into unknown readable memory: 09 00 00 00 00 00 00 00
+RDI=0x0 is NULL
+R8 =0x00000000eac91200 points into unknown readable memory: 09 00 00 00 00 00 00 00
+R9 =0x0000000000000002 is an unknown value
+R10=0x00007f815f52c008 is an unknown value
+R11=0x000000000000000d is an unknown value
+R12=0x0 is NULL
+R13=0x00007ffe8a2129f8 is pointing into the stack for thread: 0x000055f97e48d800
+R14=0x00000000eac91200 points into unknown readable memory: 09 00 00 00 00 00 00 00
+R15=0x000055f97e48d800 is a thread
+
+
+Registers:
+RAX=0x000000000000000d, RBX=0x000000080030a940, RCX=0x00000000eac1da00, RDX=0x00000000eac91200
+RSP=0x00007ffe8a2128e8, RBP=0x00000000eac91200, RSI=0x00000000eac91200, RDI=0x0000000000000000
+R8 =0x00000000eac91200, R9 =0x0000000000000002, R10=0x00007f815f52c008, R11=0x000000000000000d
+R12=0x0000000000000000, R13=0x00007ffe8a2129f8, R14=0x00000000eac91200, R15=0x000055f97e48d800
+RIP=0x00007f812be7ef6b, EFLAGS=0x0000000000010202, CSGSFS=0x002b000000000033, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007ffe8a2128e8)
+0x00007ffe8a2128e8:   00007f812be6f74c 00000000eac1da00
+0x00007ffe8a2128f8:   00000000e00d0230 00000000eb130800
+0x00007ffe8a212908:   00007f8123f0eae0 0000000000000000
+0x00007ffe8a212918:   00007ffe8a212930 00007ffe8a212988 
+
+Instructions: (pc=0x00007f812be7ef6b)
+0x00007f812be7ee6b:   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x00007f812be7ee7b:   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x00007f812be7ee8b:   00 00 00 00 00 20 ef e7 2b 81 7f 00 00 50 ef e7
+0x00007f812be7ee9b:   2b 81 7f 00 00 20 ef e7 2b 81 7f 00 00 f0 01 00
+0x00007f812be7eeab:   00 ff ff ff ff 90 01 00 00 f0 01 00 00 08 02 00
+0x00007f812be7eebb:   00 08 02 00 00 00 00 00 00 10 02 00 00 30 02 00
+0x00007f812be7eecb:   00 38 02 00 00 38 02 00 00 38 02 00 00 00 00 00
+0x00007f812be7eedb:   00 db 03 00 00 04 00 00 00 00 00 00 00 02 00 00
+0x00007f812be7eeeb:   00 00 00 00 00 00 00 00 00 00 00 00 00 df 01 00
+0x00007f812be7eefb:   00 ff ff ff ff ff ff ff ff 00 00 00 00 1b 60 30
+0x00007f812be7ef0b:   b0 15 00 00 64 0f 64 00 00 00 00 00 00 00 00 00
+0x00007f812be7ef1b:   00 00 00 00 00 44 8b 56 08 49 c1 e2 03 49 bc 00
+0x00007f812be7ef2b:   00 00 00 08 00 00 00 4d 03 d4 4d 33 e4 49 3b c2
+0x00007f812be7ef3b:   0f 85 3f b5 50 f8 66 66 90 0f 1f 84 00 00 00 00
+0x00007f812be7ef4b:   00 66 66 66 90 48 81 ec 18 00 00 00 48 89 6c 24
+0x00007f812be7ef5b:   10 8b 46 0c 48 83 c4 10 5d 4d 8b 97 08 01 00 00
+0x00007f812be7ef6b:   41 85 02 c3 f4 f4 f4 f4 f4 f4 f4 f4 f4 f4 f4 f4
+0x00007f812be7ef7b:   f4 f4 f4 f4 f4 e9 fb 55 54 f8 e8 00 00 00 00 48
+0x00007f812be7ef8b:   83 2c 24 05 e9 8c cd 50 f8 f4 f4 f4 f4 ff 00 00
+0x00007f812be7ef9b:   00 00 00 00 00 ff ff ff ff 00 00 00 00 00 00 00
+0x00007f812be7efab:   00 00 00 00 00 79 00 00 00 00 00 00 00 00 00 00
+0x00007f812be7efbb:   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x00007f812be7efcb:   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x00007f812be7efdb:   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x00007f812be7efeb:   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x00007f812be7effb:   00 00 00 00 00 0c 00 00 00 00 00 00 00 01 00 00
+0x00007f812be7f00b:   00 00 00 00 00 98 0c 7c 3d 81 7f 00 00 02 00 00
+0x00007f812be7f01b:   00 80 05 00 00 78 01 00 00 3c 00 00 00 c8 03 00
+0x00007f812be7f02b:   00 08 00 00 00 c0 f1 e7 2b 81 7f 00 00 d8 f3 e7
+0x00007f812be7f03b:   2b 81 7f 00 00 c0 f1 e7 2b 81 7f 00 00 90 f5 e7
+0x00007f812be7f04b:   2b 81 7f 00 00 88 f1 e7 2b 81 7f 00 00 a8 f1 e7
+0x00007f812be7f05b:   2b 81 7f 00 00 70 30 1d 10 81 7f 00 00 00 00 00 
+
+
+Stack slot to memory mapping:
+stack at sp + 0 slots: 0x00007f812be6f74c is at entry_point+524 in (nmethod*)0x00007f812be6f390
+stack at sp + 1 slots: 0x00000000eac1da00 points into unknown readable memory: 09 00 00 00 00 00 00 00
+stack at sp + 2 slots: 0x00000000e00d0230 points into unknown readable memory: 05 00 00 00 00 00 00 00
+stack at sp + 3 slots: 0x00000000eb130800 points into unknown readable memory: 09 37 e6 36 1f 00 00 00
+stack at sp + 4 slots: {method} {0x00007f8123f0eae0} '<init>' '(Z)V' in 'org/apache/fontbox/cff/CFFCharset'
+stack at sp + 5 slots: 0x0 is NULL
+stack at sp + 6 slots: 0x00007ffe8a212930 is pointing into the stack for thread: 0x000055f97e48d800
+stack at sp + 7 slots: 0x00007ffe8a212988 is pointing into the stack for thread: 0x000055f97e48d800
+
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x000055f98c075a00, length=10, elements={
+0x000055f97e48d800, 0x000055f97da55000, 0x000055f97e48c800, 0x000055f98252a800,
+0x000055f982529800, 0x000055f97a74b000, 0x000055f9822d4800, 0x000055f9822d3000,
+0x000055f97b2eb800, 0x000055f98b867000
+}
+
+Java Threads: ( => current thread )
+=>0x000055f97e48d800 JavaThread "main" [_thread_in_Java, id=15086, stack(0x00007ffe8a01f000,0x00007ffe8a21f000)]
+  0x000055f97da55000 JavaThread "Reference Handler" daemon [_thread_blocked, id=15097, stack(0x00007f8123677000,0x00007f8123878000)]
+  0x000055f97e48c800 JavaThread "Finalizer" daemon [_thread_blocked, id=15098, stack(0x00007f8123476000,0x00007f8123677000)]
+  0x000055f98252a800 JavaThread "Attach Listener" daemon [_thread_blocked, id=15099, stack(0x00007f8123275000,0x00007f8123476000)]
+  0x000055f982529800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=15100, stack(0x00007f8123174000,0x00007f8123275000)]
+  0x000055f97a74b000 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=15101, stack(0x00007f8123073000,0x00007f8123174000)]
+  0x000055f9822d4800 JavaThread "Sweeper thread" daemon [_thread_blocked, id=15102, stack(0x00007f8122e72000,0x00007f8123073000)]
+  0x000055f9822d3000 JavaThread "Service Thread" daemon [_thread_blocked, id=15103, stack(0x00007f8122c71000,0x00007f8122e72000)]
+  0x000055f97b2eb800 JavaThread "Common-Cleaner" daemon [_thread_blocked, id=15105, stack(0x00007f812296e000,0x00007f8122b6f000)]
+  0x000055f98b867000 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=15160, stack(0x00007f80ebce8000,0x00007f80ebee9000)]
+
+Other Threads:
+  0x000055f97cf7b800 VMThread "VM Thread" [stack: 0x00007f812387a000,0x00007f812397a000] [id=15096] _threads_hazard_ptr=0x000055f98c075a00
+  0x000055f97d6be800 WatcherThread [stack: 0x00007f8122b71000,0x00007f8122c71000] [id=15104]
+
+Threads with active compile tasks:
+C2 CompilerThread0 222812 1579       4       java.lang.String::split (324 bytes)
+
+VM state:synchronizing (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000055f97de505e0] Safepoint_lock - owner thread: 0x000055f97cf7b800
+[0x000055f9793b9630] Threads_lock - owner thread: 0x000055f97cf7b800
+
+Heap address: 0x00000000e0000000, size: 512 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000800000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000840000000
+
+Heap:
+ def new generation   total 9920K, used 1969K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K,   9% used [0x00000000e0000000, 0x00000000e00dc5b8, 0x00000000e08a0000)
+  from space 1088K,  99% used [0x00000000e09b0000, 0x00000000e0abfff8, 0x00000000e0ac0000)
+  to   space 1088K,   0% used [0x00000000e08a0000, 0x00000000e08a0000, 0x00000000e09b0000)
+ tenured generation   total 21924K, used 17274K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  78% used [0x00000000eaaa0000, 0x00000000ebb7e9c8, 0x00000000ebb7ea00, 0x00000000ec009000)
+ Metaspace       used 4800K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+
+Card table byte_map: [0x00007f812417a000,0x00007f812427b000] _byte_map_base: 0x00007f8123a7a000
+
+Polling page: 0x00007f815f52c000
+
+Metaspace:
+
+Usage:
+  Non-class:      6.04 MB capacity,     4.31 MB ( 71%) used,     1.72 MB ( 28%) free+waste,     7.19 KB ( <1%) overhead. 
+      Class:    634.00 KB capacity,   386.27 KB ( 61%) used,   244.10 KB ( 39%) free+waste,     3.62 KB ( <1%) overhead. 
+       Both:      6.66 MB capacity,     4.69 MB ( 70%) used,     1.96 MB ( 29%) free+waste,    10.81 KB ( <1%) overhead. 
+
+Virtual space:
+  Non-class space:        8.00 MB reserved,       6.25 MB ( 78%) committed 
+      Class space:        1.00 GB reserved,     640.00 KB ( <1%) committed 
+             Both:        1.01 GB reserved,       6.88 MB ( <1%) committed 
+
+Chunk freelists:
+   Non-Class:  51.00 KB
+       Class:  6.00 KB
+        Both:  57.00 KB
+
+MaxMetaspaceSize: unlimited
+CompressedClassSpaceSize: 1.00 GB
+
+CodeHeap 'non-profiled nmethods': size=120036Kb used=796Kb max_used=796Kb free=119239Kb
+ bounds [0x00007f812be2d000, 0x00007f812c09d000, 0x00007f8133366000]
+CodeHeap 'profiled nmethods': size=120032Kb used=3366Kb max_used=3366Kb free=116665Kb
+ bounds [0x00007f81248f5000, 0x00007f8124c45000, 0x00007f812be2d000]
+CodeHeap 'non-nmethods': size=5692Kb used=1085Kb max_used=1120Kb free=4606Kb
+ bounds [0x00007f8124366000, 0x00007f81245d6000, 0x00007f81248f5000]
+ total_blobs=1982 nmethods=1577 adapters=320
+ compilation: enabled
+              stopped_count=0, restarted_count=0
+ full_count=0
+
+Compilation events (20 events):
+Event: 222.756 Thread 0x000055f97a74b000 1588       3       java.util.regex.Pattern$CharProperty::study (29 bytes)
+Event: 222.756 Thread 0x000055f97a74b000 nmethod 1588 0x00007f8124c39310 code [0x00007f8124c394c0, 0x00007f8124c396c0]
+Event: 222.759 Thread 0x000055f97a74b000 1604       2       org.apache.pdfbox.cos.COSDictionary::getCOSName (20 bytes)
+Event: 222.759 Thread 0x000055f97a74b000 nmethod 1604 0x00007f8124c39790 code [0x00007f8124c39940, 0x00007f8124c39b20]
+Event: 222.760 Thread 0x000055f97a74b000 1605       2       org.apache.fontbox.cff.CFFFont::addValueToTopDict (17 bytes)
+Event: 222.760 Thread 0x000055f97a74b000 nmethod 1605 0x00007f8124c39c10 code [0x00007f8124c39dc0, 0x00007f8124c39f00]
+Event: 222.763 Thread 0x000055f97a74b000 1606       2       org.apache.fontbox.cff.DataInput::readUnsignedShort (31 bytes)
+Event: 222.763 Thread 0x000055f97a74b000 nmethod 1606 0x00007f8124c39f90 code [0x00007f8124c3a160, 0x00007f8124c3a400]
+Event: 222.763 Thread 0x000055f97a74b000 1607       2       org.apache.fontbox.cff.CFFType1Font::addToPrivateDict (17 bytes)
+Event: 222.763 Thread 0x000055f97a74b000 nmethod 1607 0x00007f8124c3a610 code [0x00007f8124c3a7c0, 0x00007f8124c3a900]
+Event: 222.764 Thread 0x000055f97a74b000 1609       2       java.lang.AbstractStringBuilder::append (55 bytes)
+Event: 222.765 Thread 0x000055f97a74b000 nmethod 1609 0x00007f8124c3a990 code [0x00007f8124c3ab60, 0x00007f8124c3ad50]
+Event: 222.765 Thread 0x000055f97a74b000 1610       2       java.math.BigDecimal::toString (22 bytes)
+Event: 222.765 Thread 0x000055f97a74b000 nmethod 1610 0x00007f8124c3ae90 code [0x00007f8124c3b040, 0x00007f8124c3b1a0]
+Event: 222.771 Thread 0x000055f97a74b000 1611       2       java.lang.StringBuilder::append (8 bytes)
+Event: 222.771 Thread 0x000055f97a74b000 nmethod 1611 0x00007f8124c3b290 code [0x00007f8124c3b440, 0x00007f8124c3b580]
+Event: 222.787 Thread 0x000055f97a74b000 1620       2       org.apache.pdfbox.contentstream.operator.text.SetCharSpacing::process (66 bytes)
+Event: 222.788 Thread 0x000055f97a74b000 nmethod 1620 0x00007f8124c3b610 code [0x00007f8124c3b860, 0x00007f8124c3c060]
+Event: 222.796 Thread 0x000055f97a74b000 1622       2       org.apache.pdfbox.pdmodel.common.PDRectangle::<init> (113 bytes)
+Event: 222.798 Thread 0x000055f97a74b000 nmethod 1622 0x00007f8124c3c490 code [0x00007f8124c3c8a0, 0x00007f8124c3de20]
+
+GC Heap History (20 events):
+Event: 211.781 GC heap before
+{Heap before GC invocations=47 (full 3):
+ def new generation   total 9920K, used 9919K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K, 100% used [0x00000000e0000000, 0x00000000e08a0000, 0x00000000e08a0000)
+  from space 1088K,  99% used [0x00000000e09b0000, 0x00000000e0abfff8, 0x00000000e0ac0000)
+  to   space 1088K,   0% used [0x00000000e08a0000, 0x00000000e08a0000, 0x00000000e09b0000)
+ tenured generation   total 21924K, used 13786K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  62% used [0x00000000eaaa0000, 0x00000000eb816ab0, 0x00000000eb816c00, 0x00000000ec009000)
+ Metaspace       used 4760K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.782 GC heap after
+{Heap after GC invocations=48 (full 3):
+ def new generation   total 9920K, used 824K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K,   0% used [0x00000000e0000000, 0x00000000e0000000, 0x00000000e08a0000)
+  from space 1088K,  75% used [0x00000000e08a0000, 0x00000000e096e1f8, 0x00000000e09b0000)
+  to   space 1088K,   0% used [0x00000000e09b0000, 0x00000000e09b0000, 0x00000000e0ac0000)
+ tenured generation   total 21924K, used 13787K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  62% used [0x00000000eaaa0000, 0x00000000eb816c30, 0x00000000eb816e00, 0x00000000ec009000)
+ Metaspace       used 4760K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.814 GC heap before
+{Heap before GC invocations=48 (full 3):
+ def new generation   total 9920K, used 9656K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K, 100% used [0x00000000e0000000, 0x00000000e08a0000, 0x00000000e08a0000)
+  from space 1088K,  75% used [0x00000000e08a0000, 0x00000000e096e1f8, 0x00000000e09b0000)
+  to   space 1088K,   0% used [0x00000000e09b0000, 0x00000000e09b0000, 0x00000000e0ac0000)
+ tenured generation   total 21924K, used 13787K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  62% used [0x00000000eaaa0000, 0x00000000eb816c30, 0x00000000eb816e00, 0x00000000ec009000)
+ Metaspace       used 4760K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.815 GC heap after
+{Heap after GC invocations=49 (full 3):
+ def new generation   total 9920K, used 364K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K,   0% used [0x00000000e0000000, 0x00000000e0000000, 0x00000000e08a0000)
+  from space 1088K,  33% used [0x00000000e09b0000, 0x00000000e0a0b118, 0x00000000e0ac0000)
+  to   space 1088K,   0% used [0x00000000e08a0000, 0x00000000e08a0000, 0x00000000e09b0000)
+ tenured generation   total 21924K, used 13872K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  63% used [0x00000000eaaa0000, 0x00000000eb82c1e8, 0x00000000eb82c200, 0x00000000ec009000)
+ Metaspace       used 4760K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.839 GC heap before
+{Heap before GC invocations=49 (full 3):
+ def new generation   total 9920K, used 9196K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K, 100% used [0x00000000e0000000, 0x00000000e08a0000, 0x00000000e08a0000)
+  from space 1088K,  33% used [0x00000000e09b0000, 0x00000000e0a0b118, 0x00000000e0ac0000)
+  to   space 1088K,   0% used [0x00000000e08a0000, 0x00000000e08a0000, 0x00000000e09b0000)
+ tenured generation   total 21924K, used 13872K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  63% used [0x00000000eaaa0000, 0x00000000eb82c1e8, 0x00000000eb82c200, 0x00000000ec009000)
+ Metaspace       used 4760K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.841 GC heap after
+{Heap after GC invocations=50 (full 3):
+ def new generation   total 9920K, used 1088K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K,   0% used [0x00000000e0000000, 0x00000000e0000000, 0x00000000e08a0000)
+  from space 1088K, 100% used [0x00000000e08a0000, 0x00000000e09b0000, 0x00000000e09b0000)
+  to   space 1088K,   0% used [0x00000000e09b0000, 0x00000000e09b0000, 0x00000000e0ac0000)
+ tenured generation   total 21924K, used 13944K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  63% used [0x00000000eaaa0000, 0x00000000eb83e028, 0x00000000eb83e200, 0x00000000ec009000)
+ Metaspace       used 4760K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.867 GC heap before
+{Heap before GC invocations=50 (full 3):
+ def new generation   total 9920K, used 9920K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K, 100% used [0x00000000e0000000, 0x00000000e08a0000, 0x00000000e08a0000)
+  from space 1088K, 100% used [0x00000000e08a0000, 0x00000000e09b0000, 0x00000000e09b0000)
+  to   space 1088K,   0% used [0x00000000e09b0000, 0x00000000e09b0000, 0x00000000e0ac0000)
+ tenured generation   total 21924K, used 13944K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  63% used [0x00000000eaaa0000, 0x00000000eb83e028, 0x00000000eb83e200, 0x00000000ec009000)
+ Metaspace       used 4764K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.867 GC heap after
+{Heap after GC invocations=51 (full 3):
+ def new generation   total 9920K, used 197K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K,   0% used [0x00000000e0000000, 0x00000000e0000000, 0x00000000e08a0000)
+  from space 1088K,  18% used [0x00000000e09b0000, 0x00000000e09e1598, 0x00000000e0ac0000)
+  to   space 1088K,   0% used [0x00000000e08a0000, 0x00000000e08a0000, 0x00000000e09b0000)
+ tenured generation   total 21924K, used 13957K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  63% used [0x00000000eaaa0000, 0x00000000eb841638, 0x00000000eb841800, 0x00000000ec009000)
+ Metaspace       used 4764K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.893 GC heap before
+{Heap before GC invocations=51 (full 3):
+ def new generation   total 9920K, used 9029K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K, 100% used [0x00000000e0000000, 0x00000000e08a0000, 0x00000000e08a0000)
+  from space 1088K,  18% used [0x00000000e09b0000, 0x00000000e09e1598, 0x00000000e0ac0000)
+  to   space 1088K,   0% used [0x00000000e08a0000, 0x00000000e08a0000, 0x00000000e09b0000)
+ tenured generation   total 21924K, used 13957K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  63% used [0x00000000eaaa0000, 0x00000000eb841638, 0x00000000eb841800, 0x00000000ec009000)
+ Metaspace       used 4764K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.894 GC heap after
+{Heap after GC invocations=52 (full 3):
+ def new generation   total 9920K, used 880K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K,   0% used [0x00000000e0000000, 0x00000000e0000000, 0x00000000e08a0000)
+  from space 1088K,  80% used [0x00000000e08a0000, 0x00000000e097c250, 0x00000000e09b0000)
+  to   space 1088K,   0% used [0x00000000e09b0000, 0x00000000e09b0000, 0x00000000e0ac0000)
+ tenured generation   total 21924K, used 13957K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  63% used [0x00000000eaaa0000, 0x00000000eb841638, 0x00000000eb841800, 0x00000000ec009000)
+ Metaspace       used 4764K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.924 GC heap before
+{Heap before GC invocations=52 (full 3):
+ def new generation   total 9920K, used 9712K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K, 100% used [0x00000000e0000000, 0x00000000e08a0000, 0x00000000e08a0000)
+  from space 1088K,  80% used [0x00000000e08a0000, 0x00000000e097c250, 0x00000000e09b0000)
+  to   space 1088K,   0% used [0x00000000e09b0000, 0x00000000e09b0000, 0x00000000e0ac0000)
+ tenured generation   total 21924K, used 13957K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  63% used [0x00000000eaaa0000, 0x00000000eb841638, 0x00000000eb841800, 0x00000000ec009000)
+ Metaspace       used 4764K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.926 GC heap after
+{Heap after GC invocations=53 (full 3):
+ def new generation   total 9920K, used 1088K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K,   0% used [0x00000000e0000000, 0x00000000e0000000, 0x00000000e08a0000)
+  from space 1088K, 100% used [0x00000000e09b0000, 0x00000000e0ac0000, 0x00000000e0ac0000)
+  to   space 1088K,   0% used [0x00000000e08a0000, 0x00000000e08a0000, 0x00000000e09b0000)
+ tenured generation   total 21924K, used 14166K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  64% used [0x00000000eaaa0000, 0x00000000eb875990, 0x00000000eb875a00, 0x00000000ec009000)
+ Metaspace       used 4764K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.952 GC heap before
+{Heap before GC invocations=53 (full 3):
+ def new generation   total 9920K, used 9920K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K, 100% used [0x00000000e0000000, 0x00000000e08a0000, 0x00000000e08a0000)
+  from space 1088K, 100% used [0x00000000e09b0000, 0x00000000e0ac0000, 0x00000000e0ac0000)
+  to   space 1088K,   0% used [0x00000000e08a0000, 0x00000000e08a0000, 0x00000000e09b0000)
+ tenured generation   total 21924K, used 14166K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  64% used [0x00000000eaaa0000, 0x00000000eb875990, 0x00000000eb875a00, 0x00000000ec009000)
+ Metaspace       used 4765K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.954 GC heap after
+{Heap after GC invocations=54 (full 3):
+ def new generation   total 9920K, used 1024K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K,   0% used [0x00000000e0000000, 0x00000000e0000000, 0x00000000e08a0000)
+  from space 1088K,  94% used [0x00000000e08a0000, 0x00000000e09a0048, 0x00000000e09b0000)
+  to   space 1088K,   0% used [0x00000000e09b0000, 0x00000000e09b0000, 0x00000000e0ac0000)
+ tenured generation   total 21924K, used 14166K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  64% used [0x00000000eaaa0000, 0x00000000eb8759d8, 0x00000000eb875a00, 0x00000000ec009000)
+ Metaspace       used 4765K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.983 GC heap before
+{Heap before GC invocations=54 (full 3):
+ def new generation   total 9920K, used 9856K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K, 100% used [0x00000000e0000000, 0x00000000e08a0000, 0x00000000e08a0000)
+  from space 1088K,  94% used [0x00000000e08a0000, 0x00000000e09a0048, 0x00000000e09b0000)
+  to   space 1088K,   0% used [0x00000000e09b0000, 0x00000000e09b0000, 0x00000000e0ac0000)
+ tenured generation   total 21924K, used 14166K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  64% used [0x00000000eaaa0000, 0x00000000eb8759d8, 0x00000000eb875a00, 0x00000000ec009000)
+ Metaspace       used 4765K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 211.985 GC heap after
+{Heap after GC invocations=55 (full 3):
+ def new generation   total 9920K, used 1088K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K,   0% used [0x00000000e0000000, 0x00000000e0000000, 0x00000000e08a0000)
+  from space 1088K, 100% used [0x00000000e09b0000, 0x00000000e0ac0000, 0x00000000e0ac0000)
+  to   space 1088K,   0% used [0x00000000e08a0000, 0x00000000e08a0000, 0x00000000e09b0000)
+ tenured generation   total 21924K, used 14376K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  65% used [0x00000000eaaa0000, 0x00000000eb8aa3b0, 0x00000000eb8aa400, 0x00000000ec009000)
+ Metaspace       used 4765K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 222.748 GC heap before
+{Heap before GC invocations=55 (full 3):
+ def new generation   total 9920K, used 9920K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K, 100% used [0x00000000e0000000, 0x00000000e08a0000, 0x00000000e08a0000)
+  from space 1088K, 100% used [0x00000000e09b0000, 0x00000000e0ac0000, 0x00000000e0ac0000)
+  to   space 1088K,   0% used [0x00000000e08a0000, 0x00000000e08a0000, 0x00000000e09b0000)
+ tenured generation   total 21924K, used 14376K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  65% used [0x00000000eaaa0000, 0x00000000eb8aa3b0, 0x00000000eb8aa400, 0x00000000ec009000)
+ Metaspace       used 4793K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 222.754 GC heap after
+{Heap after GC invocations=56 (full 3):
+ def new generation   total 9920K, used 1088K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K,   0% used [0x00000000e0000000, 0x00000000e0000000, 0x00000000e08a0000)
+  from space 1088K, 100% used [0x00000000e08a0000, 0x00000000e09b0000, 0x00000000e09b0000)
+  to   space 1088K,   0% used [0x00000000e09b0000, 0x00000000e09b0000, 0x00000000e0ac0000)
+ tenured generation   total 21924K, used 15933K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  72% used [0x00000000eaaa0000, 0x00000000eba2f718, 0x00000000eba2f800, 0x00000000ec009000)
+ Metaspace       used 4793K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 222.790 GC heap before
+{Heap before GC invocations=56 (full 3):
+ def new generation   total 9920K, used 9920K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K, 100% used [0x00000000e0000000, 0x00000000e08a0000, 0x00000000e08a0000)
+  from space 1088K, 100% used [0x00000000e08a0000, 0x00000000e09b0000, 0x00000000e09b0000)
+  to   space 1088K,   0% used [0x00000000e09b0000, 0x00000000e09b0000, 0x00000000e0ac0000)
+ tenured generation   total 21924K, used 15933K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  72% used [0x00000000eaaa0000, 0x00000000eba2f718, 0x00000000eba2f800, 0x00000000ec009000)
+ Metaspace       used 4798K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+Event: 222.794 GC heap after
+{Heap after GC invocations=57 (full 3):
+ def new generation   total 9920K, used 1087K [0x00000000e0000000, 0x00000000e0ac0000, 0x00000000eaaa0000)
+  eden space 8832K,   0% used [0x00000000e0000000, 0x00000000e0000000, 0x00000000e08a0000)
+  from space 1088K,  99% used [0x00000000e09b0000, 0x00000000e0abfff8, 0x00000000e0ac0000)
+  to   space 1088K,   0% used [0x00000000e08a0000, 0x00000000e08a0000, 0x00000000e09b0000)
+ tenured generation   total 21924K, used 17274K [0x00000000eaaa0000, 0x00000000ec009000, 0x0000000100000000)
+   the space 21924K,  78% used [0x00000000eaaa0000, 0x00000000ebb7e9c8, 0x00000000ebb7ea00, 0x00000000ec009000)
+ Metaspace       used 4798K, capacity 6815K, committed 7040K, reserved 1056768K
+  class space    used 386K, capacity 634K, committed 640K, reserved 1048576K
+}
+
+Deoptimization events (20 events):
+Event: 222.704 Thread 0x000055f97e48d800 Uncommon trap: trap_request=0xffffffcc fr.pc=0x00007f812bedf6a0 relative=0x0000000000002240
+Event: 222.705 Thread 0x000055f97e48d800 Uncommon trap: reason=intrinsic_or_type_checked_inlining action=make_not_entrant pc=0x00007f812bedf6a0 method=java.util.ArrayList$SubList.toArray([Ljava/lang/Object;)[Ljava/lang/Object; @ 58 c2
+Event: 222.705 Thread 0x000055f97e48d800 DEOPT PACKING pc=0x00007f812bedf6a0 sp=0x00007ffe8a211d60
+Event: 222.705 Thread 0x000055f97e48d800 DEOPT UNPACKING pc=0x00007f812438c1a5 sp=0x00007ffe8a211cb8 mode 2
+Event: 222.773 Thread 0x000055f97e48d800 Uncommon trap: trap_request=0xffffffde fr.pc=0x00007f812bef3bec relative=0x00000000000001ac
+Event: 222.773 Thread 0x000055f97e48d800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f812bef3bec method=java.lang.reflect.Array.newInstance(Ljava/lang/Class;I)Ljava/lang/Object; @ 2 c2
+Event: 222.773 Thread 0x000055f97e48d800 DEOPT PACKING pc=0x00007f812bef3bec sp=0x00007ffe8a212e70
+Event: 222.773 Thread 0x000055f97e48d800 DEOPT UNPACKING pc=0x00007f812438c1a5 sp=0x00007ffe8a212d90 mode 2
+Event: 222.773 Thread 0x000055f97e48d800 Uncommon trap: trap_request=0xffffffde fr.pc=0x00007f812bef3bec relative=0x00000000000001ac
+Event: 222.773 Thread 0x000055f97e48d800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f812bef3bec method=java.lang.reflect.Array.newInstance(Ljava/lang/Class;I)Ljava/lang/Object; @ 2 c2
+Event: 222.773 Thread 0x000055f97e48d800 DEOPT PACKING pc=0x00007f812bef3bec sp=0x00007ffe8a212e70
+Event: 222.773 Thread 0x000055f97e48d800 DEOPT UNPACKING pc=0x00007f812438c1a5 sp=0x00007ffe8a212d90 mode 2
+Event: 222.773 Thread 0x000055f97e48d800 Uncommon trap: trap_request=0xffffffde fr.pc=0x00007f812bef3bec relative=0x00000000000001ac
+Event: 222.773 Thread 0x000055f97e48d800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f812bef3bec method=java.lang.reflect.Array.newInstance(Ljava/lang/Class;I)Ljava/lang/Object; @ 2 c2
+Event: 222.773 Thread 0x000055f97e48d800 DEOPT PACKING pc=0x00007f812bef3bec sp=0x00007ffe8a212e70
+Event: 222.773 Thread 0x000055f97e48d800 DEOPT UNPACKING pc=0x00007f812438c1a5 sp=0x00007ffe8a212d90 mode 2
+Event: 222.773 Thread 0x000055f97e48d800 Uncommon trap: trap_request=0xffffffde fr.pc=0x00007f812bef3bec relative=0x00000000000001ac
+Event: 222.773 Thread 0x000055f97e48d800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f812bef3bec method=java.lang.reflect.Array.newInstance(Ljava/lang/Class;I)Ljava/lang/Object; @ 2 c2
+Event: 222.773 Thread 0x000055f97e48d800 DEOPT PACKING pc=0x00007f812bef3bec sp=0x00007ffe8a212e70
+Event: 222.773 Thread 0x000055f97e48d800 DEOPT UNPACKING pc=0x00007f812438c1a5 sp=0x00007ffe8a212d90 mode 2
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (1 events):
+Event: 34.766 Thread 0x000055f97e48d800 Exception <a 'java/lang/NoClassDefFoundError'{0x00000000e0367a10}: org/apache/log4j/Priority> (0x00000000e0367a10) thrown at [./src/hotspot/share/classfile/systemDictionary.cpp, line 220]
+
+Events (20 events):
+Event: 211.787 Executing VM operation: GenCollectForAllocation done
+Event: 211.814 Executing VM operation: GenCollectForAllocation
+Event: 211.815 Executing VM operation: GenCollectForAllocation done
+Event: 211.838 Executing VM operation: GenCollectForAllocation
+Event: 211.841 Executing VM operation: GenCollectForAllocation done
+Event: 211.866 Executing VM operation: GenCollectForAllocation
+Event: 211.867 Executing VM operation: GenCollectForAllocation done
+Event: 211.893 Executing VM operation: GenCollectForAllocation
+Event: 211.894 Executing VM operation: GenCollectForAllocation done
+Event: 211.924 Executing VM operation: GenCollectForAllocation
+Event: 211.926 Executing VM operation: GenCollectForAllocation done
+Event: 211.949 Executing VM operation: GenCollectForAllocation
+Event: 211.954 Executing VM operation: GenCollectForAllocation done
+Event: 211.978 Executing VM operation: GenCollectForAllocation
+Event: 211.985 Executing VM operation: GenCollectForAllocation done
+Event: 222.748 Executing VM operation: GenCollectForAllocation
+Event: 222.756 Executing VM operation: GenCollectForAllocation done
+Event: 222.788 Executing VM operation: GenCollectForAllocation
+Event: 222.794 Executing VM operation: GenCollectForAllocation done
+Event: 222.799 Executing VM operation: RevokeBias
+
+
+Dynamic libraries:
+e0000000-e0ac0000 rw-p 00000000 00:00 0 
+e0ac0000-eaaa0000 ---p 00000000 00:00 0 
+eaaa0000-ec009000 rw-p 00000000 00:00 0 
+ec009000-100000000 ---p 00000000 00:00 0 
+800000000-800002000 rwxp 00001000 ca:01 1794364                          /usr/lib/jvm/java-11-openjdk-amd64/lib/server/classes.jsa
+800002000-8003b9000 rw-p 00003000 ca:01 1794364                          /usr/lib/jvm/java-11-openjdk-amd64/lib/server/classes.jsa
+8003b9000-800a82000 r--p 003ba000 ca:01 1794364                          /usr/lib/jvm/java-11-openjdk-amd64/lib/server/classes.jsa
+800a82000-800a83000 rw-p 00a83000 ca:01 1794364                          /usr/lib/jvm/java-11-openjdk-amd64/lib/server/classes.jsa
+800a83000-801091000 r--p 00a84000 ca:01 1794364                          /usr/lib/jvm/java-11-openjdk-amd64/lib/server/classes.jsa
+840000000-8400a0000 rw-p 00000000 00:00 0 
+8400a0000-880000000 ---p 00000000 00:00 0 
+55f973b3a000-55f974bfd000 r-xp 00000000 ca:01 512432                     /usr/lib/rstudio-server/bin/rsession
+55f974dfd000-55f974e24000 r--p 010c3000 ca:01 512432                     /usr/lib/rstudio-server/bin/rsession
+55f974e24000-55f974e29000 rw-p 010ea000 ca:01 512432                     /usr/lib/rstudio-server/bin/rsession
+55f974e29000-55f974e33000 rw-p 00000000 00:00 0 
+55f975524000-55f98c816000 rw-p 00000000 00:00 0                          [heap]
+7f80ebce8000-7f80ebcec000 ---p 00000000 00:00 0 
+7f80ebcec000-7f80ebee9000 rw-p 00000000 00:00 0 
+7f80ebee9000-7f80ebeed000 r-xp 00000000 ca:01 1794421                    /usr/lib/jvm/java-11-openjdk-amd64/lib/liblcms.so
+7f80ebeed000-7f80ec0ec000 ---p 00004000 ca:01 1794421                    /usr/lib/jvm/java-11-openjdk-amd64/lib/liblcms.so
+7f80ec0ec000-7f80ec0ed000 r--p 00003000 ca:01 1794421                    /usr/lib/jvm/java-11-openjdk-amd64/lib/liblcms.so
+7f80ec0ed000-7f80ec0ee000 rw-p 00004000 ca:01 1794421                    /usr/lib/jvm/java-11-openjdk-amd64/lib/liblcms.so
+7f80ec0ee000-7f80ec0f6000 r-xp 00000000 ca:01 1794404                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libawt_headless.so
+7f80ec0f6000-7f80ec2f5000 ---p 00008000 ca:01 1794404                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libawt_headless.so
+7f80ec2f5000-7f80ec2f6000 r--p 00007000 ca:01 1794404                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libawt_headless.so
+7f80ec2f6000-7f80ec2f7000 rw-p 00008000 ca:01 1794404                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libawt_headless.so
+7f80ec2f7000-7f80ec395000 r-xp 00000000 ca:01 1794403                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libawt.so
+7f80ec395000-7f80ec595000 ---p 0009e000 ca:01 1794403                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libawt.so
+7f80ec595000-7f80ec596000 r--p 0009e000 ca:01 1794403                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libawt.so
+7f80ec596000-7f80ec5a1000 rw-p 0009f000 ca:01 1794403                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libawt.so
+7f80ec5a1000-7f80ec606000 rw-p 00000000 00:00 0 
+7f80ec606000-7f80ec615000 r-xp 00000000 ca:01 2821482                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/fasttext_corpusfile.cpython-36m-x86_64-linux-gnu.so
+7f80ec615000-7f80ec815000 ---p 0000f000 ca:01 2821482                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/fasttext_corpusfile.cpython-36m-x86_64-linux-gnu.so
+7f80ec815000-7f80ec817000 rw-p 0000f000 ca:01 2821482                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/fasttext_corpusfile.cpython-36m-x86_64-linux-gnu.so
+7f80ec817000-7f80ec82a000 r-xp 00000000 ca:01 2821497                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/fasttext_inner.cpython-36m-x86_64-linux-gnu.so
+7f80ec82a000-7f80eca29000 ---p 00013000 ca:01 2821497                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/fasttext_inner.cpython-36m-x86_64-linux-gnu.so
+7f80eca29000-7f80eca2b000 rw-p 00012000 ca:01 2821497                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/fasttext_inner.cpython-36m-x86_64-linux-gnu.so
+7f80eca2b000-7f80ecaad000 rw-p 00000000 00:00 0 
+7f80ecaad000-7f80ecac1000 r-xp 00000000 ca:01 2821499                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/doc2vec_corpusfile.cpython-36m-x86_64-linux-gnu.so
+7f80ecac1000-7f80eccc0000 ---p 00014000 ca:01 2821499                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/doc2vec_corpusfile.cpython-36m-x86_64-linux-gnu.so
+7f80eccc0000-7f80eccc4000 rw-p 00013000 ca:01 2821499                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/doc2vec_corpusfile.cpython-36m-x86_64-linux-gnu.so
+7f80eccc4000-7f80eccdb000 r-xp 00000000 ca:01 2821459                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/doc2vec_inner.cpython-36m-x86_64-linux-gnu.so
+7f80eccdb000-7f80ecedb000 ---p 00017000 ca:01 2821459                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/doc2vec_inner.cpython-36m-x86_64-linux-gnu.so
+7f80ecedb000-7f80ecedf000 rw-p 00017000 ca:01 2821459                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/doc2vec_inner.cpython-36m-x86_64-linux-gnu.so
+7f80ecedf000-7f80ecf5f000 rw-p 00000000 00:00 0 
+7f80ecf5f000-7f80ecf84000 r-xp 00000000 ca:01 2821452                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/word2vec_corpusfile.cpython-36m-x86_64-linux-gnu.so
+7f80ecf84000-7f80ed183000 ---p 00025000 ca:01 2821452                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/word2vec_corpusfile.cpython-36m-x86_64-linux-gnu.so
+7f80ed183000-7f80ed187000 rw-p 00024000 ca:01 2821452                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/word2vec_corpusfile.cpython-36m-x86_64-linux-gnu.so
+7f80ed187000-7f80ed19e000 r-xp 00000000 ca:01 2821489                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/word2vec_inner.cpython-36m-x86_64-linux-gnu.so
+7f80ed19e000-7f80ed39e000 ---p 00017000 ca:01 2821489                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/word2vec_inner.cpython-36m-x86_64-linux-gnu.so
+7f80ed39e000-7f80ed3a1000 rw-p 00017000 ca:01 2821489                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/word2vec_inner.cpython-36m-x86_64-linux-gnu.so
+7f80ed3a1000-7f80ed3e3000 rw-p 00000000 00:00 0 
+7f80ed3e3000-7f80ed3ed000 r-xp 00000000 ca:01 2821494                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/_utils_any2vec.cpython-36m-x86_64-linux-gnu.so
+7f80ed3ed000-7f80ed5ec000 ---p 0000a000 ca:01 2821494                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/_utils_any2vec.cpython-36m-x86_64-linux-gnu.so
+7f80ed5ec000-7f80ed5ee000 rw-p 00009000 ca:01 2821494                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/models/_utils_any2vec.cpython-36m-x86_64-linux-gnu.so
+7f80ed5ee000-7f80ed6ae000 rw-p 00000000 00:00 0 
+7f80ed6ae000-7f80ed6ca000 r-xp 00000000 ca:01 2821845                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/corpora/_mmreader.cpython-36m-x86_64-linux-gnu.so
+7f80ed6ca000-7f80ed8ca000 ---p 0001c000 ca:01 2821845                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/corpora/_mmreader.cpython-36m-x86_64-linux-gnu.so
+7f80ed8ca000-7f80ed8cd000 rw-p 0001c000 ca:01 2821845                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/corpora/_mmreader.cpython-36m-x86_64-linux-gnu.so
+7f80ed8cd000-7f80ed904000 r-xp 00000000 ca:01 2821425                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/_matutils.cpython-36m-x86_64-linux-gnu.so
+7f80ed904000-7f80edb04000 ---p 00037000 ca:01 2821425                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/_matutils.cpython-36m-x86_64-linux-gnu.so
+7f80edb04000-7f80edb08000 rw-p 00037000 ca:01 2821425                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/gensim/_matutils.cpython-36m-x86_64-linux-gnu.so
+7f80edb08000-7f80edb09000 rw-p 00000000 00:00 0 
+7f80edb09000-7f80edb1c000 r-xp 00000000 ca:01 2818470                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/stats/mvn.cpython-36m-x86_64-linux-gnu.so
+7f80edb1c000-7f80edd1b000 ---p 00013000 ca:01 2818470                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/stats/mvn.cpython-36m-x86_64-linux-gnu.so
+7f80edd1b000-7f80edd1d000 rw-p 00012000 ca:01 2818470                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/stats/mvn.cpython-36m-x86_64-linux-gnu.so
+7f80edd1d000-7f80ede14000 rw-p 00000000 00:00 0 
+7f80ede14000-7f80ede16000 rw-p 00015000 ca:01 2818470                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/stats/mvn.cpython-36m-x86_64-linux-gnu.so
+7f80ede16000-7f80ede56000 rw-p 00000000 00:00 0 
+7f80ede56000-7f80ede60000 r-xp 00000000 ca:01 2818456                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/stats/statlib.cpython-36m-x86_64-linux-gnu.so
+7f80ede60000-7f80ee05f000 ---p 0000a000 ca:01 2818456                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/stats/statlib.cpython-36m-x86_64-linux-gnu.so
+7f80ee05f000-7f80ee061000 rw-p 00009000 ca:01 2818456                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/stats/statlib.cpython-36m-x86_64-linux-gnu.so
+7f80ee061000-7f80ee063000 rw-p 0000c000 ca:01 2818456                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/stats/statlib.cpython-36m-x86_64-linux-gnu.so
+7f80ee063000-7f80ee223000 rw-p 00000000 00:00 0 
+7f80ee223000-7f80ee510000 r-xp 00000000 ca:01 2316944                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/cython_special.cpython-36m-x86_64-linux-gnu.so
+7f80ee510000-7f80ee710000 ---p 002ed000 ca:01 2316944                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/cython_special.cpython-36m-x86_64-linux-gnu.so
+7f80ee710000-7f80ee721000 rw-p 002ed000 ca:01 2316944                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/cython_special.cpython-36m-x86_64-linux-gnu.so
+7f80ee721000-7f80ee724000 rw-p 00000000 00:00 0 
+7f80ee724000-7f80ee72a000 rw-p 002ff000 ca:01 2316944                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/cython_special.cpython-36m-x86_64-linux-gnu.so
+7f80ee72a000-7f80ee7a5000 r-xp 00000000 ca:01 2818463                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/stats/_stats.cpython-36m-x86_64-linux-gnu.so
+7f80ee7a5000-7f80ee9a5000 ---p 0007b000 ca:01 2818463                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/stats/_stats.cpython-36m-x86_64-linux-gnu.so
+7f80ee9a5000-7f80ee9ab000 rw-p 0007b000 ca:01 2818463                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/stats/_stats.cpython-36m-x86_64-linux-gnu.so
+7f80ee9ab000-7f80ee9ee000 rw-p 00000000 00:00 0 
+7f80ee9ee000-7f80eea3c000 r-xp 00000000 ca:01 2818590                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/interpnd.cpython-36m-x86_64-linux-gnu.so
+7f80eea3c000-7f80eec3b000 ---p 0004e000 ca:01 2818590                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/interpnd.cpython-36m-x86_64-linux-gnu.so
+7f80eec3b000-7f80eec40000 rw-p 0004d000 ca:01 2818590                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/interpnd.cpython-36m-x86_64-linux-gnu.so
+7f80eec40000-7f80eec42000 rw-p 00000000 00:00 0 
+7f80eec42000-7f80eec8b000 r-xp 00000000 ca:01 2818589                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/_ppoly.cpython-36m-x86_64-linux-gnu.so
+7f80eec8b000-7f80eee8b000 ---p 00049000 ca:01 2818589                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/_ppoly.cpython-36m-x86_64-linux-gnu.so
+7f80eee8b000-7f80eee91000 rw-p 00049000 ca:01 2818589                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/_ppoly.cpython-36m-x86_64-linux-gnu.so
+7f80eee91000-7f80eee92000 rw-p 00000000 00:00 0 
+7f80eee92000-7f80eeeca000 r-xp 00000000 ca:01 2818587                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/_bspl.cpython-36m-x86_64-linux-gnu.so
+7f80eeeca000-7f80ef0ca000 ---p 00038000 ca:01 2818587                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/_bspl.cpython-36m-x86_64-linux-gnu.so
+7f80ef0ca000-7f80ef0d0000 rw-p 00038000 ca:01 2818587                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/_bspl.cpython-36m-x86_64-linux-gnu.so
+7f80ef0d0000-7f80ef0d1000 rw-p 00000000 00:00 0 
+7f80ef0d1000-7f80ef12f000 r-xp 00000000 ca:01 2818595                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/dfitpack.cpython-36m-x86_64-linux-gnu.so
+7f80ef12f000-7f80ef32f000 ---p 0005e000 ca:01 2818595                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/dfitpack.cpython-36m-x86_64-linux-gnu.so
+7f80ef32f000-7f80ef336000 rw-p 0005e000 ca:01 2818595                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/dfitpack.cpython-36m-x86_64-linux-gnu.so
+7f80ef336000-7f80ef338000 rw-p 00066000 ca:01 2818595                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/dfitpack.cpython-36m-x86_64-linux-gnu.so
+7f80ef338000-7f80ef36c000 r-xp 00000000 ca:01 2818584                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/_fitpack.cpython-36m-x86_64-linux-gnu.so
+7f80ef36c000-7f80ef56c000 ---p 00034000 ca:01 2818584                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/_fitpack.cpython-36m-x86_64-linux-gnu.so
+7f80ef56c000-7f80ef56d000 rw-p 00034000 ca:01 2818584                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/_fitpack.cpython-36m-x86_64-linux-gnu.so
+7f80ef56d000-7f80ef56f000 rw-p 00036000 ca:01 2818584                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/interpolate/_fitpack.cpython-36m-x86_64-linux-gnu.so
+7f80ef56f000-7f80ef66f000 rw-p 00000000 00:00 0 
+7f80ef66f000-7f80ef688000 r-xp 00000000 ca:01 1316384                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/lsoda.cpython-36m-x86_64-linux-gnu.so
+7f80ef688000-7f80ef888000 ---p 00019000 ca:01 1316384                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/lsoda.cpython-36m-x86_64-linux-gnu.so
+7f80ef888000-7f80ef88d000 rw-p 00019000 ca:01 1316384                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/lsoda.cpython-36m-x86_64-linux-gnu.so
+7f80ef88d000-7f80ef8a8000 r-xp 00000000 ca:01 1316388                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_dop.cpython-36m-x86_64-linux-gnu.so
+7f80ef8a8000-7f80efaa8000 ---p 0001b000 ca:01 1316388                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_dop.cpython-36m-x86_64-linux-gnu.so
+7f80efaa8000-7f80efaaa000 rw-p 0001b000 ca:01 1316388                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_dop.cpython-36m-x86_64-linux-gnu.so
+7f80efaaa000-7f80efaac000 rw-p 0001e000 ca:01 1316388                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_dop.cpython-36m-x86_64-linux-gnu.so
+7f80efaac000-7f80efadd000 r-xp 00000000 ca:01 1316394                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/vode.cpython-36m-x86_64-linux-gnu.so
+7f80efadd000-7f80efcdc000 ---p 00031000 ca:01 1316394                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/vode.cpython-36m-x86_64-linux-gnu.so
+7f80efcdc000-7f80efce3000 rw-p 00030000 ca:01 1316394                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/vode.cpython-36m-x86_64-linux-gnu.so
+7f80efce3000-7f80efd23000 rw-p 00000000 00:00 0 
+7f80efd23000-7f80efd3d000 r-xp 00000000 ca:01 1316381                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_quadpack.cpython-36m-x86_64-linux-gnu.so
+7f80efd3d000-7f80eff3d000 ---p 0001a000 ca:01 1316381                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_quadpack.cpython-36m-x86_64-linux-gnu.so
+7f80eff3d000-7f80eff3e000 rw-p 0001a000 ca:01 1316381                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_quadpack.cpython-36m-x86_64-linux-gnu.so
+7f80eff3e000-7f80eff41000 rw-p 0001c000 ca:01 1316381                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_quadpack.cpython-36m-x86_64-linux-gnu.so
+7f80eff41000-7f80eff57000 r-xp 00000000 ca:01 1316390                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_odepack.cpython-36m-x86_64-linux-gnu.so
+7f80eff57000-7f80f0156000 ---p 00016000 ca:01 1316390                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_odepack.cpython-36m-x86_64-linux-gnu.so
+7f80f0156000-7f80f0157000 rw-p 00015000 ca:01 1316390                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_odepack.cpython-36m-x86_64-linux-gnu.so
+7f80f0157000-7f80f0158000 rw-p 00000000 00:00 0 
+7f80f0158000-7f80f015b000 rw-p 00017000 ca:01 1316390                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/integrate/_odepack.cpython-36m-x86_64-linux-gnu.so
+7f80f015b000-7f80f015e000 r-xp 00000000 ca:01 2316826                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_lsap_module.cpython-36m-x86_64-linux-gnu.so
+7f80f015e000-7f80f035d000 ---p 00003000 ca:01 2316826                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_lsap_module.cpython-36m-x86_64-linux-gnu.so
+7f80f035d000-7f80f035e000 rw-p 00002000 ca:01 2316826                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_lsap_module.cpython-36m-x86_64-linux-gnu.so
+7f80f035e000-7f80f039a000 r-xp 00000000 ca:01 2316841                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_bglu_dense.cpython-36m-x86_64-linux-gnu.so
+7f80f039a000-7f80f059a000 ---p 0003c000 ca:01 2316841                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_bglu_dense.cpython-36m-x86_64-linux-gnu.so
+7f80f059a000-7f80f059f000 rw-p 0003c000 ca:01 2316841                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_bglu_dense.cpython-36m-x86_64-linux-gnu.so
+7f80f059f000-7f80f05e0000 rw-p 00000000 00:00 0 
+7f80f05e0000-7f80f05ea000 r-xp 00000000 ca:01 2316848                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/__nnls.cpython-36m-x86_64-linux-gnu.so
+7f80f05ea000-7f80f07ea000 ---p 0000a000 ca:01 2316848                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/__nnls.cpython-36m-x86_64-linux-gnu.so
+7f80f07ea000-7f80f07eb000 rw-p 0000a000 ca:01 2316848                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/__nnls.cpython-36m-x86_64-linux-gnu.so
+7f80f07eb000-7f80f07ed000 rw-p 0000c000 ca:01 2316848                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/__nnls.cpython-36m-x86_64-linux-gnu.so
+7f80f07ed000-7f80f07f0000 r-xp 00000000 ca:01 2316836                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_zeros.cpython-36m-x86_64-linux-gnu.so
+7f80f07f0000-7f80f09ef000 ---p 00003000 ca:01 2316836                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_zeros.cpython-36m-x86_64-linux-gnu.so
+7f80f09ef000-7f80f09f0000 rw-p 00002000 ca:01 2316836                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_zeros.cpython-36m-x86_64-linux-gnu.so
+7f80f09f0000-7f80f0a30000 rw-p 00000000 00:00 0 
+7f80f0a30000-7f80f0a55000 r-xp 00000000 ca:01 2316906                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_lsq/givens_elimination.cpython-36m-x86_64-linux-gnu.so
+7f80f0a55000-7f80f0c54000 ---p 00025000 ca:01 2316906                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_lsq/givens_elimination.cpython-36m-x86_64-linux-gnu.so
+7f80f0c54000-7f80f0c57000 rw-p 00024000 ca:01 2316906                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_lsq/givens_elimination.cpython-36m-x86_64-linux-gnu.so
+7f80f0c57000-7f80f0c98000 rw-p 00000000 00:00 0 
+7f80f0c98000-7f80f0cb7000 r-xp 00000000 ca:01 2316827                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_minpack.cpython-36m-x86_64-linux-gnu.so
+7f80f0cb7000-7f80f0eb7000 ---p 0001f000 ca:01 2316827                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_minpack.cpython-36m-x86_64-linux-gnu.so
+7f80f0eb7000-7f80f0eba000 rw-p 0001f000 ca:01 2316827                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_minpack.cpython-36m-x86_64-linux-gnu.so
+7f80f0eba000-7f80f0ed2000 r-xp 00000000 ca:01 2316819                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_slsqp.cpython-36m-x86_64-linux-gnu.so
+7f80f0ed2000-7f80f10d1000 ---p 00018000 ca:01 2316819                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_slsqp.cpython-36m-x86_64-linux-gnu.so
+7f80f10d1000-7f80f10d5000 rw-p 00017000 ca:01 2316819                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_slsqp.cpython-36m-x86_64-linux-gnu.so
+7f80f10d5000-7f80f10f3000 r-xp 00000000 ca:01 2316813                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_cobyla.cpython-36m-x86_64-linux-gnu.so
+7f80f10f3000-7f80f12f3000 ---p 0001e000 ca:01 2316813                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_cobyla.cpython-36m-x86_64-linux-gnu.so
+7f80f12f3000-7f80f12f4000 rw-p 0001e000 ca:01 2316813                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_cobyla.cpython-36m-x86_64-linux-gnu.so
+7f80f12f4000-7f80f12f6000 rw-p 00020000 ca:01 2316813                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_cobyla.cpython-36m-x86_64-linux-gnu.so
+7f80f12f6000-7f80f1302000 r-xp 00000000 ca:01 2316828                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/moduleTNC.cpython-36m-x86_64-linux-gnu.so
+7f80f1302000-7f80f1501000 ---p 0000c000 ca:01 2316828                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/moduleTNC.cpython-36m-x86_64-linux-gnu.so
+7f80f1501000-7f80f1502000 rw-p 0000b000 ca:01 2316828                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/moduleTNC.cpython-36m-x86_64-linux-gnu.so
+7f80f1502000-7f80f1520000 r-xp 00000000 ca:01 2316808                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_lbfgsb.cpython-36m-x86_64-linux-gnu.so
+7f80f1520000-7f80f171f000 ---p 0001e000 ca:01 2316808                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_lbfgsb.cpython-36m-x86_64-linux-gnu.so
+7f80f171f000-7f80f1724000 rw-p 0001d000 ca:01 2316808                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_lbfgsb.cpython-36m-x86_64-linux-gnu.so
+7f80f1724000-7f80f1764000 rw-p 00000000 00:00 0 
+7f80f1764000-7f80f17aa000 r-xp 00000000 ca:01 2316899                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_trlib/_trlib.cpython-36m-x86_64-linux-gnu.so
+7f80f17aa000-7f80f19aa000 ---p 00046000 ca:01 2316899                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_trlib/_trlib.cpython-36m-x86_64-linux-gnu.so
+7f80f19aa000-7f80f19ae000 rw-p 00046000 ca:01 2316899                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_trlib/_trlib.cpython-36m-x86_64-linux-gnu.so
+7f80f19ae000-7f80f19af000 rw-p 00000000 00:00 0 
+7f80f19af000-7f80f19b2000 rw-p 0004b000 ca:01 2316899                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_trlib/_trlib.cpython-36m-x86_64-linux-gnu.so
+7f80f19b2000-7f80f19da000 r-xp 00000000 ca:01 2316838                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_group_columns.cpython-36m-x86_64-linux-gnu.so
+7f80f19da000-7f80f1bda000 ---p 00028000 ca:01 2316838                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_group_columns.cpython-36m-x86_64-linux-gnu.so
+7f80f1bda000-7f80f1bdd000 rw-p 00028000 ca:01 2316838                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/_group_columns.cpython-36m-x86_64-linux-gnu.so
+7f80f1bdd000-7f80f1c1e000 rw-p 00000000 00:00 0 
+7f80f1c1e000-7f80f1ca7000 r-xp 00000000 ca:01 2586265                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/eigen/arpack/_arpack.cpython-36m-x86_64-linux-gnu.so
+7f80f1ca7000-7f80f1ea6000 ---p 00089000 ca:01 2586265                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/eigen/arpack/_arpack.cpython-36m-x86_64-linux-gnu.so
+7f80f1ea6000-7f80f1eb1000 rw-p 00088000 ca:01 2586265                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/eigen/arpack/_arpack.cpython-36m-x86_64-linux-gnu.so
+7f80f1eb1000-7f80f1eb3000 rw-p 00000000 00:00 0 
+7f80f1eb3000-7f80f1eb7000 rw-p 00094000 ca:01 2586265                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/eigen/arpack/_arpack.cpython-36m-x86_64-linux-gnu.so
+7f80f1eb7000-7f80f1f04000 r-xp 00000000 ca:01 2818278                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/dsolve/_superlu.cpython-36m-x86_64-linux-gnu.so
+7f80f1f04000-7f80f2103000 ---p 0004d000 ca:01 2818278                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/dsolve/_superlu.cpython-36m-x86_64-linux-gnu.so
+7f80f2103000-7f80f2105000 rw-p 0004c000 ca:01 2818278                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/dsolve/_superlu.cpython-36m-x86_64-linux-gnu.so
+7f80f2105000-7f80f2108000 rw-p 0004f000 ca:01 2818278                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/dsolve/_superlu.cpython-36m-x86_64-linux-gnu.so
+7f80f2108000-7f80f2148000 rw-p 00000000 00:00 0 
+7f80f2148000-7f80f2179000 r-xp 00000000 ca:01 2818254                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/isolve/_iterative.cpython-36m-x86_64-linux-gnu.so
+7f80f2179000-7f80f2379000 ---p 00031000 ca:01 2818254                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/isolve/_iterative.cpython-36m-x86_64-linux-gnu.so
+7f80f2379000-7f80f2380000 rw-p 00031000 ca:01 2818254                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/isolve/_iterative.cpython-36m-x86_64-linux-gnu.so
+7f80f2380000-7f80f2382000 rw-p 00000000 00:00 0 
+7f80f2382000-7f80f2385000 rw-p 00039000 ca:01 2818254                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/linalg/isolve/_iterative.cpython-36m-x86_64-linux-gnu.so
+7f80f2385000-7f80f238e000 r-xp 00000000 ca:01 2316810                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/minpack2.cpython-36m-x86_64-linux-gnu.so
+7f80f238e000-7f80f258e000 ---p 00009000 ca:01 2316810                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/minpack2.cpython-36m-x86_64-linux-gnu.so
+7f80f258e000-7f80f258f000 rw-p 00009000 ca:01 2316810                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/minpack2.cpython-36m-x86_64-linux-gnu.so
+7f80f258f000-7f80f2591000 rw-p 0000b000 ca:01 2316810                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/optimize/minpack2.cpython-36m-x86_64-linux-gnu.so
+7f80f2591000-7f80f25d1000 rw-p 00000000 00:00 0 
+7f80f25d1000-7f80f2614000 r-xp 00000000 ca:01 1316345                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/ndimage/_ni_label.cpython-36m-x86_64-linux-gnu.so
+7f80f2614000-7f80f2813000 ---p 00043000 ca:01 1316345                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/ndimage/_ni_label.cpython-36m-x86_64-linux-gnu.so
+7f80f2813000-7f80f2818000 rw-p 00042000 ca:01 1316345                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/ndimage/_ni_label.cpython-36m-x86_64-linux-gnu.so
+7f80f2818000-7f80f2859000 rw-p 00000000 00:00 0 
+7f80f2859000-7f80f2874000 r-xp 00000000 ca:01 1316338                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/ndimage/_nd_image.cpython-36m-x86_64-linux-gnu.so
+7f80f2874000-7f80f2a74000 ---p 0001b000 ca:01 1316338                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/ndimage/_nd_image.cpython-36m-x86_64-linux-gnu.so
+7f80f2a74000-7f80f2a75000 rw-p 0001b000 ca:01 1316338                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/ndimage/_nd_image.cpython-36m-x86_64-linux-gnu.so
+7f80f2a75000-7f80f2af5000 rw-p 00000000 00:00 0 
+7f80f2af5000-7f80f2b06000 r-xp 00000000 ca:01 2316955                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_ellip_harm_2.cpython-36m-x86_64-linux-gnu.so
+7f80f2b06000-7f80f2d05000 ---p 00011000 ca:01 2316955                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_ellip_harm_2.cpython-36m-x86_64-linux-gnu.so
+7f80f2d05000-7f80f2d0a000 rw-p 00010000 ca:01 2316955                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_ellip_harm_2.cpython-36m-x86_64-linux-gnu.so
+7f80f2d0a000-7f80f2d10000 r-xp 00000000 ca:01 2316957                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_comb.cpython-36m-x86_64-linux-gnu.so
+7f80f2d10000-7f80f2f10000 ---p 00006000 ca:01 2316957                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_comb.cpython-36m-x86_64-linux-gnu.so
+7f80f2f10000-7f80f2f11000 rw-p 00006000 ca:01 2316957                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_comb.cpython-36m-x86_64-linux-gnu.so
+7f80f2f11000-7f80f2fc1000 r-xp 00000000 ca:01 2316934                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/specfun.cpython-36m-x86_64-linux-gnu.so
+7f80f2fc1000-7f80f31c0000 ---p 000b0000 ca:01 2316934                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/specfun.cpython-36m-x86_64-linux-gnu.so
+7f80f31c0000-7f80f31c5000 rw-p 000af000 ca:01 2316934                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/specfun.cpython-36m-x86_64-linux-gnu.so
+7f80f31c5000-7f80f31c7000 rw-p 000b5000 ca:01 2316934                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/specfun.cpython-36m-x86_64-linux-gnu.so
+7f80f31c7000-7f80f3207000 rw-p 00000000 00:00 0 
+7f80f3207000-7f80f3224000 r-xp 00000000 ca:01 2316945                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_ufuncs_cxx.cpython-36m-x86_64-linux-gnu.so
+7f80f3224000-7f80f3423000 ---p 0001d000 ca:01 2316945                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_ufuncs_cxx.cpython-36m-x86_64-linux-gnu.so
+7f80f3423000-7f80f3425000 rw-p 0001c000 ca:01 2316945                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_ufuncs_cxx.cpython-36m-x86_64-linux-gnu.so
+7f80f3425000-7f80f35ca000 r-xp 00000000 ca:01 2316943                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_ufuncs.cpython-36m-x86_64-linux-gnu.so
+7f80f35ca000-7f80f37c9000 ---p 001a5000 ca:01 2316943                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_ufuncs.cpython-36m-x86_64-linux-gnu.so
+7f80f37c9000-7f80f37d4000 rw-p 001a4000 ca:01 2316943                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_ufuncs.cpython-36m-x86_64-linux-gnu.so
+7f80f37d4000-7f80f37dd000 rw-p 00000000 00:00 0 
+7f80f37dd000-7f80f37e2000 rw-p 001af000 ca:01 2316943                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/special/_ufuncs.cpython-36m-x86_64-linux-gnu.so
+7f80f37e2000-7f80f3809000 r-xp 00000000 ca:01 2818382                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/_hausdorff.cpython-36m-x86_64-linux-gnu.so
+7f80f3809000-7f80f3a09000 ---p 00027000 ca:01 2818382                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/_hausdorff.cpython-36m-x86_64-linux-gnu.so
+7f80f3a09000-7f80f3a0c000 rw-p 00027000 ca:01 2818382                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/_hausdorff.cpython-36m-x86_64-linux-gnu.so
+7f80f3a0c000-7f80f3a0d000 rw-p 00000000 00:00 0 
+7f80f3a0d000-7f80f3a24000 r-xp 00000000 ca:01 2818379                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/_distance_wrap.cpython-36m-x86_64-linux-gnu.so
+7f80f3a24000-7f80f3c24000 ---p 00017000 ca:01 2818379                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/_distance_wrap.cpython-36m-x86_64-linux-gnu.so
+7f80f3c24000-7f80f3c25000 rw-p 00017000 ca:01 2818379                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/_distance_wrap.cpython-36m-x86_64-linux-gnu.so
+7f80f3c25000-7f80f3c65000 rw-p 00000000 00:00 0 
+7f80f3c65000-7f80f3cf2000 r-xp 00000000 ca:01 2818532                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/cython_lapack.cpython-36m-x86_64-linux-gnu.so
+7f80f3cf2000-7f80f3ef1000 ---p 0008d000 ca:01 2818532                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/cython_lapack.cpython-36m-x86_64-linux-gnu.so
+7f80f3ef1000-7f80f3ef5000 rw-p 0008c000 ca:01 2818532                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/cython_lapack.cpython-36m-x86_64-linux-gnu.so
+7f80f3ef5000-7f80f3f0a000 rw-p 00091000 ca:01 2818532                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/cython_lapack.cpython-36m-x86_64-linux-gnu.so
+7f80f3f0a000-7f80f3f3f000 r-xp 00000000 ca:01 2818512                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/cython_blas.cpython-36m-x86_64-linux-gnu.so
+7f80f3f3f000-7f80f413f000 ---p 00035000 ca:01 2818512                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/cython_blas.cpython-36m-x86_64-linux-gnu.so
+7f80f413f000-7f80f4149000 rw-p 00035000 ca:01 2818512                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/cython_blas.cpython-36m-x86_64-linux-gnu.so
+7f80f4149000-7f80f418f000 r-xp 00000000 ca:01 2818536                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_decomp_update.cpython-36m-x86_64-linux-gnu.so
+7f80f418f000-7f80f438f000 ---p 00046000 ca:01 2818536                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_decomp_update.cpython-36m-x86_64-linux-gnu.so
+7f80f438f000-7f80f4395000 rw-p 00046000 ca:01 2818536                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_decomp_update.cpython-36m-x86_64-linux-gnu.so
+7f80f4395000-7f80f43d6000 rw-p 00000000 00:00 0 
+7f80f43d6000-7f80f4407000 r-xp 00000000 ca:01 2818517                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_solve_toeplitz.cpython-36m-x86_64-linux-gnu.so
+7f80f4407000-7f80f4607000 ---p 00031000 ca:01 2818517                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_solve_toeplitz.cpython-36m-x86_64-linux-gnu.so
+7f80f4607000-7f80f460b000 rw-p 00031000 ca:01 2818517                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_solve_toeplitz.cpython-36m-x86_64-linux-gnu.so
+7f80f460b000-7f80f460c000 rw-p 00000000 00:00 0 
+7f80f460c000-7f80f4619000 r-xp 00000000 ca:01 2818545                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_flinalg.cpython-36m-x86_64-linux-gnu.so
+7f80f4619000-7f80f4819000 ---p 0000d000 ca:01 2818545                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_flinalg.cpython-36m-x86_64-linux-gnu.so
+7f80f4819000-7f80f481c000 rw-p 0000d000 ca:01 2818545                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_flinalg.cpython-36m-x86_64-linux-gnu.so
+7f80f481c000-7f80f481f000 rw-p 00011000 ca:01 2818545                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_flinalg.cpython-36m-x86_64-linux-gnu.so
+7f80f481f000-7f80f485f000 rw-p 00000000 00:00 0 
+7f80f485f000-7f80f49ba000 r-xp 00000000 ca:01 2818541                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_flapack.cpython-36m-x86_64-linux-gnu.so
+7f80f49ba000-7f80f4bb9000 ---p 0015b000 ca:01 2818541                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_flapack.cpython-36m-x86_64-linux-gnu.so
+7f80f4bb9000-7f80f4c39000 rw-p 0015a000 ca:01 2818541                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_flapack.cpython-36m-x86_64-linux-gnu.so
+7f80f4c39000-7f80f4c3a000 rw-p 00000000 00:00 0 
+7f80f4c3a000-7f80f4c43000 rw-p 001db000 ca:01 2818541                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_flapack.cpython-36m-x86_64-linux-gnu.so
+7f80f4c43000-7f80f4caf000 r-xp 00000000 ca:01 2818538                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_fblas.cpython-36m-x86_64-linux-gnu.so
+7f80f4caf000-7f80f4eaf000 ---p 0006c000 ca:01 2818538                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_fblas.cpython-36m-x86_64-linux-gnu.so
+7f80f4eaf000-7f80f4ed5000 rw-p 0006c000 ca:01 2818538                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_fblas.cpython-36m-x86_64-linux-gnu.so
+7f80f4ed5000-7f80f4ed9000 rw-p 00093000 ca:01 2818538                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/linalg/_fblas.cpython-36m-x86_64-linux-gnu.so
+7f80f4ed9000-7f80f4f00000 r-xp 00000000 ca:01 2818377                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/_voronoi.cpython-36m-x86_64-linux-gnu.so
+7f80f4f00000-7f80f50ff000 ---p 00027000 ca:01 2818377                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/_voronoi.cpython-36m-x86_64-linux-gnu.so
+7f80f50ff000-7f80f5102000 rw-p 00026000 ca:01 2818377                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/_voronoi.cpython-36m-x86_64-linux-gnu.so
+7f80f5102000-7f80f5103000 rw-p 00000000 00:00 0 
+7f80f5103000-7f80f510c000 r-xp 00000000 ca:01 2818285                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/_lib/messagestream.cpython-36m-x86_64-linux-gnu.so
+7f80f510c000-7f80f530b000 ---p 00009000 ca:01 2818285                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/_lib/messagestream.cpython-36m-x86_64-linux-gnu.so
+7f80f530b000-7f80f530d000 rw-p 00008000 ca:01 2818285                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/_lib/messagestream.cpython-36m-x86_64-linux-gnu.so
+7f80f530d000-7f80f534d000 rw-p 00000000 00:00 0 
+7f80f534d000-7f80f543d000 r-xp 00000000 ca:01 1316288                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy.libs/libgfortran-ed201abd.so.3.0.0
+7f80f543d000-7f80f563c000 ---p 000f0000 ca:01 1316288                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy.libs/libgfortran-ed201abd.so.3.0.0
+7f80f563c000-7f80f563e000 rw-p 000ef000 ca:01 1316288                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy.libs/libgfortran-ed201abd.so.3.0.0
+7f80f563e000-7f80f563f000 rw-p 00000000 00:00 0 
+7f80f563f000-7f80f5647000 rw-p 000f2000 ca:01 1316288                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy.libs/libgfortran-ed201abd.so.3.0.0
+7f80f5647000-7f80f70f5000 r-xp 00000000 ca:01 1316287                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy.libs/libopenblasp-r0-085ca80a.3.9.so
+7f80f70f5000-7f80f72f5000 ---p 01aae000 ca:01 1316287                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy.libs/libopenblasp-r0-085ca80a.3.9.so
+7f80f72f5000-7f80f730f000 rw-p 01aae000 ca:01 1316287                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy.libs/libopenblasp-r0-085ca80a.3.9.so
+7f80f730f000-7f80f731a000 rw-p 00000000 00:00 0 
+7f80f731a000-7f80f7394000 rw-p 01b9d000 ca:01 1316287                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy.libs/libopenblasp-r0-085ca80a.3.9.so
+7f80f7394000-7f80f7474000 r-xp 00000000 ca:01 2818381                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/qhull.cpython-36m-x86_64-linux-gnu.so
+7f80f7474000-7f80f7673000 ---p 000e0000 ca:01 2818381                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/qhull.cpython-36m-x86_64-linux-gnu.so
+7f80f7673000-7f80f767c000 rw-p 000df000 ca:01 2818381                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/qhull.cpython-36m-x86_64-linux-gnu.so
+7f80f767c000-7f80f767f000 rw-p 00000000 00:00 0 
+7f80f767f000-7f80f7684000 rw-p 000e9000 ca:01 2818381                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/qhull.cpython-36m-x86_64-linux-gnu.so
+7f80f7684000-7f80f772f000 r-xp 00000000 ca:01 2818376                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/ckdtree.cpython-36m-x86_64-linux-gnu.so
+7f80f772f000-7f80f792e000 ---p 000ab000 ca:01 2818376                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/ckdtree.cpython-36m-x86_64-linux-gnu.so
+7f80f792e000-7f80f7938000 rw-p 000aa000 ca:01 2818376                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/spatial/ckdtree.cpython-36m-x86_64-linux-gnu.so
+7f80f7938000-7f80f797a000 rw-p 00000000 00:00 0 
+7f80f797a000-7f80f797e000 r-xp 00000000 ca:01 7495                       /usr/lib/python3.6/lib-dynload/termios.cpython-36m-x86_64-linux-gnu.so
+7f80f797e000-7f80f7b7d000 ---p 00004000 ca:01 7495                       /usr/lib/python3.6/lib-dynload/termios.cpython-36m-x86_64-linux-gnu.so
+7f80f7b7d000-7f80f7b7e000 r--p 00003000 ca:01 7495                       /usr/lib/python3.6/lib-dynload/termios.cpython-36m-x86_64-linux-gnu.so
+7f80f7b7e000-7f80f7b80000 rw-p 00004000 ca:01 7495                       /usr/lib/python3.6/lib-dynload/termios.cpython-36m-x86_64-linux-gnu.so
+7f80f7b80000-7f80f7bc0000 rw-p 00000000 00:00 0 
+7f80f7bc0000-7f80f7bc3000 r-xp 00000000 ca:01 7464                       /usr/lib/python3.6/lib-dynload/_multiprocessing.cpython-36m-x86_64-linux-gnu.so
+7f80f7bc3000-7f80f7dc2000 ---p 00003000 ca:01 7464                       /usr/lib/python3.6/lib-dynload/_multiprocessing.cpython-36m-x86_64-linux-gnu.so
+7f80f7dc2000-7f80f7dc3000 r--p 00002000 ca:01 7464                       /usr/lib/python3.6/lib-dynload/_multiprocessing.cpython-36m-x86_64-linux-gnu.so
+7f80f7dc3000-7f80f7dc4000 rw-p 00003000 ca:01 7464                       /usr/lib/python3.6/lib-dynload/_multiprocessing.cpython-36m-x86_64-linux-gnu.so
+7f80f7dc4000-7f80f7ec4000 rw-p 00000000 00:00 0 
+7f80f7ec4000-7f80f7ed5000 r-xp 00000000 ca:01 7455                       /usr/lib/python3.6/lib-dynload/_json.cpython-36m-x86_64-linux-gnu.so
+7f80f7ed5000-7f80f80d4000 ---p 00011000 ca:01 7455                       /usr/lib/python3.6/lib-dynload/_json.cpython-36m-x86_64-linux-gnu.so
+7f80f80d4000-7f80f80d5000 r--p 00010000 ca:01 7455                       /usr/lib/python3.6/lib-dynload/_json.cpython-36m-x86_64-linux-gnu.so
+7f80f80d5000-7f80f80d6000 rw-p 00011000 ca:01 7455                       /usr/lib/python3.6/lib-dynload/_json.cpython-36m-x86_64-linux-gnu.so
+7f80f80d6000-7f80f8356000 rw-p 00000000 00:00 0 
+7f80f8356000-7f80f83d6000 r-xp 00000000 ca:01 6185                       /usr/lib/x86_64-linux-gnu/libssl.so.1.1
+7f80f83d6000-7f80f85d6000 ---p 00080000 ca:01 6185                       /usr/lib/x86_64-linux-gnu/libssl.so.1.1
+7f80f85d6000-7f80f85df000 r--p 00080000 ca:01 6185                       /usr/lib/x86_64-linux-gnu/libssl.so.1.1
+7f80f85df000-7f80f85e3000 rw-p 00089000 ca:01 6185                       /usr/lib/x86_64-linux-gnu/libssl.so.1.1
+7f80f85e3000-7f80f85fb000 r-xp 00000000 ca:01 6928                       /usr/lib/python3.6/lib-dynload/_ssl.cpython-36m-x86_64-linux-gnu.so
+7f80f85fb000-7f80f87fa000 ---p 00018000 ca:01 6928                       /usr/lib/python3.6/lib-dynload/_ssl.cpython-36m-x86_64-linux-gnu.so
+7f80f87fa000-7f80f87fb000 r--p 00017000 ca:01 6928                       /usr/lib/python3.6/lib-dynload/_ssl.cpython-36m-x86_64-linux-gnu.so
+7f80f87fb000-7f80f8800000 rw-p 00018000 ca:01 6928                       /usr/lib/python3.6/lib-dynload/_ssl.cpython-36m-x86_64-linux-gnu.so
+7f80f8800000-7f80f8880000 rw-p 00000000 00:00 0 
+7f80f8880000-7f80f88b8000 r-xp 00000000 ca:01 2586216                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_reordering.cpython-36m-x86_64-linux-gnu.so
+7f80f88b8000-7f80f8ab8000 ---p 00038000 ca:01 2586216                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_reordering.cpython-36m-x86_64-linux-gnu.so
+7f80f8ab8000-7f80f8abd000 rw-p 00038000 ca:01 2586216                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_reordering.cpython-36m-x86_64-linux-gnu.so
+7f80f8abd000-7f80f8abe000 rw-p 00000000 00:00 0 
+7f80f8abe000-7f80f8ae9000 r-xp 00000000 ca:01 2586222                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_matching.cpython-36m-x86_64-linux-gnu.so
+7f80f8ae9000-7f80f8ce8000 ---p 0002b000 ca:01 2586222                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_matching.cpython-36m-x86_64-linux-gnu.so
+7f80f8ce8000-7f80f8cec000 rw-p 0002a000 ca:01 2586222                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_matching.cpython-36m-x86_64-linux-gnu.so
+7f80f8cec000-7f80f8ced000 rw-p 00000000 00:00 0 
+7f80f8ced000-7f80f8d22000 r-xp 00000000 ca:01 2586220                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_flow.cpython-36m-x86_64-linux-gnu.so
+7f80f8d22000-7f80f8f21000 ---p 00035000 ca:01 2586220                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_flow.cpython-36m-x86_64-linux-gnu.so
+7f80f8f21000-7f80f8f27000 rw-p 00034000 ca:01 2586220                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_flow.cpython-36m-x86_64-linux-gnu.so
+7f80f8f27000-7f80f8f28000 rw-p 00000000 00:00 0 
+7f80f8f28000-7f80f8f51000 r-xp 00000000 ca:01 2586226                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-36m-x86_64-linux-gnu.so
+7f80f8f51000-7f80f9150000 ---p 00029000 ca:01 2586226                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-36m-x86_64-linux-gnu.so
+7f80f9150000-7f80f9154000 rw-p 00028000 ca:01 2586226                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-36m-x86_64-linux-gnu.so
+7f80f9154000-7f80f9155000 rw-p 00000000 00:00 0 
+7f80f9155000-7f80f9172000 r-xp 00000000 ca:01 2586219                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_traversal.cpython-36m-x86_64-linux-gnu.so
+7f80f9172000-7f80f9371000 ---p 0001d000 ca:01 2586219                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_traversal.cpython-36m-x86_64-linux-gnu.so
+7f80f9371000-7f80f9376000 rw-p 0001c000 ca:01 2586219                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_traversal.cpython-36m-x86_64-linux-gnu.so
+7f80f9376000-7f80f9396000 r-xp 00000000 ca:01 2586221                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_tools.cpython-36m-x86_64-linux-gnu.so
+7f80f9396000-7f80f9595000 ---p 00020000 ca:01 2586221                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_tools.cpython-36m-x86_64-linux-gnu.so
+7f80f9595000-7f80f959a000 rw-p 0001f000 ca:01 2586221                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_tools.cpython-36m-x86_64-linux-gnu.so
+7f80f959a000-7f80f959b000 rw-p 00000000 00:00 0 
+7f80f959b000-7f80f95f1000 r-xp 00000000 ca:01 2586218                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-36m-x86_64-linux-gnu.so
+7f80f95f1000-7f80f97f0000 ---p 00056000 ca:01 2586218                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-36m-x86_64-linux-gnu.so
+7f80f97f0000-7f80f97f9000 rw-p 00055000 ca:01 2586218                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-36m-x86_64-linux-gnu.so
+7f80f97f9000-7f80f983b000 rw-p 00000000 00:00 0 
+7f80f983b000-7f80f98aa000 r-xp 00000000 ca:01 2586208                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/_csparsetools.cpython-36m-x86_64-linux-gnu.so
+7f80f98aa000-7f80f9aaa000 ---p 0006f000 ca:01 2586208                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/_csparsetools.cpython-36m-x86_64-linux-gnu.so
+7f80f9aaa000-7f80f9ab0000 rw-p 0006f000 ca:01 2586208                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/_csparsetools.cpython-36m-x86_64-linux-gnu.so
+7f80f9ab0000-7f80f9af3000 rw-p 00000000 00:00 0 
+7f80f9af3000-7f80f9e3c000 r-xp 00000000 ca:01 2586211                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/_sparsetools.cpython-36m-x86_64-linux-gnu.so
+7f80f9e3c000-7f80fa03c000 ---p 00349000 ca:01 2586211                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/_sparsetools.cpython-36m-x86_64-linux-gnu.so
+7f80fa03c000-7f80fa03d000 rw-p 00349000 ca:01 2586211                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/sparse/_sparsetools.cpython-36m-x86_64-linux-gnu.so
+7f80fa03d000-7f80fa07d000 rw-p 00000000 00:00 0 
+7f80fa07d000-7f80fa12e000 r-xp 00000000 ca:01 2818343                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/fft/_pocketfft/pypocketfft.cpython-36m-x86_64-linux-gnu.so
+7f80fa12e000-7f80fa32e000 ---p 000b1000 ca:01 2818343                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/fft/_pocketfft/pypocketfft.cpython-36m-x86_64-linux-gnu.so
+7f80fa32e000-7f80fa330000 rw-p 000b1000 ca:01 2818343                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/fft/_pocketfft/pypocketfft.cpython-36m-x86_64-linux-gnu.so
+7f80fa330000-7f80fa334000 rw-p 00000000 00:00 0 
+7f80fa334000-7f80fa33e000 r-xp 00000000 ca:01 2818319                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/_lib/_uarray/_uarray.cpython-36m-x86_64-linux-gnu.so
+7f80fa33e000-7f80fa53e000 ---p 0000a000 ca:01 2818319                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/_lib/_uarray/_uarray.cpython-36m-x86_64-linux-gnu.so
+7f80fa53e000-7f80fa53f000 rw-p 0000a000 ca:01 2818319                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/_lib/_uarray/_uarray.cpython-36m-x86_64-linux-gnu.so
+7f80fa53f000-7f80fa5bf000 rw-p 00000000 00:00 0 
+7f80fa5bf000-7f80fa5cd000 r-xp 00000000 ca:01 2818287                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/_lib/_ccallback_c.cpython-36m-x86_64-linux-gnu.so
+7f80fa5cd000-7f80fa7cd000 ---p 0000e000 ca:01 2818287                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/_lib/_ccallback_c.cpython-36m-x86_64-linux-gnu.so
+7f80fa7cd000-7f80fa7cf000 rw-p 0000e000 ca:01 2818287                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/scipy/_lib/_ccallback_c.cpython-36m-x86_64-linux-gnu.so
+7f80fa7cf000-7f80fa90f000 rw-p 00000000 00:00 0 
+7f80fa90f000-7f80fa910000 r-xp 00000000 ca:01 6927                       /usr/lib/python3.6/lib-dynload/_opcode.cpython-36m-x86_64-linux-gnu.so
+7f80fa910000-7f80fab0f000 ---p 00001000 ca:01 6927                       /usr/lib/python3.6/lib-dynload/_opcode.cpython-36m-x86_64-linux-gnu.so
+7f80fab0f000-7f80fab10000 r--p 00000000 ca:01 6927                       /usr/lib/python3.6/lib-dynload/_opcode.cpython-36m-x86_64-linux-gnu.so
+7f80fab10000-7f80fab11000 rw-p 00001000 ca:01 6927                       /usr/lib/python3.6/lib-dynload/_opcode.cpython-36m-x86_64-linux-gnu.so
+7f80fab11000-7f80fab51000 rw-p 00000000 00:00 0 
+7f80fab51000-7f80fab52000 ---p 00000000 00:00 0 
+7f80fab52000-7f80fb512000 rw-p 00000000 00:00 0 
+7f80fb512000-7f80fb5aa000 r-xp 00000000 ca:01 2585625                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_generator.cpython-36m-x86_64-linux-gnu.so
+7f80fb5aa000-7f80fb7a9000 ---p 00098000 ca:01 2585625                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_generator.cpython-36m-x86_64-linux-gnu.so
+7f80fb7a9000-7f80fb7aa000 r--p 00097000 ca:01 2585625                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_generator.cpython-36m-x86_64-linux-gnu.so
+7f80fb7aa000-7f80fb7ce000 rw-p 00098000 ca:01 2585625                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_generator.cpython-36m-x86_64-linux-gnu.so
+7f80fb7ce000-7f80fb7d0000 rw-p 00000000 00:00 0 
+7f80fb7d0000-7f80fb7dc000 r-xp 00000000 ca:01 2585628                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_sfc64.cpython-36m-x86_64-linux-gnu.so
+7f80fb7dc000-7f80fb9db000 ---p 0000c000 ca:01 2585628                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_sfc64.cpython-36m-x86_64-linux-gnu.so
+7f80fb9db000-7f80fb9dc000 r--p 0000b000 ca:01 2585628                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_sfc64.cpython-36m-x86_64-linux-gnu.so
+7f80fb9dc000-7f80fb9dd000 rw-p 0000c000 ca:01 2585628                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_sfc64.cpython-36m-x86_64-linux-gnu.so
+7f80fb9dd000-7f80fb9ec000 r-xp 00000000 ca:01 2585618                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_pcg64.cpython-36m-x86_64-linux-gnu.so
+7f80fb9ec000-7f80fbbeb000 ---p 0000f000 ca:01 2585618                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_pcg64.cpython-36m-x86_64-linux-gnu.so
+7f80fbbeb000-7f80fbbec000 r--p 0000e000 ca:01 2585618                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_pcg64.cpython-36m-x86_64-linux-gnu.so
+7f80fbbec000-7f80fbbee000 rw-p 0000f000 ca:01 2585618                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_pcg64.cpython-36m-x86_64-linux-gnu.so
+7f80fbbee000-7f80fbc01000 r-xp 00000000 ca:01 2585623                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_philox.cpython-36m-x86_64-linux-gnu.so
+7f80fbc01000-7f80fbe00000 ---p 00013000 ca:01 2585623                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_philox.cpython-36m-x86_64-linux-gnu.so
+7f80fbe00000-7f80fbe01000 r--p 00012000 ca:01 2585623                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_philox.cpython-36m-x86_64-linux-gnu.so
+7f80fbe01000-7f80fbe03000 rw-p 00013000 ca:01 2585623                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_philox.cpython-36m-x86_64-linux-gnu.so
+7f80fbe03000-7f80fbe19000 r-xp 00000000 ca:01 2585629                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_mt19937.cpython-36m-x86_64-linux-gnu.so
+7f80fbe19000-7f80fc018000 ---p 00016000 ca:01 2585629                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_mt19937.cpython-36m-x86_64-linux-gnu.so
+7f80fc018000-7f80fc019000 r--p 00015000 ca:01 2585629                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_mt19937.cpython-36m-x86_64-linux-gnu.so
+7f80fc019000-7f80fc01b000 rw-p 00016000 ca:01 2585629                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_mt19937.cpython-36m-x86_64-linux-gnu.so
+7f80fc01b000-7f80fc06d000 r-xp 00000000 ca:01 2585616                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_bounded_integers.cpython-36m-x86_64-linux-gnu.so
+7f80fc06d000-7f80fc26c000 ---p 00052000 ca:01 2585616                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_bounded_integers.cpython-36m-x86_64-linux-gnu.so
+7f80fc26c000-7f80fc26d000 r--p 00051000 ca:01 2585616                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_bounded_integers.cpython-36m-x86_64-linux-gnu.so
+7f80fc26d000-7f80fc26e000 rw-p 00052000 ca:01 2585616                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_bounded_integers.cpython-36m-x86_64-linux-gnu.so
+7f80fc26e000-7f80fc26f000 rw-p 00000000 00:00 0 
+7f80fc26f000-7f80fc50a000 r-xp 00000000 ca:01 6184                       /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1
+7f80fc50a000-7f80fc709000 ---p 0029b000 ca:01 6184                       /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1
+7f80fc709000-7f80fc735000 r--p 0029a000 ca:01 6184                       /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1
+7f80fc735000-7f80fc737000 rw-p 002c6000 ca:01 6184                       /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1
+7f80fc737000-7f80fc73a000 rw-p 00000000 00:00 0 
+7f80fc73a000-7f80fc740000 r-xp 00000000 ca:01 6926                       /usr/lib/python3.6/lib-dynload/_hashlib.cpython-36m-x86_64-linux-gnu.so
+7f80fc740000-7f80fc93f000 ---p 00006000 ca:01 6926                       /usr/lib/python3.6/lib-dynload/_hashlib.cpython-36m-x86_64-linux-gnu.so
+7f80fc93f000-7f80fc940000 r--p 00005000 ca:01 6926                       /usr/lib/python3.6/lib-dynload/_hashlib.cpython-36m-x86_64-linux-gnu.so
+7f80fc940000-7f80fc941000 rw-p 00006000 ca:01 6926                       /usr/lib/python3.6/lib-dynload/_hashlib.cpython-36m-x86_64-linux-gnu.so
+7f80fc941000-7f80fc978000 r-xp 00000000 ca:01 2585630                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_common.cpython-36m-x86_64-linux-gnu.so
+7f80fc978000-7f80fcb77000 ---p 00037000 ca:01 2585630                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_common.cpython-36m-x86_64-linux-gnu.so
+7f80fcb77000-7f80fcb78000 r--p 00036000 ca:01 2585630                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_common.cpython-36m-x86_64-linux-gnu.so
+7f80fcb78000-7f80fcb7a000 rw-p 00037000 ca:01 2585630                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/_common.cpython-36m-x86_64-linux-gnu.so
+7f80fcb7a000-7f80fcb7b000 rw-p 00000000 00:00 0 
+7f80fcb7b000-7f80fcba1000 r-xp 00000000 ca:01 2585617                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/bit_generator.cpython-36m-x86_64-linux-gnu.so
+7f80fcba1000-7f80fcda0000 ---p 00026000 ca:01 2585617                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/bit_generator.cpython-36m-x86_64-linux-gnu.so
+7f80fcda0000-7f80fcda1000 r--p 00025000 ca:01 2585617                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/bit_generator.cpython-36m-x86_64-linux-gnu.so
+7f80fcda1000-7f80fcda6000 rw-p 00026000 ca:01 2585617                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/bit_generator.cpython-36m-x86_64-linux-gnu.so
+7f80fcda6000-7f80fce1e000 r-xp 00000000 ca:01 2585619                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/mtrand.cpython-36m-x86_64-linux-gnu.so
+7f80fce1e000-7f80fd01d000 ---p 00078000 ca:01 2585619                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/mtrand.cpython-36m-x86_64-linux-gnu.so
+7f80fd01d000-7f80fd01e000 r--p 00077000 ca:01 2585619                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/mtrand.cpython-36m-x86_64-linux-gnu.so
+7f80fd01e000-7f80fd044000 rw-p 00078000 ca:01 2585619                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/random/mtrand.cpython-36m-x86_64-linux-gnu.so
+7f80fd044000-7f80fd0c6000 rw-p 00000000 00:00 0 
+7f80fd0c6000-7f80fd0db000 r-xp 00000000 ca:01 2585590                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/fft/_pocketfft_internal.cpython-36m-x86_64-linux-gnu.so
+7f80fd0db000-7f80fd2db000 ---p 00015000 ca:01 2585590                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/fft/_pocketfft_internal.cpython-36m-x86_64-linux-gnu.so
+7f80fd2db000-7f80fd2dc000 r--p 00015000 ca:01 2585590                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/fft/_pocketfft_internal.cpython-36m-x86_64-linux-gnu.so
+7f80fd2dc000-7f80fd2dd000 rw-p 00016000 ca:01 2585590                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/fft/_pocketfft_internal.cpython-36m-x86_64-linux-gnu.so
+7f80fd2dd000-7f80fd314000 r-xp 00000000 ca:01 6226                       /usr/lib/x86_64-linux-gnu/libmpdec.so.2.4.2
+7f80fd314000-7f80fd513000 ---p 00037000 ca:01 6226                       /usr/lib/x86_64-linux-gnu/libmpdec.so.2.4.2
+7f80fd513000-7f80fd514000 r--p 00036000 ca:01 6226                       /usr/lib/x86_64-linux-gnu/libmpdec.so.2.4.2
+7f80fd514000-7f80fd515000 rw-p 00037000 ca:01 6226                       /usr/lib/x86_64-linux-gnu/libmpdec.so.2.4.2
+7f80fd515000-7f80fd537000 r-xp 00000000 ca:01 7454                       /usr/lib/python3.6/lib-dynload/_decimal.cpython-36m-x86_64-linux-gnu.so
+7f80fd537000-7f80fd736000 ---p 00022000 ca:01 7454                       /usr/lib/python3.6/lib-dynload/_decimal.cpython-36m-x86_64-linux-gnu.so
+7f80fd736000-7f80fd737000 r--p 00021000 ca:01 7454                       /usr/lib/python3.6/lib-dynload/_decimal.cpython-36m-x86_64-linux-gnu.so
+7f80fd737000-7f80fd740000 rw-p 00022000 ca:01 7454                       /usr/lib/python3.6/lib-dynload/_decimal.cpython-36m-x86_64-linux-gnu.so
+7f80fd740000-7f80fd780000 rw-p 00000000 00:00 0 
+7f80fd780000-7f80fd786000 r-xp 00000000 ca:01 7462                       /usr/lib/python3.6/lib-dynload/_lzma.cpython-36m-x86_64-linux-gnu.so
+7f80fd786000-7f80fd985000 ---p 00006000 ca:01 7462                       /usr/lib/python3.6/lib-dynload/_lzma.cpython-36m-x86_64-linux-gnu.so
+7f80fd985000-7f80fd986000 r--p 00005000 ca:01 7462                       /usr/lib/python3.6/lib-dynload/_lzma.cpython-36m-x86_64-linux-gnu.so
+7f80fd986000-7f80fd988000 rw-p 00006000 ca:01 7462                       /usr/lib/python3.6/lib-dynload/_lzma.cpython-36m-x86_64-linux-gnu.so
+7f80fd988000-7f80fd98c000 r-xp 00000000 ca:01 7407                       /usr/lib/python3.6/lib-dynload/_bz2.cpython-36m-x86_64-linux-gnu.so
+7f80fd98c000-7f80fdb8b000 ---p 00004000 ca:01 7407                       /usr/lib/python3.6/lib-dynload/_bz2.cpython-36m-x86_64-linux-gnu.so
+7f80fdb8b000-7f80fdb8c000 r--p 00003000 ca:01 7407                       /usr/lib/python3.6/lib-dynload/_bz2.cpython-36m-x86_64-linux-gnu.so
+7f80fdb8c000-7f80fdb8d000 rw-p 00004000 ca:01 7407                       /usr/lib/python3.6/lib-dynload/_bz2.cpython-36m-x86_64-linux-gnu.so
+7f80fdb8d000-7f80fdc4d000 rw-p 00000000 00:00 0 
+7f80fdc4d000-7f80fdc77000 r-xp 00000000 ca:01 2585431                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/linalg/_umath_linalg.cpython-36m-x86_64-linux-gnu.so
+7f80fdc77000-7f80fde76000 ---p 0002a000 ca:01 2585431                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/linalg/_umath_linalg.cpython-36m-x86_64-linux-gnu.so
+7f80fde76000-7f80fde77000 r--p 00029000 ca:01 2585431                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/linalg/_umath_linalg.cpython-36m-x86_64-linux-gnu.so
+7f80fde77000-7f80fde78000 rw-p 0002a000 ca:01 2585431                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/linalg/_umath_linalg.cpython-36m-x86_64-linux-gnu.so
+7f80fde78000-7f80fde79000 rw-p 00000000 00:00 0 
+7f80fde79000-7f80fde7c000 rw-p 00031000 ca:01 2585431                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/linalg/_umath_linalg.cpython-36m-x86_64-linux-gnu.so
+7f80fde7c000-7f80fde7f000 r-xp 00000000 ca:01 2585429                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/linalg/lapack_lite.cpython-36m-x86_64-linux-gnu.so
+7f80fde7f000-7f80fe07e000 ---p 00003000 ca:01 2585429                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/linalg/lapack_lite.cpython-36m-x86_64-linux-gnu.so
+7f80fe07e000-7f80fe07f000 r--p 00002000 ca:01 2585429                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/linalg/lapack_lite.cpython-36m-x86_64-linux-gnu.so
+7f80fe07f000-7f80fe080000 rw-p 00003000 ca:01 2585429                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/linalg/lapack_lite.cpython-36m-x86_64-linux-gnu.so
+7f80fe080000-7f80fe082000 rw-p 00005000 ca:01 2585429                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/linalg/lapack_lite.cpython-36m-x86_64-linux-gnu.so
+7f80fe082000-7f80fe0c2000 rw-p 00000000 00:00 0 
+7f80fe0c2000-7f80fe0dd000 r-xp 00000000 ca:01 7444                       /usr/lib/python3.6/lib-dynload/_ctypes.cpython-36m-x86_64-linux-gnu.so
+7f80fe0dd000-7f80fe2dc000 ---p 0001b000 ca:01 7444                       /usr/lib/python3.6/lib-dynload/_ctypes.cpython-36m-x86_64-linux-gnu.so
+7f80fe2dc000-7f80fe2dd000 r--p 0001a000 ca:01 7444                       /usr/lib/python3.6/lib-dynload/_ctypes.cpython-36m-x86_64-linux-gnu.so
+7f80fe2dd000-7f80fe2e1000 rw-p 0001b000 ca:01 7444                       /usr/lib/python3.6/lib-dynload/_ctypes.cpython-36m-x86_64-linux-gnu.so
+7f80fe2e1000-7f80fe3a1000 rw-p 00000000 00:00 0 
+7f80fe3a1000-7f80fe3c2000 r-xp 00000000 ca:01 2585471                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/core/_multiarray_tests.cpython-36m-x86_64-linux-gnu.so
+7f80fe3c2000-7f80fe5c2000 ---p 00021000 ca:01 2585471                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/core/_multiarray_tests.cpython-36m-x86_64-linux-gnu.so
+7f80fe5c2000-7f80fe5c3000 r--p 00021000 ca:01 2585471                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/core/_multiarray_tests.cpython-36m-x86_64-linux-gnu.so
+7f80fe5c3000-7f80fe5c5000 rw-p 00022000 ca:01 2585471                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/core/_multiarray_tests.cpython-36m-x86_64-linux-gnu.so
+7f80fe5c5000-7f80fe785000 rw-p 00000000 00:00 0 
+7f80fe785000-7f81002bd000 r-xp 00000000 ca:01 2585668                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-ae94cfde.3.9.dev.so
+7f81002bd000-7f81004bd000 ---p 01b38000 ca:01 2585668                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-ae94cfde.3.9.dev.so
+7f81004bd000-7f81004c3000 r--p 01b38000 ca:01 2585668                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-ae94cfde.3.9.dev.so
+7f81004c3000-7f81004d8000 rw-p 01b3e000 ca:01 2585668                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-ae94cfde.3.9.dev.so
+7f81004d8000-7f81004e4000 rw-p 00000000 00:00 0 
+7f81004e4000-7f8100564000 rw-p 01c30000 ca:01 2585668                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-ae94cfde.3.9.dev.so
+7f8100564000-7f8103c26000 r-xp 00000000 ca:01 59926                      /usr/lib/x86_64-linux-gnu/libLLVM-6.0.so.1
+7f8103c26000-7f8103c27000 ---p 036c2000 ca:01 59926                      /usr/lib/x86_64-linux-gnu/libLLVM-6.0.so.1
+7f8103c27000-7f8103f97000 r--p 036c2000 ca:01 59926                      /usr/lib/x86_64-linux-gnu/libLLVM-6.0.so.1
+7f8103f97000-7f8103fa5000 rw-p 03a32000 ca:01 59926                      /usr/lib/x86_64-linux-gnu/libLLVM-6.0.so.1
+7f8103fa5000-7f8104000000 rw-p 00000000 00:00 0 
+7f8104000000-7f810484b000 rw-p 00000000 00:00 0 
+7f810484b000-7f8108000000 ---p 00000000 00:00 0 
+7f8108028000-7f810803d000 r-xp 00000000 ca:01 2585671                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libz-eb09ad1d.so.1.2.3
+7f810803d000-7f810823c000 ---p 00015000 ca:01 2585671                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libz-eb09ad1d.so.1.2.3
+7f810823c000-7f810823d000 r--p 00014000 ca:01 2585671                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libz-eb09ad1d.so.1.2.3
+7f810823d000-7f810823f000 rw-p 00015000 ca:01 2585671                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libz-eb09ad1d.so.1.2.3
+7f810823f000-7f810827e000 r-xp 00000000 ca:01 2585670                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libquadmath-2d0c479f.so.0.0.0
+7f810827e000-7f810847d000 ---p 0003f000 ca:01 2585670                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libquadmath-2d0c479f.so.0.0.0
+7f810847d000-7f810847e000 rw-p 0003e000 ca:01 2585670                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libquadmath-2d0c479f.so.0.0.0
+7f810847e000-7f810847f000 rw-p 00040000 ca:01 2585670                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libquadmath-2d0c479f.so.0.0.0
+7f810847f000-7f8108687000 r-xp 00000000 ca:01 2585669                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libgfortran-2e0d59d6.so.5.0.0
+7f8108687000-7f8108886000 ---p 00208000 ca:01 2585669                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libgfortran-2e0d59d6.so.5.0.0
+7f8108886000-7f81088a7000 rw-p 00207000 ca:01 2585669                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy.libs/libgfortran-2e0d59d6.so.5.0.0
+7f81088a7000-7f8108c30000 r-xp 00000000 ca:01 2585465                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/core/_multiarray_umath.cpython-36m-x86_64-linux-gnu.so
+7f8108c30000-7f8108e30000 ---p 00389000 ca:01 2585465                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/core/_multiarray_umath.cpython-36m-x86_64-linux-gnu.so
+7f8108e30000-7f8108e32000 r--p 00389000 ca:01 2585465                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/core/_multiarray_umath.cpython-36m-x86_64-linux-gnu.so
+7f8108e32000-7f8108e4f000 rw-p 0038b000 ca:01 2585465                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/core/_multiarray_umath.cpython-36m-x86_64-linux-gnu.so
+7f8108e4f000-7f8108e70000 rw-p 00000000 00:00 0 
+7f8108e70000-7f8108e77000 rw-p 003f3000 ca:01 2585465                    /home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib/python3.6/site-packages/numpy/core/_multiarray_umath.cpython-36m-x86_64-linux-gnu.so
+7f8108e77000-7f8109077000 rw-p 00000000 00:00 0 
+7f8109077000-7f810944e000 r-xp 00000000 ca:01 4144                       /usr/lib/x86_64-linux-gnu/libpython3.6m.so.1.0
+7f810944e000-7f810964d000 ---p 003d7000 ca:01 4144                       /usr/lib/x86_64-linux-gnu/libpython3.6m.so.1.0
+7f810964d000-7f8109651000 r--p 003d6000 ca:01 4144                       /usr/lib/x86_64-linux-gnu/libpython3.6m.so.1.0
+7f8109651000-7f81096ee000 rw-p 003da000 ca:01 4144                       /usr/lib/x86_64-linux-gnu/libpython3.6m.so.1.0
+7f81096ee000-7f8109722000 rw-p 00000000 00:00 0 
+7f8109722000-7f8109723000 r-xp 00000000 ca:01 1037467                    /usr/local/lib/R/site-library/rappdirs/libs/rappdirs.so
+7f8109723000-7f8109922000 ---p 00001000 ca:01 1037467                    /usr/local/lib/R/site-library/rappdirs/libs/rappdirs.so
+7f8109922000-7f8109923000 r--p 00000000 ca:01 1037467                    /usr/local/lib/R/site-library/rappdirs/libs/rappdirs.so
+7f8109923000-7f8109924000 rw-p 00001000 ca:01 1037467                    /usr/local/lib/R/site-library/rappdirs/libs/rappdirs.so
+7f8109924000-7f8109925000 ---p 00000000 00:00 0 
+7f8109925000-7f810a125000 rw-p 00000000 00:00 0 
+7f810a125000-7f810a127000 r-xp 00000000 ca:01 538969                     /usr/local/lib/R/site-library/xfun/libs/xfun.so
+7f810a127000-7f810a326000 ---p 00002000 ca:01 538969                     /usr/local/lib/R/site-library/xfun/libs/xfun.so
+7f810a326000-7f810a327000 r--p 00001000 ca:01 538969                     /usr/local/lib/R/site-library/xfun/libs/xfun.so
+7f810a327000-7f810a328000 rw-p 00002000 ca:01 538969                     /usr/local/lib/R/site-library/xfun/libs/xfun.so
+7f810a328000-7f810a34a000 r-xp 00000000 ca:01 537753                     /usr/local/lib/R/site-library/digest/libs/digest.so
+7f810a34a000-7f810a549000 ---p 00022000 ca:01 537753                     /usr/local/lib/R/site-library/digest/libs/digest.so
+7f810a549000-7f810a54a000 r--p 00021000 ca:01 537753                     /usr/local/lib/R/site-library/digest/libs/digest.so
+7f810a54a000-7f810a54b000 rw-p 00022000 ca:01 537753                     /usr/local/lib/R/site-library/digest/libs/digest.so
+7f810a54b000-7f810a54d000 rw-p 00000000 00:00 0 
+7f810a54d000-7f810bf15000 r-xp 00000000 ca:01 59948                      /usr/lib/x86_64-linux-gnu/libclang-6.0.so.1
+7f810bf15000-7f810bffa000 r--p 019c7000 ca:01 59948                      /usr/lib/x86_64-linux-gnu/libclang-6.0.so.1
+7f810bffa000-7f810bffc000 rw-p 01aac000 ca:01 59948                      /usr/lib/x86_64-linux-gnu/libclang-6.0.so.1
+7f810bffc000-7f810c000000 rw-p 00000000 00:00 0 
+7f810c000000-7f810c021000 rw-p 00000000 00:00 0 
+7f810c021000-7f8110000000 ---p 00000000 00:00 0 
+7f8110000000-7f81112c5000 rw-p 00000000 00:00 0 
+7f81112c5000-7f8114000000 ---p 00000000 00:00 0 
+7f8114000000-7f8114021000 rw-p 00000000 00:00 0 
+7f8114021000-7f8118000000 ---p 00000000 00:00 0 
+7f8118000000-7f81181cc000 rw-p 00000000 00:00 0 
+7f81181cc000-7f811c000000 ---p 00000000 00:00 0 
+7f811c000000-7f811c027000 rw-p 00000000 00:00 0 
+7f811c027000-7f8120000000 ---p 00000000 00:00 0 
+7f812001c000-7f812001e000 r-xp 00000000 ca:01 1282347                    /usr/local/lib/R/site-library/htmltools/libs/htmltools.so
+7f812001e000-7f812021d000 ---p 00002000 ca:01 1282347                    /usr/local/lib/R/site-library/htmltools/libs/htmltools.so
+7f812021d000-7f812021e000 r--p 00001000 ca:01 1282347                    /usr/local/lib/R/site-library/htmltools/libs/htmltools.so
+7f812021e000-7f812021f000 rw-p 00002000 ca:01 1282347                    /usr/local/lib/R/site-library/htmltools/libs/htmltools.so
+7f812021f000-7f812044c000 rw-p 00000000 00:00 0 
+7f812044c000-7f8120460000 r-xp 00000000 ca:01 1034330                    /usr/local/lib/R/site-library/fansi/libs/fansi.so
+7f8120460000-7f812065f000 ---p 00014000 ca:01 1034330                    /usr/local/lib/R/site-library/fansi/libs/fansi.so
+7f812065f000-7f8120660000 r--p 00013000 ca:01 1034330                    /usr/local/lib/R/site-library/fansi/libs/fansi.so
+7f8120660000-7f8120661000 rw-p 00014000 ca:01 1034330                    /usr/local/lib/R/site-library/fansi/libs/fansi.so
+7f8120661000-7f8120663000 r-xp 00000000 ca:01 4953                       /usr/lib/x86_64-linux-gnu/gconv/ISO8859-1.so
+7f8120663000-7f8120862000 ---p 00002000 ca:01 4953                       /usr/lib/x86_64-linux-gnu/gconv/ISO8859-1.so
+7f8120862000-7f8120863000 r--p 00001000 ca:01 4953                       /usr/lib/x86_64-linux-gnu/gconv/ISO8859-1.so
+7f8120863000-7f8120864000 rw-p 00002000 ca:01 4953                       /usr/lib/x86_64-linux-gnu/gconv/ISO8859-1.so
+7f8120864000-7f8120895000 r-xp 00000000 ca:01 6317                       /usr/lib/x86_64-linux-gnu/libedit.so.2.0.56
+7f8120895000-7f8120a94000 ---p 00031000 ca:01 6317                       /usr/lib/x86_64-linux-gnu/libedit.so.2.0.56
+7f8120a94000-7f8120a96000 r--p 00030000 ca:01 6317                       /usr/lib/x86_64-linux-gnu/libedit.so.2.0.56
+7f8120a96000-7f8120a97000 rw-p 00032000 ca:01 6317                       /usr/lib/x86_64-linux-gnu/libedit.so.2.0.56
+7f8120a97000-7f8120a9b000 rw-p 00000000 00:00 0 
+7f8120a9b000-7f8120aa2000 r-xp 00000000 ca:01 6216                       /usr/lib/x86_64-linux-gnu/libffi.so.6.0.4
+7f8120aa2000-7f8120ca1000 ---p 00007000 ca:01 6216                       /usr/lib/x86_64-linux-gnu/libffi.so.6.0.4
+7f8120ca1000-7f8120ca2000 r--p 00006000 ca:01 6216                       /usr/lib/x86_64-linux-gnu/libffi.so.6.0.4
+7f8120ca2000-7f8120ca3000 rw-p 00007000 ca:01 6216                       /usr/lib/x86_64-linux-gnu/libffi.so.6.0.4
+7f8120ca3000-7f8120ca4000 ---p 00000000 00:00 0 
+7f8120ca4000-7f81214a4000 rw-p 00000000 00:00 0 
+7f81214a4000-7f81214a5000 ---p 00000000 00:00 0 
+7f81214a5000-7f8121ca5000 rw-p 00000000 00:00 0 
+7f8121ca5000-7f8121cbf000 r-xp 00000000 ca:01 537123                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/tokenizers/libs/tokenizers.so
+7f8121cbf000-7f8121ebf000 ---p 0001a000 ca:01 537123                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/tokenizers/libs/tokenizers.so
+7f8121ebf000-7f8121ec0000 r--p 0001a000 ca:01 537123                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/tokenizers/libs/tokenizers.so
+7f8121ec0000-7f8121ec1000 rw-p 0001b000 ca:01 537123                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/tokenizers/libs/tokenizers.so
+7f8121ec1000-7f8121efe000 r-xp 00000000 ca:01 536040                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/SnowballC/libs/SnowballC.so
+7f8121efe000-7f81220fd000 ---p 0003d000 ca:01 536040                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/SnowballC/libs/SnowballC.so
+7f81220fd000-7f8122124000 r--p 0003c000 ca:01 536040                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/SnowballC/libs/SnowballC.so
+7f8122124000-7f8122125000 rw-p 00063000 ca:01 536040                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/SnowballC/libs/SnowballC.so
+7f8122125000-7f812213f000 r-xp 00000000 ca:01 1282544                    /usr/local/lib/R/site-library/tidyr/libs/tidyr.so
+7f812213f000-7f812233e000 ---p 0001a000 ca:01 1282544                    /usr/local/lib/R/site-library/tidyr/libs/tidyr.so
+7f812233e000-7f812233f000 r--p 00019000 ca:01 1282544                    /usr/local/lib/R/site-library/tidyr/libs/tidyr.so
+7f812233f000-7f8122340000 rw-p 0001a000 ca:01 1282544                    /usr/local/lib/R/site-library/tidyr/libs/tidyr.so
+7f8122340000-7f8122356000 r-xp 00000000 ca:01 1794426                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libnet.so
+7f8122356000-7f8122555000 ---p 00016000 ca:01 1794426                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libnet.so
+7f8122555000-7f8122556000 r--p 00015000 ca:01 1794426                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libnet.so
+7f8122556000-7f8122557000 rw-p 00016000 ca:01 1794426                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libnet.so
+7f8122557000-7f8122567000 r-xp 00000000 ca:01 1794427                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libnio.so
+7f8122567000-7f8122766000 ---p 00010000 ca:01 1794427                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libnio.so
+7f8122766000-7f8122767000 r--p 0000f000 ca:01 1794427                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libnio.so
+7f8122767000-7f8122768000 rw-p 00010000 ca:01 1794427                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libnio.so
+7f8122768000-7f812276d000 r-xp 00000000 ca:01 1542683                    /usr/local/lib/R/site-library/png/libs/png.so
+7f812276d000-7f812296c000 ---p 00005000 ca:01 1542683                    /usr/local/lib/R/site-library/png/libs/png.so
+7f812296c000-7f812296d000 r--p 00004000 ca:01 1542683                    /usr/local/lib/R/site-library/png/libs/png.so
+7f812296d000-7f812296e000 rw-p 00005000 ca:01 1542683                    /usr/local/lib/R/site-library/png/libs/png.so
+7f812296e000-7f8122972000 ---p 00000000 00:00 0 
+7f8122972000-7f8122b6f000 rw-p 00000000 00:00 0 
+7f8122b6f000-7f8122b70000 ---p 00000000 00:00 0 
+7f8122b70000-7f8122c71000 rw-p 00000000 00:00 0 
+7f8122c71000-7f8122c75000 ---p 00000000 00:00 0 
+7f8122c75000-7f8122e72000 rw-p 00000000 00:00 0 
+7f8122e72000-7f8122e76000 ---p 00000000 00:00 0 
+7f8122e76000-7f8123073000 rw-p 00000000 00:00 0 
+7f8123073000-7f8123077000 ---p 00000000 00:00 0 
+7f8123077000-7f8123174000 rw-p 00000000 00:00 0 
+7f8123174000-7f8123178000 ---p 00000000 00:00 0 
+7f8123178000-7f8123275000 rw-p 00000000 00:00 0 
+7f8123275000-7f8123279000 ---p 00000000 00:00 0 
+7f8123279000-7f8123476000 rw-p 00000000 00:00 0 
+7f8123476000-7f812347a000 ---p 00000000 00:00 0 
+7f812347a000-7f8123677000 rw-p 00000000 00:00 0 
+7f8123677000-7f812367b000 ---p 00000000 00:00 0 
+7f812367b000-7f8123878000 rw-p 00000000 00:00 0 
+7f8123878000-7f8123879000 ---p 00000000 00:00 0 
+7f8123879000-7f8123fba000 rw-p 00000000 00:00 0 
+7f8123fba000-7f812417a000 ---p 00000000 00:00 0 
+7f812417a000-7f8124180000 rw-p 00000000 00:00 0 
+7f8124180000-7f81241cf000 ---p 00000000 00:00 0 
+7f81241cf000-7f81241db000 rw-p 00000000 00:00 0 
+7f81241db000-7f812427a000 ---p 00000000 00:00 0 
+7f812427a000-7f8124280000 rw-p 00000000 00:00 0 
+7f8124280000-7f8124366000 ---p 00000000 00:00 0 
+7f8124366000-7f81245d6000 rwxp 00000000 00:00 0 
+7f81245d6000-7f81248f5000 ---p 00000000 00:00 0 
+7f81248f5000-7f8124c45000 rwxp 00000000 00:00 0 
+7f8124c45000-7f812be2d000 ---p 00000000 00:00 0 
+7f812be2d000-7f812c09d000 rwxp 00000000 00:00 0 
+7f812c09d000-7f8133366000 ---p 00000000 00:00 0 
+7f8133366000-7f813336d000 r-xp 00000000 ca:01 1794435                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libzip.so
+7f813336d000-7f813356c000 ---p 00007000 ca:01 1794435                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libzip.so
+7f813356c000-7f813356d000 r--p 00006000 ca:01 1794435                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libzip.so
+7f813356d000-7f813356e000 rw-p 00007000 ca:01 1794435                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libzip.so
+7f813356e000-7f813bcd5000 r--s 00000000 ca:01 1794436                    /usr/lib/jvm/java-11-openjdk-amd64/lib/modules
+7f813bcd5000-7f813bcda000 r-xp 00000000 ca:01 1794418                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libjimage.so
+7f813bcda000-7f813bed9000 ---p 00005000 ca:01 1794418                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libjimage.so
+7f813bed9000-7f813beda000 r--p 00004000 ca:01 1794418                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libjimage.so
+7f813beda000-7f813bedb000 rw-p 00005000 ca:01 1794418                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libjimage.so
+7f813bedb000-7f813bf04000 r-xp 00000000 ca:01 1794414                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libjava.so
+7f813bf04000-7f813c104000 ---p 00029000 ca:01 1794414                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libjava.so
+7f813c104000-7f813c105000 r--p 00029000 ca:01 1794414                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libjava.so
+7f813c105000-7f813c106000 rw-p 0002a000 ca:01 1794414                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libjava.so
+7f813c106000-7f813c107000 rw-p 00000000 00:00 0 
+7f813c107000-7f813c114000 r-xp 00000000 ca:01 1794434                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libverify.so
+7f813c114000-7f813c313000 ---p 0000d000 ca:01 1794434                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libverify.so
+7f813c313000-7f813c315000 r--p 0000c000 ca:01 1794434                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libverify.so
+7f813c315000-7f813c316000 rw-p 0000e000 ca:01 1794434                    /usr/lib/jvm/java-11-openjdk-amd64/lib/libverify.so
+7f813c316000-7f813d507000 r-xp 00000000 ca:01 1794439                    /usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so
+7f813d507000-7f813d706000 ---p 011f1000 ca:01 1794439                    /usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so
+7f813d706000-7f813d7c7000 r--p 011f0000 ca:01 1794439                    /usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so
+7f813d7c7000-7f813d802000 rw-p 012b1000 ca:01 1794439                    /usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so
+7f813d802000-7f813d859000 rw-p 00000000 00:00 0 
+7f813d859000-7f813d869000 r-xp 00000000 ca:01 536859                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/rJava/libs/rJava.so
+7f813d869000-7f813da68000 ---p 00010000 ca:01 536859                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/rJava/libs/rJava.so
+7f813da68000-7f813da69000 r--p 0000f000 ca:01 536859                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/rJava/libs/rJava.so
+7f813da69000-7f813da6a000 rw-p 00010000 ca:01 536859                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/rJava/libs/rJava.so
+7f813da6a000-7f813dab6000 r-xp 00000000 ca:01 540581                     /usr/local/lib/R/site-library/reticulate/libs/reticulate.so
+7f813dab6000-7f813dcb5000 ---p 0004c000 ca:01 540581                     /usr/local/lib/R/site-library/reticulate/libs/reticulate.so
+7f813dcb5000-7f813dcb7000 r--p 0004b000 ca:01 540581                     /usr/local/lib/R/site-library/reticulate/libs/reticulate.so
+7f813dcb7000-7f813dcb8000 rw-p 0004d000 ca:01 540581                     /usr/local/lib/R/site-library/reticulate/libs/reticulate.so
+7f813dcb8000-7f813dcb9000 rw-p 00000000 00:00 0 
+7f813dcb9000-7f813dcc7000 r-xp 00000000 ca:01 538366                     /usr/local/lib/R/site-library/jsonlite/libs/jsonlite.so
+7f813dcc7000-7f813dec6000 ---p 0000e000 ca:01 538366                     /usr/local/lib/R/site-library/jsonlite/libs/jsonlite.so
+7f813dec6000-7f813dec7000 r--p 0000d000 ca:01 538366                     /usr/local/lib/R/site-library/jsonlite/libs/jsonlite.so
+7f813dec7000-7f813dec8000 rw-p 0000e000 ca:01 538366                     /usr/local/lib/R/site-library/jsonlite/libs/jsonlite.so
+7f813dec8000-7f813df18000 r-xp 00000000 ca:01 1549658                    /usr/local/lib/R/site-library/readxl/libs/readxl.so
+7f813df18000-7f813e118000 ---p 00050000 ca:01 1549658                    /usr/local/lib/R/site-library/readxl/libs/readxl.so
+7f813e118000-7f813e119000 r--p 00050000 ca:01 1549658                    /usr/local/lib/R/site-library/readxl/libs/readxl.so
+7f813e119000-7f813e11b000 rw-p 00051000 ca:01 1549658                    /usr/local/lib/R/site-library/readxl/libs/readxl.so
+7f813e11b000-7f813e31c000 rw-p 00000000 00:00 0 
+7f813e31c000-7f813e3ba000 r-xp 00000000 ca:01 536872                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/quanteda/libs/quanteda.so
+7f813e3ba000-7f813e5b9000 ---p 0009e000 ca:01 536872                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/quanteda/libs/quanteda.so
+7f813e5b9000-7f813e5bb000 r--p 0009d000 ca:01 536872                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/quanteda/libs/quanteda.so
+7f813e5bb000-7f813e5bc000 rw-p 0009f000 ca:01 536872                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/quanteda/libs/quanteda.so
+7f813e5bc000-7f813e5bf000 rw-p 00000000 00:00 0 
+7f813e5bf000-7f813e5e4000 r-xp 00000000 ca:01 1280053                    /usr/local/lib/R/site-library/yaml/libs/yaml.so
+7f813e5e4000-7f813e7e3000 ---p 00025000 ca:01 1280053                    /usr/local/lib/R/site-library/yaml/libs/yaml.so
+7f813e7e3000-7f813e7e4000 r--p 00024000 ca:01 1280053                    /usr/local/lib/R/site-library/yaml/libs/yaml.so
+7f813e7e4000-7f813e7e5000 rw-p 00025000 ca:01 1280053                    /usr/local/lib/R/site-library/yaml/libs/yaml.so
+7f813e7e5000-7f813e816000 r-xp 00000000 ca:01 1281814                    /usr/local/lib/R/site-library/fs/libs/fs.so
+7f813e816000-7f813ea15000 ---p 00031000 ca:01 1281814                    /usr/local/lib/R/site-library/fs/libs/fs.so
+7f813ea15000-7f813ea16000 r--p 00030000 ca:01 1281814                    /usr/local/lib/R/site-library/fs/libs/fs.so
+7f813ea16000-7f813ea17000 rw-p 00031000 ca:01 1281814                    /usr/local/lib/R/site-library/fs/libs/fs.so
+7f813ea17000-7f813ea1c000 r-xp 00000000 ca:01 535722                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/fastmatch/libs/fastmatch.so
+7f813ea1c000-7f813ec1b000 ---p 00005000 ca:01 535722                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/fastmatch/libs/fastmatch.so
+7f813ec1b000-7f813ec1c000 r--p 00004000 ca:01 535722                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/fastmatch/libs/fastmatch.so
+7f813ec1c000-7f813ec1d000 rw-p 00005000 ca:01 535722                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/fastmatch/libs/fastmatch.so
+7f813ec1d000-7f813ec1e000 r-xp 00000000 ca:01 1280324                    /usr/local/lib/R/site-library/RcppParallel/libs/RcppParallel.so
+7f813ec1e000-7f813ee1e000 ---p 00001000 ca:01 1280324                    /usr/local/lib/R/site-library/RcppParallel/libs/RcppParallel.so
+7f813ee1e000-7f813ee1f000 r--p 00001000 ca:01 1280324                    /usr/local/lib/R/site-library/RcppParallel/libs/RcppParallel.so
+7f813ee1f000-7f813ee20000 rw-p 00002000 ca:01 1280324                    /usr/local/lib/R/site-library/RcppParallel/libs/RcppParallel.so
+7f813ee20000-7f813ee39000 r-xp 00000000 ca:01 1280497                    /usr/local/lib/R/site-library/RcppParallel/lib/libtbbmalloc.so.2
+7f813ee39000-7f813f038000 ---p 00019000 ca:01 1280497                    /usr/local/lib/R/site-library/RcppParallel/lib/libtbbmalloc.so.2
+7f813f038000-7f813f039000 r--p 00018000 ca:01 1280497                    /usr/local/lib/R/site-library/RcppParallel/lib/libtbbmalloc.so.2
+7f813f039000-7f813f03b000 rw-p 00019000 ca:01 1280497                    /usr/local/lib/R/site-library/RcppParallel/lib/libtbbmalloc.so.2
+7f813f03b000-7f813f05e000 rw-p 00000000 00:00 0 
+7f813f05e000-7f813f092000 r-xp 00000000 ca:01 1280495                    /usr/local/lib/R/site-library/RcppParallel/lib/libtbb.so.2
+7f813f092000-7f813f292000 ---p 00034000 ca:01 1280495                    /usr/local/lib/R/site-library/RcppParallel/lib/libtbb.so.2
+7f813f292000-7f813f293000 r--p 00034000 ca:01 1280495                    /usr/local/lib/R/site-library/RcppParallel/lib/libtbb.so.2
+7f813f293000-7f813f295000 rw-p 00035000 ca:01 1280495                    /usr/local/lib/R/site-library/RcppParallel/lib/libtbb.so.2
+7f813f295000-7f813f298000 rw-p 00000000 00:00 0 
+7f813f298000-7f813f2a3000 r-xp 00000000 ca:01 57266                      /usr/lib/x86_64-linux-gnu/libjbig.so.0
+7f813f2a3000-7f813f4a2000 ---p 0000b000 ca:01 57266                      /usr/lib/x86_64-linux-gnu/libjbig.so.0
+7f813f4a2000-7f813f4a3000 r--p 0000a000 ca:01 57266                      /usr/lib/x86_64-linux-gnu/libjbig.so.0
+7f813f4a3000-7f813f4a6000 rw-p 0000b000 ca:01 57266                      /usr/lib/x86_64-linux-gnu/libjbig.so.0
+7f813f4a6000-7f813f4a9000 r-xp 00000000 ca:01 63322                      /usr/lib/x86_64-linux-gnu/libplds4.so
+7f813f4a9000-7f813f6a8000 ---p 00003000 ca:01 63322                      /usr/lib/x86_64-linux-gnu/libplds4.so
+7f813f6a8000-7f813f6a9000 r--p 00002000 ca:01 63322                      /usr/lib/x86_64-linux-gnu/libplds4.so
+7f813f6a9000-7f813f6aa000 rw-p 00003000 ca:01 63322                      /usr/lib/x86_64-linux-gnu/libplds4.so
+7f813f6aa000-7f813f6ae000 r-xp 00000000 ca:01 63321                      /usr/lib/x86_64-linux-gnu/libplc4.so
+7f813f6ae000-7f813f8ad000 ---p 00004000 ca:01 63321                      /usr/lib/x86_64-linux-gnu/libplc4.so
+7f813f8ad000-7f813f8ae000 r--p 00003000 ca:01 63321                      /usr/lib/x86_64-linux-gnu/libplc4.so
+7f813f8ae000-7f813f8af000 rw-p 00004000 ca:01 63321                      /usr/lib/x86_64-linux-gnu/libplc4.so
+7f813f8af000-7f813f8d7000 r-xp 00000000 ca:01 15387                      /usr/lib/x86_64-linux-gnu/libnssutil3.so
+7f813f8d7000-7f813fad6000 ---p 00028000 ca:01 15387                      /usr/lib/x86_64-linux-gnu/libnssutil3.so
+7f813fad6000-7f813fadd000 r--p 00027000 ca:01 15387                      /usr/lib/x86_64-linux-gnu/libnssutil3.so
+7f813fadd000-7f813fade000 rw-p 0002e000 ca:01 15387                      /usr/lib/x86_64-linux-gnu/libnssutil3.so
+7f813fade000-7f813fb0d000 r-xp 00000000 ca:01 2180                       /lib/x86_64-linux-gnu/libexpat.so.1.6.7
+7f813fb0d000-7f813fd0d000 ---p 0002f000 ca:01 2180                       /lib/x86_64-linux-gnu/libexpat.so.1.6.7
+7f813fd0d000-7f813fd0f000 r--p 0002f000 ca:01 2180                       /lib/x86_64-linux-gnu/libexpat.so.1.6.7
+7f813fd0f000-7f813fd10000 rw-p 00031000 ca:01 2180                       /lib/x86_64-linux-gnu/libexpat.so.1.6.7
+7f813fd10000-7f813fd83000 r-xp 00000000 ca:01 57278                      /usr/lib/x86_64-linux-gnu/libtiff.so.5.3.0
+7f813fd83000-7f813ff82000 ---p 00073000 ca:01 57278                      /usr/lib/x86_64-linux-gnu/libtiff.so.5.3.0
+7f813ff82000-7f813ff86000 r--p 00072000 ca:01 57278                      /usr/lib/x86_64-linux-gnu/libtiff.so.5.3.0
+7f813ff86000-7f813ff87000 rw-p 00076000 ca:01 57278                      /usr/lib/x86_64-linux-gnu/libtiff.so.5.3.0
+7f813ff87000-7f813ffb8000 r-xp 00000000 ca:01 6321                       /usr/lib/x86_64-linux-gnu/libpng16.so.16.34.0
+7f813ffb8000-7f81401b7000 ---p 00031000 ca:01 6321                       /usr/lib/x86_64-linux-gnu/libpng16.so.16.34.0
+7f81401b7000-7f81401b8000 r--p 00030000 ca:01 6321                       /usr/lib/x86_64-linux-gnu/libpng16.so.16.34.0
+7f81401b8000-7f81401b9000 rw-p 00031000 ca:01 6321                       /usr/lib/x86_64-linux-gnu/libpng16.so.16.34.0
+7f81401b9000-7f814020b000 r-xp 00000000 ca:01 63314                      /usr/lib/x86_64-linux-gnu/liblcms2.so.2.0.8
+7f814020b000-7f814040b000 ---p 00052000 ca:01 63314                      /usr/lib/x86_64-linux-gnu/liblcms2.so.2.0.8
+7f814040b000-7f814040d000 r--p 00052000 ca:01 63314                      /usr/lib/x86_64-linux-gnu/liblcms2.so.2.0.8
+7f814040d000-7f8140410000 rw-p 00054000 ca:01 63314                      /usr/lib/x86_64-linux-gnu/liblcms2.so.2.0.8
+7f8140410000-7f8140411000 rw-p 00000000 00:00 0 
+7f8140411000-7f814044a000 r-xp 00000000 ca:01 63320                      /usr/lib/x86_64-linux-gnu/libnspr4.so
+7f814044a000-7f8140649000 ---p 00039000 ca:01 63320                      /usr/lib/x86_64-linux-gnu/libnspr4.so
+7f8140649000-7f814064a000 r--p 00038000 ca:01 63320                      /usr/lib/x86_64-linux-gnu/libnspr4.so
+7f814064a000-7f814064b000 rw-p 00039000 ca:01 63320                      /usr/lib/x86_64-linux-gnu/libnspr4.so
+7f814064b000-7f814064e000 rw-p 00000000 00:00 0 
+7f814064e000-7f8140677000 r-xp 00000000 ca:01 19449                      /usr/lib/x86_64-linux-gnu/libsmime3.so
+7f8140677000-7f8140876000 ---p 00029000 ca:01 19449                      /usr/lib/x86_64-linux-gnu/libsmime3.so
+7f8140876000-7f8140879000 r--p 00028000 ca:01 19449                      /usr/lib/x86_64-linux-gnu/libsmime3.so
+7f8140879000-7f814087a000 rw-p 0002b000 ca:01 19449                      /usr/lib/x86_64-linux-gnu/libsmime3.so
+7f814087a000-7f81409b6000 r-xp 00000000 ca:01 15386                      /usr/lib/x86_64-linux-gnu/libnss3.so
+7f81409b6000-7f8140bb6000 ---p 0013c000 ca:01 15386                      /usr/lib/x86_64-linux-gnu/libnss3.so
+7f8140bb6000-7f8140bbb000 r--p 0013c000 ca:01 15386                      /usr/lib/x86_64-linux-gnu/libnss3.so
+7f8140bbb000-7f8140bbd000 rw-p 00141000 ca:01 15386                      /usr/lib/x86_64-linux-gnu/libnss3.so
+7f8140bbd000-7f8140bbe000 rw-p 00000000 00:00 0 
+7f8140bbe000-7f8140bfc000 r-xp 00000000 ca:01 55789                      /usr/lib/x86_64-linux-gnu/libfontconfig.so.1.10.1
+7f8140bfc000-7f8140dfc000 ---p 0003e000 ca:01 55789                      /usr/lib/x86_64-linux-gnu/libfontconfig.so.1.10.1
+7f8140dfc000-7f8140dfe000 r--p 0003e000 ca:01 55789                      /usr/lib/x86_64-linux-gnu/libfontconfig.so.1.10.1
+7f8140dfe000-7f8140e03000 rw-p 00040000 ca:01 55789                      /usr/lib/x86_64-linux-gnu/libfontconfig.so.1.10.1
+7f8140e03000-7f8140eb0000 r-xp 00000000 ca:01 17079                      /usr/lib/x86_64-linux-gnu/libfreetype.so.6.15.0
+7f8140eb0000-7f81410af000 ---p 000ad000 ca:01 17079                      /usr/lib/x86_64-linux-gnu/libfreetype.so.6.15.0
+7f81410af000-7f81410b6000 r--p 000ac000 ca:01 17079                      /usr/lib/x86_64-linux-gnu/libfreetype.so.6.15.0
+7f81410b6000-7f81410b7000 rw-p 000b3000 ca:01 17079                      /usr/lib/x86_64-linux-gnu/libfreetype.so.6.15.0
+7f81410b7000-7f8141309000 r-xp 00000000 ca:01 29317                      /usr/lib/x86_64-linux-gnu/libpoppler.so.73.0.0
+7f8141309000-7f8141509000 ---p 00252000 ca:01 29317                      /usr/lib/x86_64-linux-gnu/libpoppler.so.73.0.0
+7f8141509000-7f8141527000 r--p 00252000 ca:01 29317                      /usr/lib/x86_64-linux-gnu/libpoppler.so.73.0.0
+7f8141527000-7f814154d000 rw-p 00270000 ca:01 29317                      /usr/lib/x86_64-linux-gnu/libpoppler.so.73.0.0
+7f814154d000-7f814155e000 r-xp 00000000 ca:01 29311                      /usr/lib/x86_64-linux-gnu/libpoppler-cpp.so.0.3.0
+7f814155e000-7f814175d000 ---p 00011000 ca:01 29311                      /usr/lib/x86_64-linux-gnu/libpoppler-cpp.so.0.3.0
+7f814175d000-7f814175e000 r--p 00010000 ca:01 29311                      /usr/lib/x86_64-linux-gnu/libpoppler-cpp.so.0.3.0
+7f814175e000-7f814175f000 rw-p 00011000 ca:01 29311                      /usr/lib/x86_64-linux-gnu/libpoppler-cpp.so.0.3.0
+7f814175f000-7f8141784000 r-xp 00000000 ca:01 537292                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/pdftools/libs/pdftools.so
+7f8141784000-7f8141983000 ---p 00025000 ca:01 537292                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/pdftools/libs/pdftools.so
+7f8141983000-7f8141984000 r--p 00024000 ca:01 537292                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/pdftools/libs/pdftools.so
+7f8141984000-7f8141985000 rw-p 00025000 ca:01 537292                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/pdftools/libs/pdftools.so
+7f8141985000-7f81419ec000 r-xp 00000000 ca:01 55819                      /usr/lib/x86_64-linux-gnu/libjpeg.so.8.1.2
+7f81419ec000-7f8141beb000 ---p 00067000 ca:01 55819                      /usr/lib/x86_64-linux-gnu/libjpeg.so.8.1.2
+7f8141beb000-7f8141bec000 r--p 00066000 ca:01 55819                      /usr/lib/x86_64-linux-gnu/libjpeg.so.8.1.2
+7f8141bec000-7f8141bed000 rw-p 00067000 ca:01 55819                      /usr/lib/x86_64-linux-gnu/libjpeg.so.8.1.2
+7f8141bed000-7f8141cda000 r-xp 00000000 ca:01 535879                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/qpdf/libs/qpdf.so
+7f8141cda000-7f8141eda000 ---p 000ed000 ca:01 535879                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/qpdf/libs/qpdf.so
+7f8141eda000-7f8141edc000 r--p 000ed000 ca:01 535879                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/qpdf/libs/qpdf.so
+7f8141edc000-7f8141edd000 rw-p 000ef000 ca:01 535879                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/qpdf/libs/qpdf.so
+7f8141edd000-7f8141eef000 r-xp 00000000 ca:01 1283633                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/e1071/libs/e1071.so
+7f8141eef000-7f81420ee000 ---p 00012000 ca:01 1283633                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/e1071/libs/e1071.so
+7f81420ee000-7f81420ef000 r--p 00011000 ca:01 1283633                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/e1071/libs/e1071.so
+7f81420ef000-7f81420f0000 rw-p 00012000 ca:01 1283633                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/e1071/libs/e1071.so
+7f81420f0000-7f81420f9000 r-xp 00000000 ca:01 535184                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/caTools/libs/caTools.so
+7f81420f9000-7f81422f8000 ---p 00009000 ca:01 535184                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/caTools/libs/caTools.so
+7f81422f8000-7f81422f9000 r--p 00008000 ca:01 535184                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/caTools/libs/caTools.so
+7f81422f9000-7f81422fa000 rw-p 00009000 ca:01 535184                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/caTools/libs/caTools.so
+7f81422fa000-7f81422fc000 r-xp 00000000 ca:01 1034464                    /usr/local/lib/R/site-library/bitops/libs/bitops.so
+7f81422fc000-7f81424fc000 ---p 00002000 ca:01 1034464                    /usr/local/lib/R/site-library/bitops/libs/bitops.so
+7f81424fc000-7f81424fd000 r--p 00002000 ca:01 1034464                    /usr/local/lib/R/site-library/bitops/libs/bitops.so
+7f81424fd000-7f81424fe000 rw-p 00003000 ca:01 1034464                    /usr/local/lib/R/site-library/bitops/libs/bitops.so
+7f81424fe000-7f8142500000 r-xp 00000000 ca:01 1283435                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/caret/libs/caret.so
+7f8142500000-7f81426ff000 ---p 00002000 ca:01 1283435                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/caret/libs/caret.so
+7f81426ff000-7f8142700000 r--p 00001000 ca:01 1283435                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/caret/libs/caret.so
+7f8142700000-7f8142701000 rw-p 00002000 ca:01 1283435                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/caret/libs/caret.so
+7f8142701000-7f814271c000 r-xp 00000000 ca:01 1282836                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/pROC/libs/pROC.so
+7f814271c000-7f814291b000 ---p 0001b000 ca:01 1282836                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/pROC/libs/pROC.so
+7f814291b000-7f814291c000 r--p 0001a000 ca:01 1282836                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/pROC/libs/pROC.so
+7f814291c000-7f814291d000 rw-p 0001b000 ca:01 1282836                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/pROC/libs/pROC.so
+7f814291d000-7f814291e000 rw-p 00000000 00:00 0 
+7f814291e000-7f8142942000 r-xp 00000000 ca:01 1282389                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/ModelMetrics/libs/ModelMetrics.so
+7f8142942000-7f8142b42000 ---p 00024000 ca:01 1282389                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/ModelMetrics/libs/ModelMetrics.so
+7f8142b42000-7f8142b43000 r--p 00024000 ca:01 1282389                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/ModelMetrics/libs/ModelMetrics.so
+7f8142b43000-7f8142b44000 rw-p 00025000 ca:01 1282389                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/ModelMetrics/libs/ModelMetrics.so
+7f8142b44000-7f8142b45000 rw-p 00000000 00:00 0 
+7f8142b45000-7f8142bc1000 r-xp 00000000 ca:01 536163                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/data.table/libs/datatable.so
+7f8142bc1000-7f8142dc1000 ---p 0007c000 ca:01 536163                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/data.table/libs/datatable.so
+7f8142dc1000-7f8142dc2000 r--p 0007c000 ca:01 536163                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/data.table/libs/datatable.so
+7f8142dc2000-7f8142dc3000 rw-p 0007d000 ca:01 536163                     /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/data.table/libs/datatable.so
+7f8142dc3000-7f8142dc5000 rw-p 00000000 00:00 0 
+7f8142dc5000-7f8142ddf000 r-xp 00000000 ca:01 1284663                    /usr/local/lib/R/site-library/reshape2/libs/reshape2.so
+7f8142ddf000-7f8142fdf000 ---p 0001a000 ca:01 1284663                    /usr/local/lib/R/site-library/reshape2/libs/reshape2.so
+7f8142fdf000-7f8142fe0000 r--p 0001a000 ca:01 1284663                    /usr/local/lib/R/site-library/reshape2/libs/reshape2.so
+7f8142fe0000-7f8142fe1000 rw-p 0001b000 ca:01 1284663                    /usr/local/lib/R/site-library/reshape2/libs/reshape2.so
+7f8142fe1000-7f8143051000 r-xp 00000000 ca:01 541447                     /usr/local/lib/R/site-library/stringi/libs/stringi.so
+7f8143051000-7f8143250000 ---p 00070000 ca:01 541447                     /usr/local/lib/R/site-library/stringi/libs/stringi.so
+7f8143250000-7f8143252000 r--p 0006f000 ca:01 541447                     /usr/local/lib/R/site-library/stringi/libs/stringi.so
+7f8143252000-7f8143253000 rw-p 00071000 ca:01 541447                     /usr/local/lib/R/site-library/stringi/libs/stringi.so
+7f8143253000-7f8143268000 r-xp 00000000 ca:01 263093                     /usr/lib/R/library/tools/libs/tools.so
+7f8143268000-7f8143468000 ---p 00015000 ca:01 263093                     /usr/lib/R/library/tools/libs/tools.so
+7f8143468000-7f8143469000 r--p 00015000 ca:01 263093                     /usr/lib/R/library/tools/libs/tools.so
+7f8143469000-7f814346a000 rw-p 00016000 ca:01 263093                     /usr/lib/R/library/tools/libs/tools.so
+7f814346a000-7f814349d000 r-xp 00000000 ca:01 540206                     /usr/local/lib/R/site-library/lubridate/libs/lubridate.so
+7f814349d000-7f814369c000 ---p 00033000 ca:01 540206                     /usr/local/lib/R/site-library/lubridate/libs/lubridate.so
+7f814369c000-7f814369d000 r--p 00032000 ca:01 540206                     /usr/local/lib/R/site-library/lubridate/libs/lubridate.so
+7f814369d000-7f814369e000 rw-p 00033000 ca:01 540206                     /usr/local/lib/R/site-library/lubridate/libs/lubridate.so
+7f814369e000-7f814369f000 r-xp 00000000 ca:01 1282816                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/ipred/libs/ipred.so
+7f814369f000-7f814389f000 ---p 00001000 ca:01 1282816                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/ipred/libs/ipred.so
+7f814389f000-7f81438a0000 r--p 00001000 ca:01 1282816                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/ipred/libs/ipred.so
+7f81438a0000-7f81438a1000 rw-p 00002000 ca:01 1282816                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/ipred/libs/ipred.so
+7f81438a1000-7f81438a8000 r-xp 00000000 ca:01 1282466                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/prodlim/libs/prodlim.so
+7f81438a8000-7f8143aa7000 ---p 00007000 ca:01 1282466                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/prodlim/libs/prodlim.so
+7f8143aa7000-7f8143aa8000 r--p 00006000 ca:01 1282466                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/prodlim/libs/prodlim.so
+7f8143aa8000-7f8143aa9000 rw-p 00007000 ca:01 1282466                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/prodlim/libs/prodlim.so
+7f8143aa9000-7f8143aad000 r-xp 00000000 ca:01 264458                     /usr/lib/R/library/nnet/libs/nnet.so
+7f8143aad000-7f8143cac000 ---p 00004000 ca:01 264458                     /usr/lib/R/library/nnet/libs/nnet.so
+7f8143cac000-7f8143cad000 r--p 00003000 ca:01 264458                     /usr/lib/R/library/nnet/libs/nnet.so
+7f8143cad000-7f8143cae000 rw-p 00004000 ca:01 264458                     /usr/lib/R/library/nnet/libs/nnet.so
+7f8143cae000-7f8143cd9000 r-xp 00000000 ca:01 264230                     /usr/lib/R/library/survival/libs/survival.so
+7f8143cd9000-7f8143ed9000 ---p 0002b000 ca:01 264230                     /usr/lib/R/library/survival/libs/survival.so
+7f8143ed9000-7f8143eda000 r--p 0002b000 ca:01 264230                     /usr/lib/R/library/survival/libs/survival.so
+7f8143eda000-7f8143edb000 rw-p 0002c000 ca:01 264230                     /usr/lib/R/library/survival/libs/survival.so
+7f8143edb000-7f8143edd000 r-xp 00000000 ca:01 262970                     /usr/lib/R/library/splines/libs/splines.so
+7f8143edd000-7f81440dc000 ---p 00002000 ca:01 262970                     /usr/lib/R/library/splines/libs/splines.so
+7f81440dc000-7f81440dd000 r--p 00001000 ca:01 262970                     /usr/lib/R/library/splines/libs/splines.so
+7f81440dd000-7f81440de000 rw-p 00002000 ca:01 262970                     /usr/lib/R/library/splines/libs/splines.so
+7f81440de000-7f81440e3000 r-xp 00000000 ca:01 264339                     /usr/lib/R/library/MASS/libs/MASS.so
+7f81440e3000-7f81442e3000 ---p 00005000 ca:01 264339                     /usr/lib/R/library/MASS/libs/MASS.so
+7f81442e3000-7f81442e4000 r--p 00005000 ca:01 264339                     /usr/lib/R/library/MASS/libs/MASS.so
+7f81442e4000-7f81442e5000 rw-p 00006000 ca:01 264339                     /usr/lib/R/library/MASS/libs/MASS.so
+7f81442e5000-7f81442f1000 r-xp 00000000 ca:01 264277                     /usr/lib/R/library/rpart/libs/rpart.so
+7f81442f1000-7f81444f0000 ---p 0000c000 ca:01 264277                     /usr/lib/R/library/rpart/libs/rpart.so
+7f81444f0000-7f81444f1000 r--p 0000b000 ca:01 264277                     /usr/lib/R/library/rpart/libs/rpart.so
+7f81444f1000-7f81444f2000 rw-p 0000c000 ca:01 264277                     /usr/lib/R/library/rpart/libs/rpart.so
+7f81444f2000-7f81444f5000 r-xp 00000000 ca:01 264407                     /usr/lib/R/library/class/libs/class.so
+7f81444f5000-7f81446f4000 ---p 00003000 ca:01 264407                     /usr/lib/R/library/class/libs/class.so
+7f81446f4000-7f81446f5000 r--p 00002000 ca:01 264407                     /usr/lib/R/library/class/libs/class.so
+7f81446f5000-7f81446f6000 rw-p 00003000 ca:01 264407                     /usr/lib/R/library/class/libs/class.so
+7f81446f6000-7f81446fa000 r-xp 00000000 ca:01 1282292                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/gower/libs/gower.so
+7f81446fa000-7f81448f9000 ---p 00004000 ca:01 1282292                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/gower/libs/gower.so
+7f81448f9000-7f81448fa000 r--p 00003000 ca:01 1282292                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/gower/libs/gower.so
+7f81448fa000-7f81448fb000 rw-p 00004000 ca:01 1282292                    /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/gower/libs/gower.so
+7f81448fb000-7f8144936000 r-xp 00000000 ca:01 2155                       /lib/x86_64-linux-gnu/libnss_systemd.so.2
+7f8144936000-7f8144b35000 ---p 0003b000 ca:01 2155                       /lib/x86_64-linux-gnu/libnss_systemd.so.2
+7f8144b35000-7f8144b38000 r--p 0003a000 ca:01 2155                       /lib/x86_64-linux-gnu/libnss_systemd.so.2
+7f8144b38000-7f8144b39000 rw-p 0003d000 ca:01 2155                       /lib/x86_64-linux-gnu/libnss_systemd.so.2
+7f8144b39000-7f8144b44000 r-xp 00000000 ca:01 2080                       /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f8144b44000-7f8144d43000 ---p 0000b000 ca:01 2080                       /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f8144d43000-7f8144d44000 r--p 0000a000 ca:01 2080                       /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f8144d44000-7f8144d45000 rw-p 0000b000 ca:01 2080                       /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f8144d45000-7f8144d4b000 rw-p 00000000 00:00 0 
+7f8144d4b000-7f8144d62000 r-xp 00000000 ca:01 2077                       /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f8144d62000-7f8144f61000 ---p 00017000 ca:01 2077                       /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f8144f61000-7f8144f62000 r--p 00016000 ca:01 2077                       /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f8144f62000-7f8144f63000 rw-p 00017000 ca:01 2077                       /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f8144f63000-7f8144f65000 rw-p 00000000 00:00 0 
+7f8144f65000-7f8144f70000 r-xp 00000000 ca:01 2157                       /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f8144f70000-7f814516f000 ---p 0000b000 ca:01 2157                       /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f814516f000-7f8145170000 r--p 0000a000 ca:01 2157                       /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f8145170000-7f8145171000 rw-p 0000b000 ca:01 2157                       /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f8145171000-7f8145179000 r-xp 00000000 ca:01 2078                       /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f8145179000-7f8145379000 ---p 00008000 ca:01 2078                       /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f8145379000-7f814537a000 r--p 00008000 ca:01 2078                       /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f814537a000-7f814537b000 rw-p 00009000 ca:01 2078                       /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f814537b000-7f8145436000 r-xp 00000000 ca:01 264073                     /usr/lib/R/library/Matrix/libs/Matrix.so
+7f8145436000-7f8145636000 ---p 000bb000 ca:01 264073                     /usr/lib/R/library/Matrix/libs/Matrix.so
+7f8145636000-7f8145637000 r--p 000bb000 ca:01 264073                     /usr/lib/R/library/Matrix/libs/Matrix.so
+7f8145637000-7f814563a000 rw-p 000bc000 ca:01 264073                     /usr/lib/R/library/Matrix/libs/Matrix.so
+7f814563a000-7f81458ea000 rw-p 00000000 00:00 0 
+7f81458ea000-7f81458f9000 r-xp 00000000 ca:01 1280074                    /usr/local/lib/R/site-library/plyr/libs/plyr.so
+7f81458f9000-7f8145af8000 ---p 0000f000 ca:01 1280074                    /usr/local/lib/R/site-library/plyr/libs/plyr.so
+7f8145af8000-7f8145af9000 r--p 0000e000 ca:01 1280074                    /usr/local/lib/R/site-library/plyr/libs/plyr.so
+7f8145af9000-7f8145afa000 rw-p 0000f000 ca:01 1280074                    /usr/local/lib/R/site-library/plyr/libs/plyr.so
+7f8145afa000-7f8145b56000 r-xp 00000000 ca:01 1280788                    /usr/local/lib/R/site-library/Rcpp/libs/Rcpp.so
+7f8145b56000-7f8145d56000 ---p 0005c000 ca:01 1280788                    /usr/local/lib/R/site-library/Rcpp/libs/Rcpp.so
+7f8145d56000-7f8145d57000 r--p 0005c000 ca:01 1280788                    /usr/local/lib/R/site-library/Rcpp/libs/Rcpp.so
+7f8145d57000-7f8145d58000 rw-p 0005d000 ca:01 1280788                    /usr/local/lib/R/site-library/Rcpp/libs/Rcpp.so
+7f8145d58000-7f8145d60000 rw-p 00000000 00:00 0 
+7f8145d60000-7f8145d72000 r-xp 00000000 ca:01 263957                     /usr/lib/R/library/nlme/libs/nlme.so
+7f8145d72000-7f8145f71000 ---p 00012000 ca:01 263957                     /usr/lib/R/library/nlme/libs/nlme.so
+7f8145f71000-7f8145f72000 r--p 00011000 ca:01 263957                     /usr/lib/R/library/nlme/libs/nlme.so
+7f8145f72000-7f8145f73000 rw-p 00012000 ca:01 263957                     /usr/lib/R/library/nlme/libs/nlme.so
+7f8145f73000-7f8145f7c000 r-xp 00000000 ca:01 1283182                    /usr/local/lib/R/site-library/dplyr/libs/dplyr.so
+7f8145f7c000-7f814617b000 ---p 00009000 ca:01 1283182                    /usr/local/lib/R/site-library/dplyr/libs/dplyr.so
+7f814617b000-7f814617c000 r--p 00008000 ca:01 1283182                    /usr/local/lib/R/site-library/dplyr/libs/dplyr.so
+7f814617c000-7f814617d000 rw-p 00009000 ca:01 1283182                    /usr/local/lib/R/site-library/dplyr/libs/dplyr.so
+7f814617d000-7f8146185000 r-xp 00000000 ca:01 1280919                    /usr/local/lib/R/site-library/purrr/libs/purrr.so
+7f8146185000-7f8146384000 ---p 00008000 ca:01 1280919                    /usr/local/lib/R/site-library/purrr/libs/purrr.so
+7f8146384000-7f8146385000 r--p 00007000 ca:01 1280919                    /usr/local/lib/R/site-library/purrr/libs/purrr.so
+7f8146385000-7f8146386000 rw-p 00008000 ca:01 1280919                    /usr/local/lib/R/site-library/purrr/libs/purrr.so
+7f8146386000-7f8146389000 r-xp 00000000 ca:01 1282469                    /usr/local/lib/R/site-library/tibble/libs/tibble.so
+7f8146389000-7f8146588000 ---p 00003000 ca:01 1282469                    /usr/local/lib/R/site-library/tibble/libs/tibble.so
+7f8146588000-7f8146589000 r--p 00002000 ca:01 1282469                    /usr/local/lib/R/site-library/tibble/libs/tibble.so
+7f8146589000-7f814658a000 rw-p 00003000 ca:01 1282469                    /usr/local/lib/R/site-library/tibble/libs/tibble.so
+7f814658a000-7f81465d0000 r-xp 00000000 ca:01 541197                     /usr/local/lib/R/site-library/vctrs/libs/vctrs.so
+7f81465d0000-7f81467d0000 ---p 00046000 ca:01 541197                     /usr/local/lib/R/site-library/vctrs/libs/vctrs.so
+7f81467d0000-7f81467d1000 r--p 00046000 ca:01 541197                     /usr/local/lib/R/site-library/vctrs/libs/vctrs.so
+7f81467d1000-7f81467d2000 rw-p 00047000 ca:01 541197                     /usr/local/lib/R/site-library/vctrs/libs/vctrs.so
+7f81467d2000-7f8146897000 rw-p 00000000 00:00 0 
+7f8146897000-7f814689a000 r-xp 00000000 ca:01 538235                     /usr/local/lib/R/site-library/magrittr/libs/magrittr.so
+7f814689a000-7f8146a99000 ---p 00003000 ca:01 538235                     /usr/local/lib/R/site-library/magrittr/libs/magrittr.so
+7f8146a99000-7f8146a9a000 r--p 00002000 ca:01 538235                     /usr/local/lib/R/site-library/magrittr/libs/magrittr.so
+7f8146a9a000-7f8146a9b000 rw-p 00003000 ca:01 538235                     /usr/local/lib/R/site-library/magrittr/libs/magrittr.so
+7f8146a9b000-7f8146a9d000 r-xp 00000000 ca:01 1281073                    /usr/local/lib/R/site-library/ellipsis/libs/ellipsis.so
+7f8146a9d000-7f8146c9c000 ---p 00002000 ca:01 1281073                    /usr/local/lib/R/site-library/ellipsis/libs/ellipsis.so
+7f8146c9c000-7f8146c9d000 r--p 00001000 ca:01 1281073                    /usr/local/lib/R/site-library/ellipsis/libs/ellipsis.so
+7f8146c9d000-7f8146c9e000 rw-p 00002000 ca:01 1281073                    /usr/local/lib/R/site-library/ellipsis/libs/ellipsis.so
+7f8146c9e000-7f8146ca0000 r-xp 00000000 ca:01 537752                     /usr/local/lib/R/site-library/glue/libs/glue.so
+7f8146ca0000-7f8146e9f000 ---p 00002000 ca:01 537752                     /usr/local/lib/R/site-library/glue/libs/glue.so
+7f8146e9f000-7f8146ea0000 r--p 00001000 ca:01 537752                     /usr/local/lib/R/site-library/glue/libs/glue.so
+7f8146ea0000-7f8146ea1000 rw-p 00002000 ca:01 537752                     /usr/local/lib/R/site-library/glue/libs/glue.so
+7f8146ea1000-7f8146eac000 r-xp 00000000 ca:01 537846                     /usr/local/lib/R/site-library/colorspace/libs/colorspace.so
+7f8146eac000-7f81470ab000 ---p 0000b000 ca:01 537846                     /usr/local/lib/R/site-library/colorspace/libs/colorspace.so
+7f81470ab000-7f81470ac000 r--p 0000a000 ca:01 537846                     /usr/local/lib/R/site-library/colorspace/libs/colorspace.so
+7f81470ac000-7f81470ad000 rw-p 0000b000 ca:01 537846                     /usr/local/lib/R/site-library/colorspace/libs/colorspace.so
+7f81470ad000-7f81470cb000 r-xp 00000000 ca:01 539109                     /usr/local/lib/R/site-library/rlang/libs/rlang.so
+7f81470cb000-7f81472ca000 ---p 0001e000 ca:01 539109                     /usr/local/lib/R/site-library/rlang/libs/rlang.so
+7f81472ca000-7f81472cc000 r--p 0001d000 ca:01 539109                     /usr/local/lib/R/site-library/rlang/libs/rlang.so
+7f81472cc000-7f81472cd000 rw-p 0001f000 ca:01 539109                     /usr/local/lib/R/site-library/rlang/libs/rlang.so
+7f81472cd000-7f81472d0000 r-xp 00000000 ca:01 263902                     /usr/lib/R/library/lattice/libs/lattice.so
+7f81472d0000-7f81474cf000 ---p 00003000 ca:01 263902                     /usr/lib/R/library/lattice/libs/lattice.so
+7f81474cf000-7f81474d0000 r--p 00002000 ca:01 263902                     /usr/lib/R/library/lattice/libs/lattice.so
+7f81474d0000-7f81474d1000 rw-p 00003000 ca:01 263902                     /usr/lib/R/library/lattice/libs/lattice.so
+7f81474d1000-7f8147b55000 r-xp 00000000 ca:01 514035                     /usr/lib/x86_64-linux-gnu/openblas/liblapack.so.3
+7f8147b55000-7f8147d54000 ---p 00684000 ca:01 514035                     /usr/lib/x86_64-linux-gnu/openblas/liblapack.so.3
+7f8147d54000-7f8147d55000 r--p 00683000 ca:01 514035                     /usr/lib/x86_64-linux-gnu/openblas/liblapack.so.3
+7f8147d55000-7f8147d57000 rw-p 00684000 ca:01 514035                     /usr/lib/x86_64-linux-gnu/openblas/liblapack.so.3
+7f8147d57000-7f8147dfc000 r-xp 00000000 ca:01 263002                     /usr/lib/R/library/stats/libs/stats.so
+7f8147dfc000-7f8147ffc000 ---p 000a5000 ca:01 263002                     /usr/lib/R/library/stats/libs/stats.so
+7f8147ffc000-7f8147ffe000 r--p 000a5000 ca:01 263002                     /usr/lib/R/library/stats/libs/stats.so
+7f8147ffe000-7f8147fff000 rw-p 000a7000 ca:01 263002                     /usr/lib/R/library/stats/libs/stats.so
+7f8147fff000-7f8148000000 rw-p 00000000 00:00 0 
+7f8148000000-7f8148029000 rw-p 00000000 00:00 0 
+7f8148029000-7f814c000000 ---p 00000000 00:00 0 
+7f814c000000-7f8150000000 rw-p 00000000 00:00 0 
+7f8150000000-7f8150058000 rw-p 00000000 00:00 0 
+7f8150058000-7f8154000000 ---p 00000000 00:00 0 
+7f815400d000-7f8154058000 r-xp 00000000 ca:01 262824                     /usr/lib/R/library/graphics/libs/graphics.so
+7f8154058000-7f8154258000 ---p 0004b000 ca:01 262824                     /usr/lib/R/library/graphics/libs/graphics.so
+7f8154258000-7f8154259000 r--p 0004b000 ca:01 262824                     /usr/lib/R/library/graphics/libs/graphics.so
+7f8154259000-7f815425a000 rw-p 0004c000 ca:01 262824                     /usr/lib/R/library/graphics/libs/graphics.so
+7f815425a000-7f815427a000 r-xp 00000000 ca:01 262892                     /usr/lib/R/library/grid/libs/grid.so
+7f815427a000-7f815447a000 ---p 00020000 ca:01 262892                     /usr/lib/R/library/grid/libs/grid.so
+7f815447a000-7f815447b000 r--p 00020000 ca:01 262892                     /usr/lib/R/library/grid/libs/grid.so
+7f815447b000-7f815447c000 rw-p 00021000 ca:01 262892                     /usr/lib/R/library/grid/libs/grid.so
+7f815447c000-7f8154488000 r-xp 00000000 ca:01 263446                     /usr/lib/R/library/utils/libs/utils.so
+7f8154488000-7f8154687000 ---p 0000c000 ca:01 263446                     /usr/lib/R/library/utils/libs/utils.so
+7f8154687000-7f8154688000 r--p 0000b000 ca:01 263446                     /usr/lib/R/library/utils/libs/utils.so
+7f8154688000-7f8154689000 rw-p 0000c000 ca:01 263446                     /usr/lib/R/library/utils/libs/utils.so
+7f8154689000-7f815468a000 rw-p 00000000 00:00 0 
+7f815468b000-7f8154696000 rw-p 00000000 00:00 0 
+7f8154696000-7f8154736000 ---p 00000000 00:00 0 
+7f8154736000-7f815473d000 rw-p 00000000 00:00 0 
+7f815473d000-7f8154821000 ---p 00000000 00:00 0 
+7f8154821000-7f8154858000 r-xp 00000000 ca:01 262784                     /usr/lib/R/library/grDevices/libs/grDevices.so
+7f8154858000-7f8154a58000 ---p 00037000 ca:01 262784                     /usr/lib/R/library/grDevices/libs/grDevices.so
+7f8154a58000-7f8154a5d000 r--p 00037000 ca:01 262784                     /usr/lib/R/library/grDevices/libs/grDevices.so
+7f8154a5d000-7f8154a5f000 rw-p 0003c000 ca:01 262784                     /usr/lib/R/library/grDevices/libs/grDevices.so
+7f8154a5f000-7f8154b45000 rw-p 00000000 00:00 0 
+7f8154b4f000-7f8154d10000 rw-p 00000000 00:00 0 
+7f8154d10000-7f8154d19000 r-xp 00000000 ca:01 262916                     /usr/lib/R/library/methods/libs/methods.so
+7f8154d19000-7f8154f18000 ---p 00009000 ca:01 262916                     /usr/lib/R/library/methods/libs/methods.so
+7f8154f18000-7f8154f19000 r--p 00008000 ca:01 262916                     /usr/lib/R/library/methods/libs/methods.so
+7f8154f19000-7f8154f1a000 rw-p 00009000 ca:01 262916                     /usr/lib/R/library/methods/libs/methods.so
+7f8154f4c000-7f81554ef000 rw-p 00000000 00:00 0 
+7f81554ef000-7f81557cd000 r--p 00000000 ca:01 7754                       /usr/lib/locale/locale-archive
+7f81557cd000-7f81557ce000 ---p 00000000 00:00 0 
+7f81557ce000-7f8155fce000 rw-p 00000000 00:00 0 
+7f8155fce000-7f8155fcf000 ---p 00000000 00:00 0 
+7f8155fcf000-7f81567cf000 rw-p 00000000 00:00 0 
+7f81567cf000-7f81567d0000 ---p 00000000 00:00 0 
+7f81567d0000-7f8156fd0000 rw-p 00000000 00:00 0 
+7f8156fd0000-7f815700f000 r-xp 00000000 ca:01 56289                      /usr/lib/x86_64-linux-gnu/libquadmath.so.0.0.0
+7f815700f000-7f815720e000 ---p 0003f000 ca:01 56289                      /usr/lib/x86_64-linux-gnu/libquadmath.so.0.0.0
+7f815720e000-7f815720f000 r--p 0003e000 ca:01 56289                      /usr/lib/x86_64-linux-gnu/libquadmath.so.0.0.0
+7f815720f000-7f8157210000 rw-p 0003f000 ca:01 56289                      /usr/lib/x86_64-linux-gnu/libquadmath.so.0.0.0
+7f8157210000-7f81573ec000 r-xp 00000000 ca:01 56728                      /usr/lib/x86_64-linux-gnu/libgfortran.so.4.0.0
+7f81573ec000-7f81575ec000 ---p 001dc000 ca:01 56728                      /usr/lib/x86_64-linux-gnu/libgfortran.so.4.0.0
+7f81575ec000-7f81575ed000 r--p 001dc000 ca:01 56728                      /usr/lib/x86_64-linux-gnu/libgfortran.so.4.0.0
+7f81575ed000-7f81575ee000 rw-p 001dd000 ca:01 56728                      /usr/lib/x86_64-linux-gnu/libgfortran.so.4.0.0
+7f81575ee000-7f81575ef000 rw-p 00000000 00:00 0 
+7f81575ef000-7f8158f97000 r-xp 00000000 ca:01 6198                       /usr/lib/x86_64-linux-gnu/libicudata.so.60.2
+7f8158f97000-7f8159196000 ---p 019a8000 ca:01 6198                       /usr/lib/x86_64-linux-gnu/libicudata.so.60.2
+7f8159196000-7f8159197000 r--p 019a7000 ca:01 6198                       /usr/lib/x86_64-linux-gnu/libicudata.so.60.2
+7f8159197000-7f8159198000 rw-p 019a8000 ca:01 6198                       /usr/lib/x86_64-linux-gnu/libicudata.so.60.2
+7f8159198000-7f81591bd000 r-xp 00000000 ca:01 2100                       /lib/x86_64-linux-gnu/libtinfo.so.5.9
+7f81591bd000-7f81593bd000 ---p 00025000 ca:01 2100                       /lib/x86_64-linux-gnu/libtinfo.so.5.9
+7f81593bd000-7f81593c1000 r--p 00025000 ca:01 2100                       /lib/x86_64-linux-gnu/libtinfo.so.5.9
+7f81593c1000-7f81593c2000 rw-p 00029000 ca:01 2100                       /lib/x86_64-linux-gnu/libtinfo.so.5.9
+7f81593c2000-7f815b437000 r-xp 00000000 ca:01 59786                      /usr/lib/x86_64-linux-gnu/libopenblasp-r0.2.20.so
+7f815b437000-7f815b636000 ---p 02075000 ca:01 59786                      /usr/lib/x86_64-linux-gnu/libopenblasp-r0.2.20.so
+7f815b636000-7f815b63c000 r--p 02074000 ca:01 59786                      /usr/lib/x86_64-linux-gnu/libopenblasp-r0.2.20.so
+7f815b63c000-7f815b64f000 rw-p 0207a000 ca:01 59786                      /usr/lib/x86_64-linux-gnu/libopenblasp-r0.2.20.so
+7f815b64f000-7f815b668000 rw-p 00000000 00:00 0 
+7f815b668000-7f815b696000 r-xp 00000000 ca:01 56223                      /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0
+7f815b696000-7f815b895000 ---p 0002e000 ca:01 56223                      /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0
+7f815b895000-7f815b896000 r--p 0002d000 ca:01 56223                      /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0
+7f815b896000-7f815b897000 rw-p 0002e000 ca:01 56223                      /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0
+7f815b897000-7f815bb29000 r-xp 00000000 ca:01 6199                       /usr/lib/x86_64-linux-gnu/libicui18n.so.60.2
+7f815bb29000-7f815bd28000 ---p 00292000 ca:01 6199                       /usr/lib/x86_64-linux-gnu/libicui18n.so.60.2
+7f815bd28000-7f815bd37000 r--p 00291000 ca:01 6199                       /usr/lib/x86_64-linux-gnu/libicui18n.so.60.2
+7f815bd37000-7f815bd38000 rw-p 002a0000 ca:01 6199                       /usr/lib/x86_64-linux-gnu/libicui18n.so.60.2
+7f815bd38000-7f815bedc000 r-xp 00000000 ca:01 6203                       /usr/lib/x86_64-linux-gnu/libicuuc.so.60.2
+7f815bedc000-7f815c0db000 ---p 001a4000 ca:01 6203                       /usr/lib/x86_64-linux-gnu/libicuuc.so.60.2
+7f815c0db000-7f815c0ee000 r--p 001a3000 ca:01 6203                       /usr/lib/x86_64-linux-gnu/libicuuc.so.60.2
+7f815c0ee000-7f815c0ef000 rw-p 001b6000 ca:01 6203                       /usr/lib/x86_64-linux-gnu/libicuuc.so.60.2
+7f815c0ef000-7f815c0f0000 rw-p 00000000 00:00 0 
+7f815c0f0000-7f815c0ff000 r-xp 00000000 ca:01 2055                       /lib/x86_64-linux-gnu/libbz2.so.1.0.4
+7f815c0ff000-7f815c2fe000 ---p 0000f000 ca:01 2055                       /lib/x86_64-linux-gnu/libbz2.so.1.0.4
+7f815c2fe000-7f815c2ff000 r--p 0000e000 ca:01 2055                       /lib/x86_64-linux-gnu/libbz2.so.1.0.4
+7f815c2ff000-7f815c300000 rw-p 0000f000 ca:01 2055                       /lib/x86_64-linux-gnu/libbz2.so.1.0.4
+7f815c300000-7f815c324000 r-xp 00000000 ca:01 2096                       /lib/x86_64-linux-gnu/liblzma.so.5.2.2
+7f815c324000-7f815c524000 ---p 00024000 ca:01 2096                       /lib/x86_64-linux-gnu/liblzma.so.5.2.2
+7f815c524000-7f815c525000 r--p 00024000 ca:01 2096                       /lib/x86_64-linux-gnu/liblzma.so.5.2.2
+7f815c525000-7f815c526000 rw-p 00025000 ca:01 2096                       /lib/x86_64-linux-gnu/liblzma.so.5.2.2
+7f815c526000-7f815c5a7000 r-xp 00000000 ca:01 55721                      /usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.7.0
+7f815c5a7000-7f815c7a6000 ---p 00081000 ca:01 55721                      /usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.7.0
+7f815c7a6000-7f815c7a7000 r--p 00080000 ca:01 55721                      /usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.7.0
+7f815c7a7000-7f815c7a8000 rw-p 00081000 ca:01 55721                      /usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.7.0
+7f815c7a8000-7f815c7e9000 r-xp 00000000 ca:01 2216                       /lib/x86_64-linux-gnu/libreadline.so.7.0
+7f815c7e9000-7f815c9e8000 ---p 00041000 ca:01 2216                       /lib/x86_64-linux-gnu/libreadline.so.7.0
+7f815c9e8000-7f815c9ea000 r--p 00040000 ca:01 2216                       /lib/x86_64-linux-gnu/libreadline.so.7.0
+7f815c9ea000-7f815c9f0000 rw-p 00042000 ca:01 2216                       /lib/x86_64-linux-gnu/libreadline.so.7.0
+7f815c9f0000-7f815c9f1000 rw-p 00000000 00:00 0 
+7f815c9f1000-7f815ca47000 r-xp 00000000 ca:01 514034                     /usr/lib/x86_64-linux-gnu/openblas/libblas.so.3
+7f815ca47000-7f815cc46000 ---p 00056000 ca:01 514034                     /usr/lib/x86_64-linux-gnu/openblas/libblas.so.3
+7f815cc46000-7f815cc4b000 r--p 00055000 ca:01 514034                     /usr/lib/x86_64-linux-gnu/openblas/libblas.so.3
+7f815cc4b000-7f815cc4c000 rw-p 0005a000 ca:01 514034                     /usr/lib/x86_64-linux-gnu/openblas/libblas.so.3
+7f815cc4c000-7f815ce33000 r-xp 00000000 ca:01 2066                       /lib/x86_64-linux-gnu/libc-2.27.so
+7f815ce33000-7f815d033000 ---p 001e7000 ca:01 2066                       /lib/x86_64-linux-gnu/libc-2.27.so
+7f815d033000-7f815d037000 r--p 001e7000 ca:01 2066                       /lib/x86_64-linux-gnu/libc-2.27.so
+7f815d037000-7f815d039000 rw-p 001eb000 ca:01 2066                       /lib/x86_64-linux-gnu/libc-2.27.so
+7f815d039000-7f815d03d000 rw-p 00000000 00:00 0 
+7f815d03d000-7f815d054000 r-xp 00000000 ca:01 2052                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f815d054000-7f815d253000 ---p 00017000 ca:01 2052                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f815d253000-7f815d254000 r--p 00016000 ca:01 2052                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f815d254000-7f815d255000 rw-p 00017000 ca:01 2052                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f815d255000-7f815d3f2000 r-xp 00000000 ca:01 2074                       /lib/x86_64-linux-gnu/libm-2.27.so
+7f815d3f2000-7f815d5f1000 ---p 0019d000 ca:01 2074                       /lib/x86_64-linux-gnu/libm-2.27.so
+7f815d5f1000-7f815d5f2000 r--p 0019c000 ca:01 2074                       /lib/x86_64-linux-gnu/libm-2.27.so
+7f815d5f2000-7f815d5f3000 rw-p 0019d000 ca:01 2074                       /lib/x86_64-linux-gnu/libm-2.27.so
+7f815d5f3000-7f815d76c000 r-xp 00000000 ca:01 4751                       /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7f815d76c000-7f815d96c000 ---p 00179000 ca:01 4751                       /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7f815d96c000-7f815d976000 r--p 00179000 ca:01 4751                       /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7f815d976000-7f815d978000 rw-p 00183000 ca:01 4751                       /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7f815d978000-7f815d97c000 rw-p 00000000 00:00 0 
+7f815d97c000-7f815db96000 r-xp 00000000 ca:01 13465                      /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+7f815db96000-7f815dd95000 ---p 0021a000 ca:01 13465                      /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+7f815dd95000-7f815ddb1000 r--p 00219000 ca:01 13465                      /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+7f815ddb1000-7f815ddbd000 rw-p 00235000 ca:01 13465                      /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+7f815ddbd000-7f815ddc0000 rw-p 00000000 00:00 0 
+7f815ddc0000-7f815de1e000 r-xp 00000000 ca:01 25445                      /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0
+7f815de1e000-7f815e01e000 ---p 0005e000 ca:01 25445                      /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0
+7f815e01e000-7f815e022000 r--p 0005e000 ca:01 25445                      /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0
+7f815e022000-7f815e028000 rw-p 00062000 ca:01 25445                      /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0
+7f815e028000-7f815e044000 r-xp 00000000 ca:01 2171                       /lib/x86_64-linux-gnu/libz.so.1.2.11
+7f815e044000-7f815e243000 ---p 0001c000 ca:01 2171                       /lib/x86_64-linux-gnu/libz.so.1.2.11
+7f815e243000-7f815e244000 r--p 0001b000 ca:01 2171                       /lib/x86_64-linux-gnu/libz.so.1.2.11
+7f815e244000-7f815e245000 rw-p 0001c000 ca:01 2171                       /lib/x86_64-linux-gnu/libz.so.1.2.11
+7f815e245000-7f815e24c000 r-xp 00000000 ca:01 2186                       /lib/x86_64-linux-gnu/librt-2.27.so
+7f815e24c000-7f815e44b000 ---p 00007000 ca:01 2186                       /lib/x86_64-linux-gnu/librt-2.27.so
+7f815e44b000-7f815e44c000 r--p 00006000 ca:01 2186                       /lib/x86_64-linux-gnu/librt-2.27.so
+7f815e44c000-7f815e44d000 rw-p 00007000 ca:01 2186                       /lib/x86_64-linux-gnu/librt-2.27.so
+7f815e44d000-7f815e453000 r-xp 00000000 ca:01 17961                      /lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7f815e453000-7f815e652000 ---p 00006000 ca:01 17961                      /lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7f815e652000-7f815e653000 r--p 00005000 ca:01 17961                      /lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7f815e653000-7f815e654000 rw-p 00006000 ca:01 17961                      /lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7f815e654000-7f815e656000 r-xp 00000000 ca:01 2208                       /lib/x86_64-linux-gnu/libutil-2.27.so
+7f815e656000-7f815e855000 ---p 00002000 ca:01 2208                       /lib/x86_64-linux-gnu/libutil-2.27.so
+7f815e855000-7f815e856000 r--p 00001000 ca:01 2208                       /lib/x86_64-linux-gnu/libutil-2.27.so
+7f815e856000-7f815e857000 rw-p 00002000 ca:01 2208                       /lib/x86_64-linux-gnu/libutil-2.27.so
+7f815e857000-7f815e871000 r-xp 00000000 ca:01 2174                       /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f815e871000-7f815ea70000 ---p 0001a000 ca:01 2174                       /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f815ea70000-7f815ea71000 r--p 00019000 ca:01 2174                       /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f815ea71000-7f815ea72000 rw-p 0001a000 ca:01 2174                       /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f815ea72000-7f815ea76000 rw-p 00000000 00:00 0 
+7f815ea76000-7f815ed94000 r-xp 00000000 ca:01 262564                     /usr/lib/R/lib/libR.so
+7f815ed94000-7f815ef94000 ---p 0031e000 ca:01 262564                     /usr/lib/R/lib/libR.so
+7f815ef94000-7f815efb2000 r--p 0031e000 ca:01 262564                     /usr/lib/R/lib/libR.so
+7f815efb2000-7f815efbf000 rw-p 0033c000 ca:01 262564                     /usr/lib/R/lib/libR.so
+7f815efbf000-7f815f10f000 rw-p 00000000 00:00 0 
+7f815f10f000-7f815f112000 r-xp 00000000 ca:01 2069                       /lib/x86_64-linux-gnu/libdl-2.27.so
+7f815f112000-7f815f311000 ---p 00003000 ca:01 2069                       /lib/x86_64-linux-gnu/libdl-2.27.so
+7f815f311000-7f815f312000 r--p 00002000 ca:01 2069                       /lib/x86_64-linux-gnu/libdl-2.27.so
+7f815f312000-7f815f313000 rw-p 00003000 ca:01 2069                       /lib/x86_64-linux-gnu/libdl-2.27.so
+7f815f313000-7f815f33a000 r-xp 00000000 ca:01 2058                       /lib/x86_64-linux-gnu/ld-2.27.so
+7f815f35c000-7f815f35d000 rwxp 00000000 00:00 0 
+7f815f35d000-7f815f35e000 r--p 00000000 ca:01 7763                       /usr/lib/locale/C.UTF-8/LC_NUMERIC
+7f815f35e000-7f815f363000 rw-p 00000000 00:00 0 
+7f815f363000-7f815f36a000 ---p 00000000 00:00 0 
+7f815f36a000-7f815f372000 rw-s 00000000 ca:01 535069                     /tmp/hsperfdata_rstudio/15086
+7f815f372000-7f815f4e5000 r--p 00000000 ca:01 7757                       /usr/lib/locale/C.UTF-8/LC_COLLATE
+7f815f4e5000-7f815f516000 r--p 00000000 ca:01 7758                       /usr/lib/locale/C.UTF-8/LC_CTYPE
+7f815f516000-7f815f526000 rw-p 00000000 00:00 0 
+7f815f526000-7f815f527000 r--p 00000000 ca:01 7762                       /usr/lib/locale/C.UTF-8/LC_NAME
+7f815f527000-7f815f528000 r--p 00000000 ca:01 7756                       /usr/lib/locale/C.UTF-8/LC_ADDRESS
+7f815f528000-7f815f529000 r--p 00000000 ca:01 7765                       /usr/lib/locale/C.UTF-8/LC_TELEPHONE
+7f815f529000-7f815f52a000 r--p 00000000 ca:01 7759                       /usr/lib/locale/C.UTF-8/LC_IDENTIFICATION
+7f815f52a000-7f815f52c000 r--s 00007000 ca:01 68555                      /usr/share/java/java-atk-wrapper.jar
+7f815f52c000-7f815f52d000 ---p 00000000 00:00 0 
+7f815f52d000-7f815f52e000 r--p 00000000 00:00 0 
+7f815f52e000-7f815f52f000 r--p 00000000 ca:01 7760                       /usr/lib/locale/C.UTF-8/LC_MEASUREMENT
+7f815f52f000-7f815f530000 r--p 00000000 ca:01 7764                       /usr/lib/locale/C.UTF-8/LC_PAPER
+7f815f530000-7f815f531000 r--p 00000000 ca:01 7761                       /usr/lib/locale/C.UTF-8/LC_MONETARY
+7f815f531000-7f815f532000 r--p 00000000 ca:01 7766                       /usr/lib/locale/C.UTF-8/LC_TIME
+7f815f532000-7f815f539000 r--s 00000000 ca:01 5009                       /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7f815f539000-7f815f53a000 r--p 00000000 ca:01 7768                       /usr/lib/locale/C.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
+7f815f53a000-7f815f53b000 r--p 00027000 ca:01 2058                       /lib/x86_64-linux-gnu/ld-2.27.so
+7f815f53b000-7f815f53c000 rw-p 00028000 ca:01 2058                       /lib/x86_64-linux-gnu/ld-2.27.so
+7f815f53c000-7f815f53d000 rw-p 00000000 00:00 0 
+7ffe8a023000-7ffe8a21f000 rw-p 00000000 00:00 0                          [stack]
+7ffe8a34c000-7ffe8a34f000 r--p 00000000 00:00 0                          [vvar]
+7ffe8a34f000-7ffe8a350000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+
+VM Arguments:
+jvm_args: -Xmx512m -Xrs vfprintf exit -XX:+UnlockExperimentalVMOptions -XX:+DisablePrimordialThreadGuardPages -Xss2m 
+java_command: <unknown>
+java_class_path (initial): /home/rstudio/R/x86_64-pc-linux-gnu-library/4.0/rJava/java/boot
+Launcher Type: generic
+
+[Global flags]
+     intx CICompilerCount                          = 2                                         {product} {ergonomic}
+     bool DisablePrimordialThreadGuardPages        = true                                 {experimental} {command line}
+   size_t InitialHeapSize                          = 16777216                                  {product} {ergonomic}
+   size_t MaxHeapSize                              = 536870912                                 {product} {command line}
+   size_t MaxNewSize                               = 178913280                                 {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 196608                                    {product} {ergonomic}
+   size_t NewSize                                  = 5570560                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5825164                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122916538                              {pd product} {ergonomic}
+   size_t OldSize                                  = 11206656                                  {product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122916538                              {pd product} {ergonomic}
+     bool ReduceSignalUsage                        = true                                      {product} {command line}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     intx ThreadStackSize                          = 2048                                   {pd product} {command line}
+     bool UnlockExperimentalVMOptions              = true                                 {experimental} {command line}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseSerialGC                              = true                                      {product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=/home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/rstudio-server/bin/rpostback:/usr/lib/rstudio-server/bin/postback
+LD_LIBRARY_PATH=/home/rstudio/CausalityExtractionNLP/.causalityextractionnlp/lib:/usr/lib/R/lib::/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/default-java/lib/server
+DISPLAY=:0
+LANG=C.UTF-8
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xeeaf50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xeeaf50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0xeeaf50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: SIG_IGN, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGXFSZ: SIG_IGN, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGILL: [libjvm.so+0xeeaf50], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR2: [rsession+0x255e40], sa_mask[0]=00000000000100000000000000000000, sa_flags=SA_RESTART
+SIGHUP: SIG_IGN, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: [rsession+0x17d240], sa_mask[0]=01000000000000000000000000000000, sa_flags=SA_RESTART
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.5 LTS"
+uname:Linux 5.4.0-1029-aws #30~18.04.1-Ubuntu SMP Tue Oct 20 11:09:25 UTC 2020 x86_64
+OS uptime: 13 days 3:11 hours
+libc:glibc 2.27 NPTL 2.27 
+rlimit (soft/hard): STACK 8192k/infinity , CORE 0k/infinity , NPROC 3751/3751 , NOFILE 4096/4096 , AS infinity/infinity , CPU infinity/infinity , DATA infinity/infinity , FSIZE infinity/infinity , MEMLOCK 16384k/16384k
+load average:0.13 1.04 0.62
+
+/proc/meminfo:
+MemTotal:        1002120 kB
+MemFree:           61484 kB
+MemAvailable:     234204 kB
+Buffers:           29720 kB
+Cached:           251364 kB
+SwapCached:         3520 kB
+Active:           656268 kB
+Inactive:         167088 kB
+Active(anon):     517816 kB
+Inactive(anon):    25060 kB
+Active(file):     138452 kB
+Inactive(file):   142028 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       1048572 kB
+SwapFree:         949076 kB
+Dirty:               356 kB
+Writeback:             0 kB
+AnonPages:        540408 kB
+Mapped:           128056 kB
+Shmem:               576 kB
+KReclaimable:      39620 kB
+Slab:              85604 kB
+SReclaimable:      39620 kB
+SUnreclaim:        45984 kB
+KernelStack:        2924 kB
+PageTables:         7016 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1549632 kB
+Committed_AS:    1482744 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:        9776 kB
+VmallocChunk:          0 kB
+Percpu:            10560 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      186368 kB
+DirectMap2M:      862208 kB
+
+/sys/kernel/mm/transparent_hugepage/enabled:
+always [madvise] never
+/sys/kernel/mm/transparent_hugepage/defrag (defrag/compaction efforts parameter):
+always defer defer+madvise [madvise] never
+
+/proc/sys/kernel/threads-max (system-wide limit on the number of threads):
+7502
+/proc/sys/vm/max_map_count (maximum number of memory map areas a process may have):
+65530
+/proc/sys/kernel/pid_max (system-wide limit on number of process identifiers):
+32768
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0
+cpu_memory_nodes: 0
+active_processor_count: 1
+cpu_quota: -1
+cpu_period: 100000
+cpu_shares: -1
+memory_limit_in_bytes: -1
+memory_and_swap_limit_in_bytes: -2
+memory_soft_limit_in_bytes: -1
+memory_usage_in_bytes: 760418304
+memory_max_usage_in_bytes: 873328640
+
+Xen hardware-assisted virtualization detected
+Steal ticks since vm start: 6
+Steal ticks percentage since vm start:  0.000
+
+CPU:total 1 (initial active 1) (1 cores per cpu, 1 threads per core) family 6 model 63 stepping 2, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, tsc, bmi1, bmi2, fma
+CPU Model and flags from /proc/cpuinfo:
+model name	: Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+Online cpus:
+0
+Offline cpus:
+1-14
+BIOS frequency limitation:
+<Not Available>
+Frequency switch latency (ns):
+<Not Available>
+Available cpu frequencies:
+<Not Available>
+Current governor:
+<Not Available>
+Core performance/turbo boost:
+<Not Available>
+
+Memory: 4k page, physical 1002120k(61484k free), swap 1048572k(949076k free)
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.9.1+1-Ubuntu-0ubuntu1.18.04) for linux-amd64 JRE (11.0.9.1+1-Ubuntu-0ubuntu1.18.04), built on Nov 10 2020 04:18:42 by "unknown" with gcc 7.5.0
+
+END.

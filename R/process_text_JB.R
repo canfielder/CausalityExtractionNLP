@@ -1,6 +1,6 @@
 #' The following script contains the functions for processing raw text which
 #' replicates the function **clean_and_convert_to_sentence** in the source
-#' Causaity Extraction repository.
+#' Causality Extraction repository.
 #'
 
 # Library ---------------------------------------------------------------------

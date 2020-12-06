@@ -121,87 +121,17 @@ The following steps generates the data features through different emthods of vec
 * Doc2Vec
 
 ## Bag-of-Words
-```{r bow_gen_dtm}
+```{r gen_bow}
 input_bow <- transformation_bag_of_words(train)
+
+# Inspect
+input_bow %>% head()
 ```
 
 ## Doc2Vec
-### Generate Corpus
-We need to generate a Tagged Document object.
-```{r doc2vec_gen_corpus}
-# Define Tagged Document
-TaggedDocument <- gensim$models$doc2vec$TaggedDocument
-
-# Extract Text as List
-text <- as.character(train$sentence)
-
-# Initialize
-train_corpus <- list()
-i = 1
-
-for (hypothesis in text) {
-  tokens <- gensim$utils$simple_preprocess(hypothesis)
-  train_corpus[[i]] <- TaggedDocument(tokens, as.character(i))
-  i = i +1
-}
+```{r gen_doc2vec}
+input_doc2vec <- transformation_doc2vec(input_data = train)
 ```
-
-### Train Model on Corpus
-```{r doc2vec_train_model}
-# Convert Corpus to Python
-train_corpus <- r_to_py(train_corpus)
-
-# Initialize Model
-model = gensim$models$doc2vec$Doc2Vec(vector_size=50, min_count=2, epochs=40)
-
-# Build Vocabulary
-model$build_vocab(train_corpus)
-
-# Train Model
-model$train(train_corpus, total_examples=model$corpus_count, epochs=as.integer(model$epochs))
-```
-
-### Transform Text
-```{r doc2vec_gen_vectors}
-# Extract Test
-text <- as.character(train$sentence)
-
-# Initialize
-embeddings_d2v <- list()
-i = 1
-
-# Generate Embeddings Per Row
-for (hypothesis in text) {
-  hypothsis_tokens <- str_split(hypothesis, pattern = " ") %>% unlist()
-  vector <- model$infer_vector(hypothsis_tokens)
-  embeddings_d2v[[i]] <- vector
-  i = i +1
-}
-
-# Convert List to Dataframe
-embeddings_d2v_df <- as.data.frame(embeddings_d2v)
-
-# Transpose Dataframe
-embeddings_d2v_df_t <- as.data.frame(t(as.matrix(embeddings_d2v_df)))
-
-# Drop Row Names
-rownames(embeddings_d2v_df_t) <- c()
-
-# Add Target Variable to Dataframe
-input_doc2vec <- cbind(causal_relationship = input_bow$causal_relationship, 
-                       embeddings_d2v_df_t)
-
-input_doc2vec %>% head()
-```
-
-#### Inspect 
-```{r}
-text[6]
-```
-```{r}
-input_doc2vec %>% slice(6)
-```
-
 
 # Modeling
 ## Initialize Models

@@ -332,7 +332,7 @@ inspect_vector(demo_pdf_004, end = 20)
 The package **pdftools** does not work for pdfs with text in mutliple columns. Different columns simply get concatenated together. Therefore, we need to try a different method for pdf conversion.
 
 ## Tabulizer
-Since **pdftools** did not perform well enough, we will try to package **Tabulizer**, which also requires **RJava** to be installed.
+**VERDICT**: Since **pdftools** did not perform well enough, we will try to package **Tabulizer**, which also requires **RJava** to be installed.
 
 ### Convert into List of Strings
 ```{r}
@@ -348,7 +348,7 @@ demo_tab_001 <- output
 
 # Remove Patterns Dataset
 #### Split New Lines
-The data comes with an Excel spreadsheet filled with specific strings known in the available data that are to be dropped. The pattens have already been imported. Next, any element in the vecotr which contains a newline, is split into two (or more), separate vectors. 
+The data comes with an Excel spreadsheet filled with specific strings known in the available data that are to be dropped. The patterns have already been imported. Next, any element in the vecotr which contains a newline, is split into two (or more), separate vectors. 
 ```{r}
 patterns <- str_split(patterns_raw, "\r\n") %>% unlist()
 ```

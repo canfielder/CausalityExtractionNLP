@@ -520,14 +520,7 @@ train_processed_py &lt;- train_raw_py %&gt;%
 </ul>
 <div id="bag-of-words" class="section level2">
 <h2>Bag-of-Words</h2>
-<p>The features Document Term Matrix does not include our target variable. Therefore, in addition to generating our features, we also must rejoin our target variable to the newly created DTM. We can also drop our unique row identifier.</p>
-<pre class="r"><code>input_bow &lt;- gen_dtm_bow(train) %&gt;% 
-    left_join(train %&gt;% select(causal_relationship, hyp_id),
-            by = c(&quot;doc_id&quot; = &quot;hyp_id&quot;)) %&gt;% 
-  select(causal_relationship, everything()) %&gt;% 
-  select(-doc_id)
-
-rownames(input_bow) &lt;- c()
+<pre class="r"><code>input_bow &lt;- transformation_bag_of_words(train)
 
 # Inspect
 input_bow %&gt;% head()</code></pre>
@@ -3222,134 +3215,7 @@ input_bow %&gt;% head()</code></pre>
 </div>
 <div id="doc2vec" class="section level2">
 <h2>Doc2Vec</h2>
-<div id="generate-corpus" class="section level3">
-<h3>Generate Corpus</h3>
-<p>We need to generate a Tagged Document object.</p>
-<pre class="r"><code># Define Tagged Document
-TaggedDocument &lt;- gensim$models$doc2vec$TaggedDocument
-
-# Extract Text as List
-text &lt;- as.character(train$sentence)
-
-# Initialize
-train_corpus &lt;- list()
-i = 1
-
-for (hypothesis in text) {
-  tokens &lt;- gensim$utils$simple_preprocess(hypothesis)
-  train_corpus[[i]] &lt;- TaggedDocument(tokens, as.character(i))
-  i = i +1
-}</code></pre>
-</div>
-<div id="train-model-on-corpus" class="section level3">
-<h3>Train Model on Corpus</h3>
-<pre class="r"><code># Convert Corpus to Python
-train_corpus &lt;- r_to_py(train_corpus)
-
-# Initialize Model
-model = gensim$models$doc2vec$Doc2Vec(vector_size=50, min_count=2, epochs=40)
-
-# Build Vocabulary
-model$build_vocab(train_corpus)
-
-# Train Model
-model$train(train_corpus, total_examples=model$corpus_count, epochs=as.integer(model$epochs))</code></pre>
-</div>
-<div id="transform-text" class="section level3">
-<h3>Transform Text</h3>
-<pre class="r"><code># Extract Test
-text &lt;- as.character(train$sentence)
-
-# Initialize
-embeddings_d2v &lt;- list()
-i = 1
-
-# Generate Embeddings Per Row
-for (hypothesis in text) {
-  hypothsis_tokens &lt;- str_split(hypothesis, pattern = &quot; &quot;) %&gt;% unlist()
-  vector &lt;- model$infer_vector(hypothsis_tokens)
-  embeddings_d2v[[i]] &lt;- vector
-  i = i +1
-}
-
-# Convert List to Dataframe
-embeddings_d2v_df &lt;- as.data.frame(embeddings_d2v)
-
-# Transpose Dataframe
-embeddings_d2v_df_t &lt;- as.data.frame(t(as.matrix(embeddings_d2v_df)))
-
-# Drop Row Names
-rownames(embeddings_d2v_df_t) &lt;- c()
-
-# Add Target Variable to Dataframe
-input_doc2vec &lt;- cbind(causal_relationship = input_bow$causal_relationship, 
-                       embeddings_d2v_df_t)
-
-input_doc2vec %&gt;% head()</code></pre>
-<pre><code>##   causal_relationship         V1         V2            V3         V4
-## 1                   0 0.15413834 0.05826510 -1.457684e-02 0.06504913
-## 2                   0 0.08740370 0.03924259 -8.188129e-05 0.03930933
-## 3                   1 0.12580036 0.05123298 -1.165451e-02 0.04913764
-## 4                   0 0.13999037 0.04759433 -1.131686e-02 0.07224464
-## 5                   1 0.06882099 0.01301974 -2.001848e-03 0.03347357
-## 6                   0 0.12269538 0.04774134 -4.182133e-03 0.04782872
-##             V5         V6         V7          V8         V9          V10
-## 1  0.001453141 0.13237323 -0.2051168 -0.06667791 0.14457230 -0.009282522
-## 2 -0.009829175 0.06623809 -0.1181914 -0.03932238 0.09127482 -0.005940204
-## 3 -0.013991574 0.09663153 -0.1403859 -0.05149120 0.10236458 -0.007600111
-## 4  0.001902361 0.11137051 -0.1833199 -0.05677667 0.12870163 -0.011400087
-## 5  0.006061922 0.04259076 -0.0718430 -0.02784687 0.05393770 -0.009163860
-## 6 -0.002737991 0.09280141 -0.1499841 -0.04325448 0.10492204 -0.018793155
-##           V11         V12        V13        V14           V15        V16
-## 1 -0.04298782 0.028130146 0.07796464 0.06005832 -0.0110277943 0.08511288
-## 2 -0.02772800 0.027711323 0.05329017 0.03394845  0.0006532277 0.03983206
-## 3 -0.02128909 0.023112899 0.05804530 0.03713731 -0.0112814121 0.05682721
-## 4 -0.04398033 0.037471138 0.07734849 0.05318676 -0.0146956118 0.06846280
-## 5 -0.02413447 0.003502075 0.02755293 0.01787335 -0.0088027837 0.02715326
-## 6 -0.03243935 0.037939157 0.05959770 0.04511936  0.0064375382 0.05352584
-##           V17         V18         V19         V20        V21        V22
-## 1 0.026354503 -0.06889074 -0.11987402 -0.05955646 0.07684167 -0.2498939
-## 2 0.007842557 -0.02807800 -0.06654508 -0.02130790 0.05325159 -0.1444101
-## 3 0.008280836 -0.04705439 -0.08218439 -0.05439508 0.06589396 -0.1901763
-## 4 0.018802363 -0.05926044 -0.11360335 -0.05210462 0.08025356 -0.2458721
-## 5 0.001999932 -0.02895635 -0.04995051 -0.03759154 0.02972301 -0.1095684
-## 6 0.007117550 -0.04872695 -0.09308035 -0.04759012 0.05903670 -0.1880316
-##          V23         V24        V25        V26         V27        V28
-## 1 0.02262049 -0.06801187 -0.3388017 0.10702547 -0.11378871 0.18172815
-## 2 0.02500310 -0.04109973 -0.1905621 0.07191957 -0.04958132 0.10486825
-## 3 0.01980614 -0.05954242 -0.2455553 0.07491840 -0.07653265 0.14249317
-## 4 0.03179790 -0.07186662 -0.3051911 0.09318981 -0.09584671 0.16502236
-## 5 0.01445544 -0.04054113 -0.1319531 0.04470139 -0.05619765 0.08287863
-## 6 0.01351898 -0.05549975 -0.2444763 0.08562155 -0.07881884 0.12588876
-##             V29         V30         V31         V32         V33       V34
-## 1 -0.0086173574 -0.15386511 -0.03966017 -0.08401690 -0.14612463 0.2238203
-## 2 -0.0007642673 -0.08296140 -0.02325763 -0.04740553 -0.08124022 0.1240629
-## 3 -0.0068039843 -0.11504465 -0.03750749 -0.04745435 -0.09886007 0.1559699
-## 4  0.0026963272 -0.14015010 -0.03189410 -0.07371579 -0.13166527 0.1963568
-## 5 -0.0059194113 -0.06365368 -0.00882896 -0.03042144 -0.05524157 0.0931256
-## 6  0.0026011532 -0.12169153 -0.02576501 -0.04901332 -0.09354632 0.1633383
-##          V35         V36         V37        V38        V39          V40
-## 1 0.05949432 -0.04915742 -0.11999324 -0.2489617 0.06601908 -0.002836970
-## 2 0.03756103 -0.02362492 -0.05153812 -0.1263388 0.04414699 -0.001134341
-## 3 0.03853668 -0.01812713 -0.07521293 -0.1900988 0.05219160 -0.005368743
-## 4 0.05868023 -0.03251534 -0.10406852 -0.2264303 0.07027293  0.004900114
-## 5 0.02178404 -0.01651229 -0.04619021 -0.1060676 0.02099663  0.011483068
-## 6 0.04537359 -0.03574820 -0.08442515 -0.1908233 0.04546698 -0.003304062
-##          V41        V42        V43          V44        V45        V46
-## 1 -0.2872035 -0.3331760 -0.2437496  0.009109120 0.09104280 0.05550503
-## 2 -0.1607651 -0.1783678 -0.1210273 -0.003823462 0.03393017 0.02355299
-## 3 -0.2187601 -0.2495832 -0.1875098  0.003921628 0.06270131 0.03704760
-## 4 -0.2717641 -0.3004538 -0.2150205  0.007206935 0.07168844 0.05865755
-## 5 -0.1116353 -0.1340056 -0.1003298  0.006675776 0.02911823 0.01370914
-## 6 -0.2101220 -0.2486542 -0.1733879  0.004167630 0.06974468 0.05069576
-##          V47        V48        V49         V50
-## 1 0.05108239 0.08999455 0.05259334 -0.05588961
-## 2 0.03496913 0.05197810 0.02156192 -0.01830465
-## 3 0.03090025 0.06577068 0.03399898 -0.03610061
-## 4 0.03910899 0.07634216 0.03158125 -0.04815083
-## 5 0.02179134 0.04668704 0.01985909 -0.01878189
-## 6 0.04392476 0.06691386 0.04404949 -0.03116336</code></pre>
-</div>
+<pre class="r"><code>input_doc2vec &lt;- transformation_doc2vec(input_data = train)</code></pre>
 </div>
 </div>
 <div id="modeling" class="section level1">
@@ -3404,25 +3270,25 @@ confusionMatrix(data = y_pred,
 ## 
 ##           Reference
 ## Prediction  0  1
-##          0 94 21
-##          1 11 13
+##          0 86 18
+##          1 19 16
 ##                                           
-##                Accuracy : 0.7698          
-##                  95% CI : (0.6908, 0.8369)
+##                Accuracy : 0.7338          
+##                  95% CI : (0.6522, 0.8051)
 ##     No Information Rate : 0.7554          
-##     P-Value [Acc &gt; NIR] : 0.3896          
+##     P-Value [Acc &gt; NIR] : 0.7578          
 ##                                           
-##                   Kappa : 0.3082          
+##                   Kappa : 0.2868          
 ##                                           
-##  Mcnemar&#39;s Test P-Value : 0.1116          
+##  Mcnemar&#39;s Test P-Value : 1.0000          
 ##                                           
-##               Precision : 0.8174          
-##                  Recall : 0.8952          
-##                      F1 : 0.8545          
+##               Precision : 0.8269          
+##                  Recall : 0.8190          
+##                      F1 : 0.8230          
 ##              Prevalence : 0.7554          
-##          Detection Rate : 0.6763          
-##    Detection Prevalence : 0.8273          
-##       Balanced Accuracy : 0.6388          
+##          Detection Rate : 0.6187          
+##    Detection Prevalence : 0.7482          
+##       Balanced Accuracy : 0.6448          
 ##                                           
 ##        &#39;Positive&#39; Class : 0               
 ## </code></pre>
