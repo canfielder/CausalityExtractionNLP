@@ -80,6 +80,19 @@ hypo_xtr
 
 
 # Analyze
+
+```{r}
+reticulate::install_miniconda()
+```
+
+```{r}
+Sys.setenv(RETICULATE_PYTHON = miniconda_path())
+
+venv_name <- virtualenv_list()[1]
+virtualenv_install(envname = venv_name, packages = "numpy")
+```
+
+
 ### Import Python Modules
 ```{r import_python_modules}
 # General
