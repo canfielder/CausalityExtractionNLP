@@ -59,7 +59,7 @@ set.seed(rs)
 ### Define Python Binary
 We first need to point to the python binary we are using. I have had difficultly in the best method to do this. One possible way is to define a Variable Path in the .RProfile for this project. This method has been inconsistent in it's success. Currently, using the **use_python** function from the **Reticulate** package has been successful.
 ```{r assign_python}
-use_python(python = "./../.causalityextractionnlp/bin/python")
+# use_python(python = "./../.causalityextractionnlp/bin/python")
 ```
 
 ### Import Python Moducles
@@ -83,22 +83,28 @@ skl_nb <- import("sklearn.naive_bayes")
 
 # NLP
 ## Gensim
-gensim <- import("gensim")
+# gensim <- import("gensim")
 ```
 
 ## Data
 ```{r import_data}
 train_raw <- read_excel(path = "../data/training_data_node_punct_removed.xlsx", sheet = "training_data")
+
+train_raw
 ```
 
 # Pre-Process
 Pre-process data before creating Document Term Matrix.
 ```{r pre-processing}
-train_processed <- process_data(train_raw)
+train_processed <- process_data_train(train_raw)
+
+train_processed
 ```
+
 ### Python Process
-The following is the output for the preprocessing from the Python process. The R and Python preprocessing steps generate slightly different results. We'll use the Python dataset to verify downstream steps are returning equivalent results.
+The following is the output for the pre-processing from the Python process. The R and Python preprocessing steps generate slightly different results. We'll use the Python dataset to verify downstream steps are returning equivalent results.
 ```{r import_python_processed_data}
+
 train_raw_py <- read.csv("../data/processed_python.csv")
 train_processed_py <- train_raw_py %>% 
   mutate(
@@ -123,6 +129,7 @@ The following steps generates the data features through different emthods of vec
 ## Bag-of-Words
 ```{r bow_gen_dtm}
 input_bow <- transformation_bag_of_words(train)
+
 ```
 
 ## Doc2Vec
@@ -198,6 +205,7 @@ input_doc2vec %>% head()
 ```{r}
 text[6]
 ```
+
 ```{r}
 input_doc2vec %>% slice(6)
 ```

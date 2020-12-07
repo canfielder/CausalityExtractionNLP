@@ -20,7 +20,7 @@ p_load(
 use_python(python = "./../.causalityextractionnlp/bin/python")
 
 ## Import Modules
-gensim <- import("gensim")
+# gensim <- import("gensim")
 
 
 # Functions -------------------------------------------------------------------
@@ -91,9 +91,9 @@ trim_strings <- function(input_string, key_1="node1", key_2="node2"){
 trim_strings <- Vectorize(trim_strings)
 
 
-#' Process Data
+#' Process Data - Training
 #' The following function performs all processing steps the precede
-#' vectorization into a DTM.
+#' vectorization into a DTM for the provided training data set.
 #'
 #' Input (Required):
 #' * Dataframe with the following columns:
@@ -104,7 +104,7 @@ trim_strings <- Vectorize(trim_strings)
 #'  * hypothesis_num
 #
 
-process_data <- function(input_df){
+process_data_train <- function(input_df){
 
   # Missing Values -----------------------------------------------------------------
   ## Drop Rows with Missing Values
@@ -187,9 +187,79 @@ process_data <- function(input_df){
 
 }
 
+#' Process Data - general
+#' The following function performs all processing steps the precede
+#' vectorization into a DTM for future predictive inputs.
+#'
+#' Input (Required):
+#' * Dataframe with the following columns:
+#'  * sentence
+#'  * node_1
+#'  * node_2
+#'  * file_name
+#'  * hypothesis_num
+#
+process_data_general <- function(input_df){
+
+  # Missing Values -----------------------------------------------------------------
+  ## Drop Rows with Missing Values
+  processing_df <- input_df %>%
+    drop_na()
+
+  # Normalize -----------------------------------------------------------------
+  ## Normalize Sentence and Node Text
+  processing_df <- processing_df %>%
+    mutate(
+      sentence = tolower(hypothesis)
+    )
+
+  # Tokenize ------------------------------------------------------------------
+  ## Convert Sentence String into Word Tokens
+  ## Method Removes Punctuation By Default
+  processing_df <- processing_df %>%
+    unnest_tokens(word, hypothesis)
+
+
+  # Remove Stop Words ---------------------------------------------------------
+  data(stop_words)
+
+  processing_df <- processing_df %>%
+    anti_join(stop_words, by = "word")
+
+
+  # Lemmatize Sentence --------------------------------------------------------
+  processing_df <- processing_df %>%
+    mutate(
+      word = lemmatize_words(word)
+    )
+
+  # Recombine Tokens into Strings ---------------------------------------------
+  processing_df <- processing_df %>%
+    group_by(h_id) %>%
+    mutate(
+      sentence = str_c(word, collapse = " ")
+    ) %>%
+    ungroup() %>%
+    rename(hypothesis = sentence) %>%
+    select(-word) %>%
+    distinct()
+
+  # Trim Strings --------------------------------------------------------------
+  processing_df <- processing_df %>%
+    mutate(
+      sentence = trim_strings(hypothesis)
+    )
+
+  # Drop Sentence
+  processing_df <- processing_df %>% select(-sentence)
+
+  return(processing_df)
+
+}
+
 
 #' Generate Document Term Matrix - Bag of Words - NGrams = 3
-#' Creats a Document Term Matrix. Uses a Bag-of-Words approach
+#' Creates a Document Term Matrix. Uses a Bag-of-Words approach
 #' with an n-gram size of 3
 #'
 #' Input (Required):
@@ -206,8 +276,8 @@ gen_dtm_bow <- function(input_df){
   # Create Corpus -------------------------------------------------------------
   corpus_hypo <- corpus(
     x = input_df,
-    text_field = "sentence",
-    docid_field = "hyp_id"
+    text_field = "hypothesis",
+    docid_field = "h_id"
   )
 
   # Generate Tokens------------------------------------------------------------
@@ -220,7 +290,8 @@ gen_dtm_bow <- function(input_df){
   dtm_hyp <- dfm(tokens_hyp_ngram)
 
   ## Convert to Dataframe
-  dtm_hyp <- convert(x = dtm_hyp, to = "data.frame")
+  dtm_hyp <- convert(x = dtm_hyp, to = "data.frame") %>%
+    rename(h_id = doc_id)
 
   return(dtm_hyp)
 
@@ -330,69 +401,69 @@ transformation_bag_of_words <- function(input_data){
 #' method transformation
 #
 
-transformation_doc2vec <- function(input_data){
-
-  # Generate Corpus ------------------------------------------------------------
-  # Extract Text as List
-  text <- as.character(input_data$sentence)
-
-  # Define Tagged Document
-  TaggedDocument <- gensim$models$doc2vec$TaggedDocument
-
-  # Tokenize Text
-  #$ Initialize
-  train_corpus <- list()
-  i = 1
-
-  ## Generate Tagged Document w/ Tokens
-  for (hypothesis in text) {
-    tokens <- gensim$utils$simple_preprocess(hypothesis)
-    train_corpus[[i]] <- TaggedDocument(tokens, as.character(i))
-    i = i +1
-  }
-
-  ## Convert Tagged Document Corpus to Python Object
-  train_corpus <- r_to_py(train_corpus)
-
-  # Train Model ----------------------------------------------------------------
-  # Initialize
-  model = gensim$models$doc2vec$Doc2Vec(vector_size=50, min_count=2, epochs=40)
-
-  # Build Vocabulary
-  model$build_vocab(train_corpus)
-
-  # Train
-  model$train(train_corpus, total_examples=model$corpus_count,
-              epochs=as.integer(model$epochs))
-
-  # Transform Text -------------------------------------------------------------
-  # Initialize
-  embeddings_d2v <- list()
-  i = 1
-
-  # Generate Embeddings Per Row
-  for (hypothesis in text) {
-    hypothsis_tokens <- str_split(hypothesis, pattern = " ") %>% unlist()
-    vector <- model$infer_vector(hypothsis_tokens)
-    embeddings_d2v[[i]] <- vector
-    i = i +1
-  }
-
-  # Convert Embeddings to Dataframe
-  embeddings_d2v_df <- as.data.frame(embeddings_d2v)
-
-  # Transpose Dataframe
-  embeddings_d2v_df_t <- as.data.frame(t(as.matrix(embeddings_d2v_df)))
-
-  # Drop Row Names
-  rownames(embeddings_d2v_df_t) <- c()
-
-  # Add Target Variable to Dataframe
-  output_doc2vec_xfrm <- cbind(
-    causal_relationship = input_data$causal_relationship,
-    embeddings_d2v_df_t
-    )
-
-  return(output_doc2vec_xfrm)
-}
+# transformation_doc2vec <- function(input_data){
+#
+#   # Generate Corpus ------------------------------------------------------------
+#   # Extract Text as List
+#   text <- as.character(input_data$sentence)
+#
+#   # Define Tagged Document
+#   TaggedDocument <- gensim$models$doc2vec$TaggedDocument
+#
+#   # Tokenize Text
+#   #$ Initialize
+#   train_corpus <- list()
+#   i = 1
+#
+#   ## Generate Tagged Document w/ Tokens
+#   for (hypothesis in text) {
+#     tokens <- gensim$utils$simple_preprocess(hypothesis)
+#     train_corpus[[i]] <- TaggedDocument(tokens, as.character(i))
+#     i = i +1
+#   }
+#
+#   ## Convert Tagged Document Corpus to Python Object
+#   train_corpus <- r_to_py(train_corpus)
+#
+#   # Train Model ----------------------------------------------------------------
+#   # Initialize
+#   model = gensim$models$doc2vec$Doc2Vec(vector_size=50, min_count=2, epochs=40)
+#
+#   # Build Vocabulary
+#   model$build_vocab(train_corpus)
+#
+#   # Train
+#   model$train(train_corpus, total_examples=model$corpus_count,
+#               epochs=as.integer(model$epochs))
+#
+#   # Transform Text -------------------------------------------------------------
+#   # Initialize
+#   embeddings_d2v <- list()
+#   i = 1
+#
+#   # Generate Embeddings Per Row
+#   for (hypothesis in text) {
+#     hypothsis_tokens <- str_split(hypothesis, pattern = " ") %>% unlist()
+#     vector <- model$infer_vector(hypothsis_tokens)
+#     embeddings_d2v[[i]] <- vector
+#     i = i +1
+#   }
+#
+#   # Convert Embeddings to Dataframe
+#   embeddings_d2v_df <- as.data.frame(embeddings_d2v)
+#
+#   # Transpose Dataframe
+#   embeddings_d2v_df_t <- as.data.frame(t(as.matrix(embeddings_d2v_df)))
+#
+#   # Drop Row Names
+#   rownames(embeddings_d2v_df_t) <- c()
+#
+#   # Add Target Variable to Dataframe
+#   output_doc2vec_xfrm <- cbind(
+#     causal_relationship = input_data$causal_relationship,
+#     embeddings_d2v_df_t
+#     )
+#
+#   return(output_doc2vec_xfrm)
+# }
 

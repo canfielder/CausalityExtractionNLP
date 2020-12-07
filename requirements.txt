@@ -1,3 +1,6 @@
+fasttext
+numpy
 pandas
 scikit-learn
-gensim
+joblib
+virtualenv

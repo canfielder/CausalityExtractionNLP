@@ -208,10 +208,11 @@ standardize_hypothesis <- function(input, regex_hypothesis_string){
 standardize_hypothesis <- Vectorize(standardize_hypothesis)
 
 #' Process Text
-#' The following function exectures all steps in the text cleaning process.
+#' The following function executes all steps in the text cleaning process.'
+#' These cleaning processes mirror the JB method in th original project.
 #'
 
-process_text_JB <- function(input_text, removal_patterns){
+process_text <- function(input_text, removal_patterns){
 
   # Vectorize -----------------------------------------------------------------
   ## Split Text into Character Vector

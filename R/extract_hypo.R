@@ -15,7 +15,6 @@ p_load(
 regex_hypothesis <- "(hypo)|(h\\d+)"
 
 
-
 # Functions -------------------------------------------------------------------
 
 #' Extract Hypotheses
@@ -58,10 +57,22 @@ extract_hypothesis <- function(input_text){
   ## Detect Statements Which Contain "Hypo"
   logical_hypothesis_2 <- str_detect(hypothesis_statements, "hypo")
 
-  ## Drop Statements that Do Not Incude "Hypo"
+  ## Drop Statements that Do Not Include "Hypo"
   hypothesis_statements <- hypothesis_statements[logical_hypothesis_2]
 
-  return(hypothesis_statements)
+  # Create Dataframe with Hypothesis Number and Hypothesis
+  df_hypothesis <- as.data.frame(hypothesis_statements,
+                                 stringsAsFactors = FALSE)
+
+  # Rename and add Hypothesis Numner
+  df_hypothesis <- df_hypothesis %>%
+    rename(hypothesis = hypothesis_statements) %>%
+    mutate(
+      h_id = paste0("h_", row_number())
+    ) %>%
+    select(h_id,hypothesis )
+
+  return(df_hypothesis)
 
 }
 

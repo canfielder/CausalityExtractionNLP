@@ -9,11 +9,5 @@ print("Function project_install_packages executed.")
 
 # Set Python Path to Local Conda Environment
 #### -- Set Python Environment For Reticulate -- ###
-# CONDA_PATH = "./.causalityextractionnlp/bin/python"
-# Sys.setenv(RETICULATE_PYTHON = CONDA_PATH)
-# path_output_statement <- paste0("Path variable RETICULATE_PYTHON set to ",
-#                                 CONDA_PATH)
-
-# Verify Python Being Used
-# repl_python()
-# exit()
+# python_path = "./.venv/bin/python.exe"
+# Sys.setenv(RETICULATE_PYTHON = python_path)
