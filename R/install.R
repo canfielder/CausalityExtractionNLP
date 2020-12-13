@@ -14,6 +14,7 @@ project_install_packages <- function(){
     pdftools,
     quanteda,
     readxl,
+    # Rcpp,
     reticulate,
     rJava,
     stringr,
