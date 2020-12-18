@@ -17,6 +17,7 @@ project_install_packages <- function(){
     # Rcpp,
     reticulate,
     rJava,
+    rtika,
     stringr,
     tabulizer,
     textstem,
